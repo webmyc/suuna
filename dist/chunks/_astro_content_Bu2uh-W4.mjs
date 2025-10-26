@@ -1,51 +1,20 @@
-import { escape } from 'html-escaper';
 import { Traverse } from 'neotraverse/modern';
 import pLimit from 'p-limit';
-import { z } from 'zod';
-import { removeBase, isRemotePath, prependForwardSlash } from '@astrojs/internal-helpers/path';
-import { A as AstroError, U as UnknownContentCollectionError, c as createComponent, R as RenderUndefinedEntryError, u as unescapeHTML, a as renderTemplate, e as renderUniqueStylesheet, f as renderScriptElement, g as createHeadAndContent, r as renderComponent } from './astro/server_DxdTLJqk.mjs';
+import { removeBase, prependForwardSlash } from '@astrojs/internal-helpers/path';
+import { i as isCoreRemotePath, V as VALID_INPUT_FORMATS, A as AstroError, U as UnknownContentCollectionError } from './astro/assets-service_CsvZ0B8M.mjs';
+import { c as createComponent, e as renderUniqueStylesheet, f as renderScriptElement, g as createHeadAndContent, r as renderComponent, a as renderTemplate, u as unescapeHTML } from './astro/server_DIKp2mE_.mjs';
+import 'kleur/colors';
 import * as devalue from 'devalue';
 
 const CONTENT_IMAGE_FLAG = "astroContentImageFlag";
 const IMAGE_IMPORT_PREFIX = "__ASTRO_IMAGE_";
 
-const VALID_INPUT_FORMATS = [
-  "jpeg",
-  "jpg",
-  "png",
-  "tiff",
-  "webp",
-  "gif",
-  "svg",
-  "avif"
-];
-const VALID_SUPPORTED_FORMATS = [
-  "jpeg",
-  "jpg",
-  "png",
-  "tiff",
-  "webp",
-  "gif",
-  "svg",
-  "avif"
-];
-const DEFAULT_OUTPUT_FORMAT = "webp";
-const DEFAULT_HASH_PROPS = [
-  "src",
-  "width",
-  "height",
-  "format",
-  "quality",
-  "fit",
-  "position"
-];
-
 function imageSrcToImportId(imageSrc, filePath) {
   imageSrc = removeBase(imageSrc, IMAGE_IMPORT_PREFIX);
-  if (isRemotePath(imageSrc)) {
+  if (isCoreRemotePath(imageSrc)) {
     return;
   }
-  const ext = imageSrc.split(".").at(-1)?.toLowerCase();
+  const ext = imageSrc.split(".").at(-1);
   if (!ext || !VALID_INPUT_FORMATS.includes(ext)) {
     return;
   }
@@ -56,7 +25,7 @@ function imageSrcToImportId(imageSrc, filePath) {
   return `${imageSrc}?${params.toString()}`;
 }
 
-class ImmutableDataStore {
+class DataStore {
   _collections = /* @__PURE__ */ new Map();
   constructor() {
     this._collections = /* @__PURE__ */ new Map();
@@ -97,16 +66,16 @@ class ImmutableDataStore {
     try {
       const data = await import('./_astro_data-layer-content_B7MqS0z9.mjs');
       if (data.default instanceof Map) {
-        return ImmutableDataStore.fromMap(data.default);
+        return DataStore.fromMap(data.default);
       }
       const map = devalue.unflatten(data.default);
-      return ImmutableDataStore.fromMap(map);
+      return DataStore.fromMap(map);
     } catch {
     }
-    return new ImmutableDataStore();
+    return new DataStore();
   }
   static async fromMap(data) {
-    const store = new ImmutableDataStore();
+    const store = new DataStore();
     store._collections = data;
     return store;
   }
@@ -116,7 +85,7 @@ function dataStoreSingleton() {
   return {
     get: async () => {
       if (!instance) {
-        instance = ImmutableDataStore.fromModule();
+        instance = DataStore.fromModule();
       }
       return instance;
     },
@@ -143,24 +112,13 @@ function createCollectionToGlobResultMap({
   }
   return collectionToGlobResultMap;
 }
-z.object({
-  tags: z.array(z.string()).optional(),
-  lastModified: z.date().optional()
-});
 function createGetCollection({
   contentCollectionToEntryMap,
   dataCollectionToEntryMap,
   getRenderEntryImport,
-  cacheEntriesByCollection,
-  liveCollections
+  cacheEntriesByCollection
 }) {
   return async function getCollection(collection, filter) {
-    if (collection in liveCollections) {
-      throw new AstroError({
-        ...UnknownContentCollectionError,
-        message: `Collection "${collection}" is a live collection. Use getLiveCollection() instead of getCollection().`
-      });
-    }
     const hasFilter = typeof filter === "function";
     const store = await globalDataStore.get();
     let type;
@@ -169,18 +127,15 @@ function createGetCollection({
     } else if (collection in dataCollectionToEntryMap) {
       type = "data";
     } else if (store.hasCollection(collection)) {
-      const { default: imageAssetMap } = await import('./content-assets_DleWbedO.mjs');
+      const { default: imageAssetMap } = await import('./_astro_asset-imports_D9aVaOQr.mjs');
       const result = [];
       for (const rawEntry of store.values(collection)) {
         const data = updateImageReferencesInData(rawEntry.data, rawEntry.filePath, imageAssetMap);
-        let entry = {
+        const entry = {
           ...rawEntry,
           data,
           collection
         };
-        if (entry.legacyId) {
-          entry = emulateLegacyEntry(entry);
-        }
         if (hasFilter && !filter(entry)) {
           continue;
         }
@@ -191,7 +146,7 @@ function createGetCollection({
       console.warn(
         `The collection ${JSON.stringify(
           collection
-        )} does not exist or is empty. Please check your content config file for errors.`
+        )} does not exist or is empty. Ensure a collection directory with this name exists.`
       );
       return [];
     }
@@ -237,57 +192,6 @@ function createGetCollection({
     }
   };
 }
-function emulateLegacyEntry({ legacyId, ...entry }) {
-  const legacyEntry = {
-    ...entry,
-    id: legacyId,
-    slug: entry.id
-  };
-  return {
-    ...legacyEntry,
-    // Define separately so the render function isn't included in the object passed to `renderEntry()`
-    render: () => renderEntry(legacyEntry)
-  };
-}
-const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
-async function updateImageReferencesInBody(html, fileName) {
-  const { default: imageAssetMap } = await import('./content-assets_DleWbedO.mjs');
-  const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('./_astro_assets_w4TW3mk9.mjs').then(n => n._);
-  for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
-    try {
-      const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
-      let image;
-      if (URL.canParse(decodedImagePath.src)) {
-        image = await getImage(decodedImagePath);
-      } else {
-        const id = imageSrcToImportId(decodedImagePath.src, fileName);
-        const imported = imageAssetMap.get(id);
-        if (!id || imageObjects.has(id) || !imported) {
-          continue;
-        }
-        image = await getImage({ ...decodedImagePath, src: imported });
-      }
-      imageObjects.set(imagePath, image);
-    } catch {
-      throw new Error(`Failed to parse image reference: ${imagePath}`);
-    }
-  }
-  return html.replaceAll(CONTENT_LAYER_IMAGE_REGEX, (full, imagePath) => {
-    const image = imageObjects.get(imagePath);
-    if (!image) {
-      return full;
-    }
-    const { index, ...attributes } = image.attributes;
-    return Object.entries({
-      ...attributes,
-      src: image.src,
-      srcset: image.srcSet.attribute,
-      // This attribute is used by the toolbar audit
-      ...Object.assign(__vite_import_meta_env__, {}).DEV ? { "data-image-component": "true" } : {}
-    }).map(([key, value]) => value ? `${key}="${escape(value)}"` : "").join(" ");
-  });
-}
 function updateImageReferencesInData(data, fileName, imageAssetMap) {
   return new Traverse(data).map(function(ctx, val) {
     if (typeof val === "string" && val.startsWith(IMAGE_IMPORT_PREFIX)) {
@@ -305,34 +209,6 @@ function updateImageReferencesInData(data, fileName, imageAssetMap) {
       }
     }
   });
-}
-async function renderEntry(entry) {
-  if (!entry) {
-    throw new AstroError(RenderUndefinedEntryError);
-  }
-  if ("render" in entry && !("legacyId" in entry)) {
-    return entry.render();
-  }
-  if (entry.deferredRender) {
-    try {
-      const { default: contentModules } = await import('./content-modules_Dz-S_Wwv.mjs');
-      const renderEntryImport = contentModules.get(entry.filePath);
-      return render({
-        collection: "",
-        id: entry.id,
-        renderEntryImport
-      });
-    } catch (e) {
-      console.error(e);
-    }
-  }
-  const html = entry?.rendered?.metadata?.imagePaths?.length && entry.filePath ? await updateImageReferencesInBody(entry.rendered.html, entry.filePath) : entry?.rendered?.html;
-  const Content = createComponent(() => renderTemplate`${unescapeHTML(html)}`);
-  return {
-    Content,
-    headings: entry?.rendered?.metadata?.headings ?? [],
-    remarkPluginFrontmatter: entry?.rendered?.metadata?.frontmatter ?? {}
-  };
 }
 async function render({
   collection,
@@ -415,17 +291,15 @@ function isPropagatedAssetsModule(module) {
 
 // astro-head-inject
 
-const liveCollections = {};
-
 const contentDir = '/src/content/';
 
-const contentEntryGlob = "";
+const contentEntryGlob = /* #__PURE__ */ Object.assign({});
 const contentCollectionToEntryMap = createCollectionToGlobResultMap({
 	globResult: contentEntryGlob,
 	contentDir,
 });
 
-const dataEntryGlob = "";
+const dataEntryGlob = /* #__PURE__ */ Object.assign({});
 const dataCollectionToEntryMap = createCollectionToGlobResultMap({
 	globResult: dataEntryGlob,
 	contentDir,
@@ -449,7 +323,7 @@ function createGlobLookup(glob) {
 	};
 }
 
-const renderEntryGlob = "";
+const renderEntryGlob = /* #__PURE__ */ Object.assign({});
 const collectionToRenderEntryMap = createCollectionToGlobResultMap({
 	globResult: renderEntryGlob,
 	contentDir,
@@ -461,7 +335,6 @@ const getCollection = createGetCollection({
 	dataCollectionToEntryMap,
 	getRenderEntryImport: createGlobLookup(collectionToRenderEntryMap),
 	cacheEntriesByCollection,
-	liveCollections,
 });
 
-export { DEFAULT_OUTPUT_FORMAT as D, VALID_SUPPORTED_FORMATS as V, DEFAULT_HASH_PROPS as a, getCollection as g };
+export { getCollection as g };

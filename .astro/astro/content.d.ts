@@ -1,14 +1,4 @@
 declare module 'astro:content' {
-	interface Render {
-		'.mdx': Promise<{
-			Content: import('astro').MarkdownInstance<{}>['Content'];
-			headings: import('astro').MarkdownHeading[];
-			remarkPluginFrontmatter: Record<string, any>;
-		}>;
-	}
-}
-
-declare module 'astro:content' {
 	interface RenderResult {
 		Content: import('astro/runtime/server/index.js').AstroComponentFactory;
 		headings: import('astro').MarkdownHeading[];
@@ -150,48 +140,16 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"facilitators": {
-"dana-dragomirescu.mdx": {
-	id: "dana-dragomirescu.mdx";
-  slug: "dana-dragomirescu";
-  body: string;
-  collection: "facilitators";
-  data: any
-} & { render(): Render[".mdx"] };
-"laura-maria-yara.mdx": {
-	id: "laura-maria-yara.mdx";
-  slug: "laura-maria-yara";
-  body: string;
-  collection: "facilitators";
-  data: any
-} & { render(): Render[".mdx"] };
-"maria-hoier.mdx": {
-	id: "maria-hoier.mdx";
-  slug: "maria-hoier";
-  body: string;
-  collection: "facilitators";
-  data: any
-} & { render(): Render[".mdx"] };
-"melissa-louise.mdx": {
-	id: "melissa-louise.mdx";
-  slug: "melissa-louise";
-  body: string;
-  collection: "facilitators";
-  data: any
-} & { render(): Render[".mdx"] };
-"stephanie-canavesio.mdx": {
-	id: "stephanie-canavesio.mdx";
-  slug: "stephanie-canavesio";
-  body: string;
-  collection: "facilitators";
-  data: any
-} & { render(): Render[".mdx"] };
-};
-
+		
 	};
 
 	type DataEntryMap = {
-		
+		"facilitators": Record<string, {
+  id: string;
+  collection: "facilitators";
+  data: any;
+}>;
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
