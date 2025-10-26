@@ -1,11 +1,13 @@
-@import url("https://db.onlinewebfonts.com/c/a959448c957069dae7d52078616ebdc8?family=Architype+Bayer-type+W90");
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap");
 
 @font-face {
   font-family: "Architype Bayer-type W90";
-  src: url("https://db.onlinewebfonts.com/t/a959448c957069dae7d52078616ebdc8.woff2") format("woff2"),
-       url("https://db.onlinewebfonts.com/t/a959448c957069dae7d52078616ebdc8.woff") format("woff"),
-       url("https://db.onlinewebfonts.com/t/a959448c957069dae7d52078616ebdc8.ttf") format("truetype");
+  src: url("/fonts/architype-bayer-type-w90.eot");
+  src: url("/fonts/architype-bayer-type-w90.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/architype-bayer-type-w90.woff2") format("woff2"),
+       url("/fonts/architype-bayer-type-w90.woff") format("woff"),
+       url("/fonts/architype-bayer-type-w90.ttf") format("truetype"),
+       url("/fonts/architype-bayer-type-w90.svg#Architype%20Bayer-type%20W90") format("svg");
   font-display: swap;
 }
 

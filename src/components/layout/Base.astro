@@ -52,7 +52,8 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
     
     <!-- Preload critical fonts -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <link rel="preload" href="https://db.onlinewebfonts.com/c/a959448c957069dae7d52078616ebdc8?family=Architype+Bayer-type+W90" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="preload" href="/fonts/architype-bayer-type-w90.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/architype-bayer-type-w90.woff" as="font" type="font/woff" crossorigin />
     
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
