@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get featured facilitators (first 4)
+const facilitators = await getCollection('facilitators');
+const featuredFacilitators = facilitators.slice(0, 4);
+---
+
+<section class="py-16 bg-gradient-to-b from-suuna-bg to-suuna-forest">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-serif font-bold text-suuna-text-light mb-4">
+        Meet Our Facilitators
+      </h2>
+      <p class="text-lg text-suuna-text-muted max-w-2xl mx-auto">
+        Discover the visionary teachers, healers, and community builders who are co-creating intentional spaces for transformation and growth.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      {featuredFacilitators.map((facilitator) => (
+        <div class="reveal-stagger">
+          <article class="card p-6 group h-full">
+            <div class="aspect-square mb-4 overflow-hidden rounded-lg">
+              <img 
+                src={facilitator.data.image} 
+                alt={facilitator.data.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            
+            <h3 class="text-lg font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors">
+              {facilitator.data.name}
+            </h3>
+            
+            <p class="text-suuna-accent text-sm font-medium mb-3">
+              {facilitator.data.role}
+            </p>
+            
+            <div class="flex items-center justify-between mt-auto">
+              <span class="text-xs text-suuna-text-muted">
+                📍 {facilitator.data.location}
+              </span>
+              <a 
+                href={`/facilitators/${facilitator.slug}`}
+                class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors"
+              >
+                View →
+              </a>
+            </div>
+          </article>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a 
+        href="/facilitators"
+        class="btn-secondary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105"
+      >
+        See All Facilitators
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

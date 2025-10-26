@@ -1,0 +1,61 @@
+---
+export interface Props {
+  title: string;
+  date: string;
+  image?: string;
+  url: string;
+  description?: string;
+}
+
+const { title, date, image, url, description } = Astro.props;
+
+const eventDate = new Date(date);
+const formattedDate = eventDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<article class="card p-6 group h-full">
+  {image && (
+    <div class="aspect-video mb-4 overflow-hidden rounded-lg">
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      />
+    </div>
+  )}
+  
+  <div class="flex-1">
+    <h3 class="text-lg font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors">
+      {title}
+    </h3>
+    
+    <time class="text-suuna-accent text-sm font-medium mb-3 block">
+      📅 {formattedDate}
+    </time>
+    
+    {description && (
+      <p class="text-suuna-text-muted text-sm mb-4 line-clamp-3">
+        {description}
+      </p>
+    )}
+  </div>
+  
+  <div class="mt-auto">
+    <a 
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors inline-flex items-center"
+    >
+      Join Event
+      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+      </svg>
+    </a>
+  </div>
+</article>

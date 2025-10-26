@@ -1,0 +1,24 @@
+@import url("https://db.onlinewebfonts.com/c/a959448c957069dae7d52078616ebdc8?family=Architype+Bayer-type+W90");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap");
+
+@font-face {
+  font-family: "Architype Bayer-type W90";
+  src: url("https://db.onlinewebfonts.com/t/a959448c957069dae7d52078616ebdc8.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/a959448c957069dae7d52078616ebdc8.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/a959448c957069dae7d52078616ebdc8.ttf") format("truetype");
+  font-display: swap;
+}
+
+.suuna-font {
+  font-family: "Architype Bayer-type W90", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Preload critical fonts */
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'PT Serif', serif;
+}

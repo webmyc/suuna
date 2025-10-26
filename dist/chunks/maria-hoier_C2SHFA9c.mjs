@@ -1,0 +1,12 @@
+const id = "maria-hoier.mdx";
+						const collection = "facilitators";
+						const slug = "maria-hoier";
+						const body = "\n# Maria Hoier\n\nMaria Hoier is the founder of Intelligent Intimacy, a singer and writer, and a pioneer in integrating psychology, somatic practice, and archetypal frameworks into modern relational development.\n\n## Background\n\nWith a background in Eastern medicine, psychology, and adult human development, she has spent over two decades weaving together science, myth, and lived experience to guide individuals and groups into deeper intimacy, integrity, and embodied connection.\n\n## Approach\n\nTrauma-informed, academically grounded, and intuitively led, Maria merges intellectual depth with emotional accessibility. She creates spaces where vulnerability, erotic intelligence, and conscious power can coexist, bringing a rare capacity to hold both the psychological and the spiritual dimensions of intimacy.\n\n## Mission\n\nHer mission is to restore intimacy as a field of intelligence—one that can transform relationships, leadership, and the systems we live in.\n\n## Connect\n\n- **Website**: [intelligentintimacy.org](https://intelligentintimacy.org)\n";
+						const data = {name:"Maria Hoier",role:"Intelligent Intimacy",location:"Remote",bio:"Maria Hoier is the founder of Intelligent Intimacy, a singer and writer, and a pioneer in integrating psychology, somatic practice, and archetypal frameworks into modern relational development. With a background in Eastern medicine, psychology, and adult human development, she has spent over two decades weaving together science, myth, and lived experience to guide individuals and groups into deeper intimacy, integrity, and embodied connection. Trauma-informed, academically grounded, and intuitively led, Maria merges intellectual depth with emotional accessibility. She creates spaces where vulnerability, erotic intelligence, and conscious power can coexist, bringing a rare capacity to hold both the psychological and the spiritual dimensions of intimacy. Her mission is to restore intimacy as a field of intelligence-one that can transform relationships, leadership, and the systems we live in.",website:"https://intelligentintimacy.org",substack:"",instagram:"",image:"/facilitators/maria-hoier.jpg"};
+						const _internal = {
+							type: 'content',
+							filePath: "/Users/akunay/🌞Passions/Vibe Coding/respira.cafe/sites/suuna/src/content/facilitators/maria-hoier.mdx",
+							rawData: undefined,
+						};
+
+export { _internal, body, collection, data, id, slug };

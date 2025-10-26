@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://suuna.ro/sitemap-index.xml
