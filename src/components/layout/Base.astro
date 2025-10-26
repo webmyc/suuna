@@ -139,4 +139,22 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
 
 <style>
   @import '../../styles/fonts.css';
+  
+  /* CRITICAL: Force SUUNA font on all SUUNA text - highest priority */
+  .suuna-font,
+  span.suuna-font {
+    font-family: "Architype Bayer-type W90", sans-serif !important;
+    letter-spacing: 0.05em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+  }
+  
+  /* Force font loading */
+  .suuna-font::before {
+    content: '';
+    font-family: "Architype Bayer-type W90", sans-serif;
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+  }
 </style>

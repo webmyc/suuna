@@ -27,15 +27,17 @@ span.suuna-font {
   font-weight: normal;
 }
 
-/* Ensure SUUNA wordmark uses Architype font everywhere */
+/* Ensure SUUNA wordmark uses Architype font everywhere - MORE AGGRESSIVE */
 .suuna-wordmark,
-span.suuna-font {
+span.suuna-font,
+.suuna-font {
   font-family: "Architype Bayer-type W90", sans-serif !important;
-  letter-spacing: 0.05em;
-  font-weight: normal;
+  letter-spacing: 0.05em !important;
+  font-weight: normal !important;
+  font-style: normal !important;
 }
 
-/* Force font loading */
+/* Force font loading with higher specificity */
 .suuna-font::before {
   content: '';
   font-family: "Architype Bayer-type W90", sans-serif;
