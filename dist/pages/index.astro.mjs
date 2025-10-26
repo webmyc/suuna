@@ -1,43 +1,53 @@
 /* empty css                                 */
-import { c as createComponent, m as maybeRenderHead, d as addAttribute, a as renderTemplate, r as renderComponent } from '../chunks/astro/server_h_zt6oxU.mjs';
-import 'kleur/colors';
-import { $ as $$Base, a as $$Header, b as $$Footer } from '../chunks/Footer_CofZNDX7.mjs';
+import { c as createComponent, m as maybeRenderHead, d as addAttribute, a as renderTemplate, r as renderComponent } from '../chunks/astro/server_DxdTLJqk.mjs';
+import { $ as $$Base, a as $$Header, b as $$Footer } from '../chunks/Footer_DT3KcI-q.mjs';
 import 'clsx';
-import { g as getCollection } from '../chunks/_astro_content_ZEBTFbDb.mjs';
 /* empty css                                 */
+import { g as getCollection } from '../chunks/_astro_content_Q6NG51Pe.mjs';
 export { renderers } from '../renderers.mjs';
 
 function parseRSSFeed(xmlText, authorName) {
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-  const items = xmlDoc.querySelectorAll("item");
   const posts = [];
-  items.forEach((item, index) => {
-    if (index >= 3) return;
-    const title = item.querySelector("title")?.textContent || "";
-    const link = item.querySelector("link")?.textContent || "";
-    const pubDate = item.querySelector("pubDate")?.textContent || "";
-    const description = item.querySelector("description")?.textContent || "";
-    let image = "";
-    const imgMatch = description.match(/<img[^>]+src="([^"]+)"/);
-    if (imgMatch) {
-      image = imgMatch[1];
+  const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+  let match;
+  let count = 0;
+  while ((match = itemRegex.exec(xmlText)) !== null && count < 3) {
+    const itemContent = match[1];
+    const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>|<title>(.*?)<\/title>/);
+    const linkMatch = itemContent.match(/<link>(.*?)<\/link>/);
+    const pubDateMatch = itemContent.match(/<pubDate>(.*?)<\/pubDate>/);
+    const descriptionMatch = itemContent.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>|<description>(.*?)<\/description>/);
+    if (titleMatch && linkMatch && pubDateMatch) {
+      const title = titleMatch[1] || titleMatch[2] || "";
+      const link = linkMatch[1] || "";
+      const pubDate = pubDateMatch[1] || "";
+      const description = descriptionMatch ? descriptionMatch[1] || descriptionMatch[2] || "" : "";
+      let image = "";
+      const imgMatch = description.match(/<img[^>]+src="([^"]+)"/);
+      if (imgMatch) {
+        image = imgMatch[1];
+      }
+      posts.push({
+        title: title.trim(),
+        link: link.trim(),
+        pubDate: pubDate.trim(),
+        description: description.replace(/<[^>]*>/g, "").substring(0, 150) + "...",
+        image,
+        author: authorName
+      });
+      count++;
     }
-    posts.push({
-      title,
-      link,
-      pubDate,
-      description: description.replace(/<[^>]*>/g, "").substring(0, 150) + "...",
-      image,
-      author: authorName
-    });
-  });
+  }
   return posts;
 }
 async function fetchSubstackFeed(url, authorName) {
   try {
     const feedUrl = `${url}/feed`;
-    const response = await fetch(feedUrl);
+    const response = await fetch(feedUrl, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; SUUNA-Bot/1.0)"
+      }
+    });
     if (!response.ok) {
       throw new Error(`Failed to fetch feed: ${response.status}`);
     }
@@ -73,33 +83,49 @@ async function fetchAllSubstackFeeds() {
   return Promise.all(feedPromises);
 }
 
-const $$SubstackFeeds = createComponent(async ($$result, $$props, $$slots) => {
-  let substackFeeds;
+const $$RecentArticles = createComponent(async ($$result, $$props, $$slots) => {
+  let allArticles = [];
   try {
-    substackFeeds = await fetchAllSubstackFeeds();
+    const substackFeeds = await fetchAllSubstackFeeds();
+    allArticles = substackFeeds.flatMap(
+      (feed) => feed.posts.map((post) => ({
+        title: post.title,
+        link: post.link,
+        published: post.pubDate,
+        summary: post.description,
+        author: post.author,
+        readTime: "5 min",
+        // Default read time
+        image: post.image,
+        featured: false
+      }))
+    );
+    allArticles.sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime());
+    if (allArticles.length > 0) {
+      allArticles[0].featured = true;
+    }
   } catch (error) {
-    console.error("Error fetching Substack feeds:", error);
-    substackFeeds = [
-      { title: "SUUNA Community", description: "Latest posts from SUUNA Community", url: "https://suuna.substack.com", posts: [] },
-      { title: "Dana Dragomirescu", description: "Latest posts from Dana Dragomirescu", url: "https://danadragomirescu.substack.com", posts: [] },
-      { title: "Melissa Louise", description: "Latest posts from Melissa Louise", url: "https://melissalouise.substack.com", posts: [] },
-      { title: "Laura Maria Yara", description: "Latest posts from Laura Maria Yara", url: "https://lauramariayara.substack.com", posts: [] },
-      { title: "Reflector's Reflections", description: "Latest posts from Reflector's Reflections", url: "https://reflectorsreflections.substack.com", posts: [] }
-    ];
+    console.error("Error fetching Substack articles:", error);
+    allArticles = [];
   }
-  return renderTemplate`${maybeRenderHead()}<section class="py-16 bg-gradient-to-b from-suuna-bg to-suuna-forest"> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div class="text-center mb-12"> <h2 class="text-3xl font-serif font-bold text-suuna-text-light mb-4">
-Community Voices
-</h2> <p class="text-lg text-suuna-text-muted max-w-2xl mx-auto">
+  const displayArticles = allArticles.slice(0, 8);
+  const column1Article = displayArticles[0];
+  const column2Articles = displayArticles.slice(1, 3);
+  const column3Articles = displayArticles.slice(3, 5);
+  const additionalArticles = displayArticles.slice(5, 8);
+  function truncateText(text, maxLength = 200) {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength).trim() + "...";
+  }
+  function cleanHtmlEntities(text) {
+    return text.replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/&#8216;/g, "'").replace(/&#8217;/g, "'").replace(/&#8212;/g, "\u2014").replace(/&#8211;/g, "\u2013").replace(/&#8230;/g, "\u2026").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  }
+  return renderTemplate`${maybeRenderHead()}<section class="py-16 bg-gradient-to-b from-suuna-bg to-suuna-forest" data-astro-cid-feuwqfim> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" data-astro-cid-feuwqfim> <!-- Section Header --> <div class="text-center mb-12" data-astro-cid-feuwqfim> <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-suuna-accent/20 border border-suuna-accent/30 shadow-sm mb-6" data-astro-cid-feuwqfim> <svg class="w-5 h-5 text-suuna-accent" fill="currentColor" viewBox="0 0 20 20" data-astro-cid-feuwqfim> <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" data-astro-cid-feuwqfim></path> </svg> <h2 class="text-sm uppercase tracking-[0.3em] text-suuna-accent font-semibold" data-astro-cid-feuwqfim>Community Voices</h2> </div> <h2 class="text-4xl font-serif font-bold text-suuna-text-light mb-6" data-astro-cid-feuwqfim>
+Recent Articles
+</h2> <p class="text-lg text-suuna-text-muted max-w-3xl mx-auto leading-relaxed" data-astro-cid-feuwqfim>
 Discover wisdom and insights from our community of facilitators and creators
-</p> </div> <div class="space-y-16"> ${substackFeeds.map((feed) => renderTemplate`<div class="reveal-stagger"> <!-- Feed Header --> <div class="text-center mb-8"> <h3 class="text-2xl font-serif font-semibold text-suuna-accent mb-2"> ${feed.title} </h3> <p class="text-suuna-text-muted">${feed.description}</p> </div> <!-- Posts Grid --> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"> ${feed.posts.map((post) => renderTemplate`<article class="card p-6 group"> ${post.image && renderTemplate`<div class="aspect-video mb-4 overflow-hidden rounded-lg"> <img${addAttribute(post.image, "src")}${addAttribute(post.title, "alt")} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"> </div>`} <h4 class="text-lg font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors"> ${post.title} </h4> <p class="text-suuna-text-muted text-sm mb-4 line-clamp-3"> ${post.description} </p> <div class="flex items-center justify-between"> <time class="text-xs text-suuna-text-muted"> ${new Date(post.pubDate).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric"
-  })} </time> <a${addAttribute(post.link, "href")} target="_blank" rel="noopener noreferrer" class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors">
-Read more →
-</a> </div> </article>`)} </div> <!-- Subscribe Form --> <div class="text-center"> <div class="glass rounded-lg p-6 max-w-md mx-auto"> <h4 class="text-lg font-serif font-semibold text-suuna-text-light mb-4">
-Stay connected with ${feed.title} </h4> <iframe${addAttribute(`${feed.url}/embed`, "src")} width="100%" height="200" frameborder="0" class="rounded-lg"></iframe> </div> </div> </div>`)} </div> </div> </section>`;
-}, "/Users/akunay/\u{1F31E}Passions/Vibe Coding/respira.cafe/sites/suuna/src/components/sections/SubstackFeeds.astro", void 0);
+</p> </div> <!-- Articles Grid --> ${displayArticles.length > 0 && renderTemplate`<div class="articles-grid-container" data-astro-cid-feuwqfim> <!-- Column 1: Single Featured Article --> <div class="column-1" data-astro-cid-feuwqfim> ${column1Article && renderTemplate`<article class="group reveal" data-astro-cid-feuwqfim> <!-- Article Image --> ${column1Article.image ? renderTemplate`<a${addAttribute(column1Article.link, "href")} target="_blank" rel="noopener noreferrer" class="block aspect-[16/9] overflow-hidden mb-6 rounded-2xl hover:opacity-90 transition-opacity duration-300" data-astro-cid-feuwqfim> <img${addAttribute(column1Article.image, "src")}${addAttribute(column1Article.title, "alt")} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" width="600" height="337" loading="lazy" data-astro-cid-feuwqfim> </a>` : renderTemplate`<div class="aspect-[16/9] mb-6 rounded-2xl bg-suuna-forest/50 flex items-center justify-center" data-astro-cid-feuwqfim> <div class="text-center p-8" data-astro-cid-feuwqfim> <div class="w-16 h-16 mx-auto mb-4 bg-suuna-accent rounded-full flex items-center justify-center" data-astro-cid-feuwqfim> <svg class="w-8 h-8 text-suuna-bg" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-feuwqfim> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" data-astro-cid-feuwqfim></path> </svg> </div> <p class="text-suuna-accent font-medium text-sm" data-astro-cid-feuwqfim>Article Preview</p> </div> </div>`} <!-- Article Content --> <div class="space-y-4" data-astro-cid-feuwqfim> <div class="flex items-center space-x-3 text-sm text-suuna-text-muted font-medium" data-astro-cid-feuwqfim> <span data-astro-cid-feuwqfim>${column1Article.author}</span> <span class="w-1 h-1 rounded-full bg-suuna-text-muted" data-astro-cid-feuwqfim></span> <span data-astro-cid-feuwqfim>${column1Article.readTime}</span> </div> <h3 class="text-2xl font-serif font-bold text-suuna-text-light leading-tight tracking-tight" data-astro-cid-feuwqfim> <a${addAttribute(column1Article.link, "href")} target="_blank" rel="noopener noreferrer" class="hover:text-suuna-accent transition-colors duration-300" data-astro-cid-feuwqfim> ${cleanHtmlEntities(column1Article.title)} </a> </h3> ${column1Article.summary && renderTemplate`<p class="text-suuna-text-muted leading-relaxed text-base" data-astro-cid-feuwqfim> ${cleanHtmlEntities(truncateText(column1Article.summary, 150))} </p>`} </div> </article>`} </div> <!-- Column 2: Two Articles --> <div class="column-2" data-astro-cid-feuwqfim> ${column2Articles.map((article, index) => renderTemplate`<article class="group reveal" data-astro-cid-feuwqfim> <!-- Article Image --> ${article.image ? renderTemplate`<a${addAttribute(article.link, "href")} target="_blank" rel="noopener noreferrer" class="block aspect-[16/9] overflow-hidden mb-4 rounded-2xl hover:opacity-90 transition-opacity duration-300" data-astro-cid-feuwqfim> <img${addAttribute(article.image, "src")}${addAttribute(article.title, "alt")} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" width="400" height="225" loading="lazy" data-astro-cid-feuwqfim> </a>` : renderTemplate`<div class="aspect-[16/9] mb-4 rounded-2xl bg-suuna-forest/50 flex items-center justify-center" data-astro-cid-feuwqfim> <div class="text-center p-4" data-astro-cid-feuwqfim> <div class="w-12 h-12 mx-auto mb-2 bg-suuna-accent rounded-full flex items-center justify-center" data-astro-cid-feuwqfim> <svg class="w-6 h-6 text-suuna-bg" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-feuwqfim> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" data-astro-cid-feuwqfim></path> </svg> </div> <p class="text-suuna-accent font-medium text-xs" data-astro-cid-feuwqfim>Article</p> </div> </div>`} <!-- Article Content --> <div class="space-y-3" data-astro-cid-feuwqfim> <div class="flex items-center space-x-3 text-sm text-suuna-text-muted font-medium" data-astro-cid-feuwqfim> <span data-astro-cid-feuwqfim>${article.author}</span> <span class="w-1 h-1 rounded-full bg-suuna-text-muted" data-astro-cid-feuwqfim></span> <span data-astro-cid-feuwqfim>${article.readTime}</span> </div> <h3 class="text-lg font-serif font-bold text-suuna-text-light leading-tight tracking-tight" data-astro-cid-feuwqfim> <a${addAttribute(article.link, "href")} target="_blank" rel="noopener noreferrer" class="hover:text-suuna-accent transition-colors duration-300" data-astro-cid-feuwqfim> ${cleanHtmlEntities(article.title)} </a> </h3> ${article.summary && renderTemplate`<p class="text-suuna-text-muted leading-relaxed text-sm" data-astro-cid-feuwqfim> ${cleanHtmlEntities(truncateText(article.summary, 120))} </p>`} </div> </article>`)} </div> <!-- Column 3: Two Articles --> <div class="column-3" data-astro-cid-feuwqfim> ${column3Articles.map((article, index) => renderTemplate`<article class="group reveal" data-astro-cid-feuwqfim> <!-- Article Image --> ${article.image ? renderTemplate`<a${addAttribute(article.link, "href")} target="_blank" rel="noopener noreferrer" class="block aspect-[16/9] overflow-hidden mb-4 rounded-2xl hover:opacity-90 transition-opacity duration-300" data-astro-cid-feuwqfim> <img${addAttribute(article.image, "src")}${addAttribute(article.title, "alt")} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" width="400" height="225" loading="lazy" data-astro-cid-feuwqfim> </a>` : renderTemplate`<div class="aspect-[16/9] mb-4 rounded-2xl bg-suuna-forest/50 flex items-center justify-center" data-astro-cid-feuwqfim> <div class="text-center p-4" data-astro-cid-feuwqfim> <div class="w-12 h-12 mx-auto mb-2 bg-suuna-accent rounded-full flex items-center justify-center" data-astro-cid-feuwqfim> <svg class="w-6 h-6 text-suuna-bg" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-feuwqfim> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" data-astro-cid-feuwqfim></path> </svg> </div> <p class="text-suuna-accent font-medium text-xs" data-astro-cid-feuwqfim>Article</p> </div> </div>`} <!-- Article Content --> <div class="space-y-3" data-astro-cid-feuwqfim> <div class="flex items-center space-x-3 text-sm text-suuna-text-muted font-medium" data-astro-cid-feuwqfim> <span data-astro-cid-feuwqfim>${article.author}</span> <span class="w-1 h-1 rounded-full bg-suuna-text-muted" data-astro-cid-feuwqfim></span> <span data-astro-cid-feuwqfim>${article.readTime}</span> </div> <h3 class="text-lg font-serif font-bold text-suuna-text-light leading-tight tracking-tight" data-astro-cid-feuwqfim> <a${addAttribute(article.link, "href")} target="_blank" rel="noopener noreferrer" class="hover:text-suuna-accent transition-colors duration-300" data-astro-cid-feuwqfim> ${cleanHtmlEntities(article.title)} </a> </h3> ${article.summary && renderTemplate`<p class="text-suuna-text-muted leading-relaxed text-sm" data-astro-cid-feuwqfim> ${cleanHtmlEntities(truncateText(article.summary, 120))} </p>`} </div> </article>`)} </div> <!-- Additional Articles Row (3 equal columns) --> ${additionalArticles.length > 0 && renderTemplate`<div class="col-span-full mt-16" data-astro-cid-feuwqfim> <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-astro-cid-feuwqfim> ${additionalArticles.map((article, index) => renderTemplate`<article class="group reveal" data-astro-cid-feuwqfim> <!-- Article Image --> <a${addAttribute(article.link, "href")} target="_blank" rel="noopener noreferrer" class="block aspect-[16/9] overflow-hidden mb-4 rounded-2xl hover:opacity-90 transition-opacity duration-300" data-astro-cid-feuwqfim> ${article.image ? renderTemplate`<img${addAttribute(article.image, "src")}${addAttribute(article.title, "alt")} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" width="400" height="225" loading="lazy" data-astro-cid-feuwqfim>` : renderTemplate`<div class="w-full h-full bg-suuna-forest/50 flex items-center justify-center" data-astro-cid-feuwqfim> <div class="text-center p-8" data-astro-cid-feuwqfim> <div class="w-16 h-16 mx-auto mb-4 bg-suuna-accent rounded-full flex items-center justify-center" data-astro-cid-feuwqfim> <svg class="w-8 h-8 text-suuna-bg" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-feuwqfim> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" data-astro-cid-feuwqfim></path> </svg> </div> <p class="text-suuna-accent font-medium text-sm" data-astro-cid-feuwqfim>Article Preview</p> </div> </div>`} </a> <!-- Article Content --> <div class="space-y-3" data-astro-cid-feuwqfim> <div class="flex items-center space-x-3 text-sm text-suuna-text-muted font-medium" data-astro-cid-feuwqfim> <span data-astro-cid-feuwqfim>${article.author}</span> <span class="w-1 h-1 rounded-full bg-suuna-text-muted" data-astro-cid-feuwqfim></span> <span data-astro-cid-feuwqfim>${article.readTime}</span> </div> <h3 class="text-lg font-serif font-bold text-suuna-text-light leading-tight tracking-tight" data-astro-cid-feuwqfim> <a${addAttribute(article.link, "href")} target="_blank" rel="noopener noreferrer" class="hover:text-suuna-accent transition-colors duration-300" data-astro-cid-feuwqfim> ${cleanHtmlEntities(article.title)} </a> </h3> ${article.summary && renderTemplate`<p class="text-suuna-text-muted leading-relaxed text-sm" data-astro-cid-feuwqfim> ${cleanHtmlEntities(truncateText(article.summary, 120))} </p>`} </div> </article>`)} </div> </div>`} </div>`} ${displayArticles.length === 0 && renderTemplate`<div class="text-center py-16" data-astro-cid-feuwqfim> <p class="text-suuna-text-muted text-xl" data-astro-cid-feuwqfim>No articles available at the moment.</p> </div>`} </div> </section> `;
+}, "/Users/akunay/\u{1F31E}Passions/Vibe Coding/respira.cafe/sites/suuna/src/components/sections/RecentArticles.astro", void 0);
 
 const $$EventsSection = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<section class="py-16 bg-gradient-to-b from-suuna-forest to-suuna-bg"> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div class="text-center mb-12"> <h2 class="text-3xl font-serif font-bold text-suuna-text-light mb-4">
@@ -162,6 +188,21 @@ We respect your privacy. Unsubscribe at any time.
 </p> </div> </div> </div> </section>`;
 }, "/Users/akunay/\u{1F31E}Passions/Vibe Coding/respira.cafe/sites/suuna/src/components/sections/NewsletterSection.astro", void 0);
 
+const $$SuunaHero = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${maybeRenderHead()}<section class="relative py-24 bg-gradient-to-br from-suuna-forest to-suuna-bg overflow-hidden"> <!-- Faint noise texture overlay --> <div class="absolute inset-0 z-0 opacity-20" style="background-image: url('/img/noise.png'); background-size: 100px;"></div> <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center"> <h2 class="text-4xl sm:text-5xl font-suuna font-bold text-suuna-text-light leading-tight mb-6 reveal">
+Bring your gifts to your community with <span class="text-suuna-accent">SUUNA</span> </h2> <p class="text-lg sm:text-xl text-suuna-text-muted leading-relaxed mb-6 reveal" data-delay="100">
+As a creator, your focus is on delivering your unique gifts to the world. At SUUNA, we're here to help you amplify your message and grow your community, without the technical or marketing headaches. Whether you're launching workshops, courses, or exclusive content, we provide everything you need to reach your audience and beyond.
+</p> <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10 reveal" data-delay="200"> <a href="https://suuna.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-suuna-accent text-suuna-bg font-semibold text-lg rounded-full hover:bg-suuna-accent-muted transition-colors shadow-lg">
+Co-create with SUUNA
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg> </a> <a href="https://suuna.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 border-2 border-suuna-accent text-suuna-accent font-semibold text-lg rounded-full hover:bg-suuna-accent/10 transition-colors shadow-lg">
+Visit SUUNA.org
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg> </a> </div> <p class="text-xl sm:text-2xl font-serif font-semibold text-suuna-text-light mb-6 reveal" data-delay="300">
+Stronger together
+</p> <p class="text-lg text-suuna-text-muted reveal" data-delay="400">
+Built for partnership. When you win, we win.
+</p> </div> </section>`;
+}, "/Users/akunay/\u{1F31E}Passions/Vibe Coding/respira.cafe/sites/suuna/src/components/sections/SuunaHero.astro", void 0);
+
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const title = "SUUNA - Learning from nature, together";
   const description = "Community platform for wisdom creators, facilitators, and intentional communities. Join SUUNA to amplify your message and grow your community.";
@@ -175,7 +216,7 @@ You teach. We amplify.
 Join the Community
 </a> <a href="https://suuna.org" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-flex items-center px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105" data-astro-cid-j7pv25f6>
 Visit SUUNA.org
-<svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-j7pv25f6> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" data-astro-cid-j7pv25f6></path> </svg> </a> </div> </div> </section> <!-- Substack Feeds Section --> <div id="community" data-astro-cid-j7pv25f6> ${renderComponent($$result2, "SubstackFeeds", $$SubstackFeeds, { "data-astro-cid-j7pv25f6": true })} </div> <!-- Events Section --> ${renderComponent($$result2, "EventsSection", $$EventsSection, { "data-astro-cid-j7pv25f6": true })} <!-- Facilitators Teaser --> ${renderComponent($$result2, "FacilitatorsTeaser", $$FacilitatorsTeaser, { "data-astro-cid-j7pv25f6": true })} <!-- Newsletter Section --> ${renderComponent($$result2, "NewsletterSection", $$NewsletterSection, { "data-astro-cid-j7pv25f6": true })} <!-- Co-Create Section --> ${renderComponent($$result2, "CoCreateSection", $$CoCreateSection, { "data-astro-cid-j7pv25f6": true })} </main> ${renderComponent($$result2, "Footer", $$Footer, { "data-astro-cid-j7pv25f6": true })} ` })} `;
+<svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-j7pv25f6> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" data-astro-cid-j7pv25f6></path> </svg> </a> </div> </div> </section> <!-- Substack Feeds Section --> <div id="community" data-astro-cid-j7pv25f6> ${renderComponent($$result2, "RecentArticles", $$RecentArticles, { "data-astro-cid-j7pv25f6": true })} </div> <!-- Events Section --> ${renderComponent($$result2, "EventsSection", $$EventsSection, { "data-astro-cid-j7pv25f6": true })} <!-- Facilitators Teaser --> ${renderComponent($$result2, "FacilitatorsTeaser", $$FacilitatorsTeaser, { "data-astro-cid-j7pv25f6": true })} <!-- Newsletter Section --> ${renderComponent($$result2, "NewsletterSection", $$NewsletterSection, { "data-astro-cid-j7pv25f6": true })} <!-- Co-Create Section --> ${renderComponent($$result2, "CoCreateSection", $$CoCreateSection, { "data-astro-cid-j7pv25f6": true })} <!-- SUUNA Hero Section (from respira.cafe/suuna) --> ${renderComponent($$result2, "SuunaHero", $$SuunaHero, { "data-astro-cid-j7pv25f6": true })} </main> ${renderComponent($$result2, "Footer", $$Footer, { "data-astro-cid-j7pv25f6": true })} ` })} `;
 }, "/Users/akunay/\u{1F31E}Passions/Vibe Coding/respira.cafe/sites/suuna/src/pages/index.astro", void 0);
 
 const $$file = "/Users/akunay/🌞Passions/Vibe Coding/respira.cafe/sites/suuna/src/pages/index.astro";
