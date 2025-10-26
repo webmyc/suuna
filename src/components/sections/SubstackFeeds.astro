@@ -40,46 +40,50 @@ try {
             <p class="text-suuna-text-muted">{feed.description}</p>
           </div>
 
-          <!-- Posts Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {feed.posts.map((post) => (
-              <article class="card p-6 group">
-                {post.image && (
-                  <div class="aspect-video mb-4 overflow-hidden rounded-lg">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-                <h4 class="text-lg font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors">
-                  {post.title}
-                </h4>
-                <p class="text-suuna-text-muted text-sm mb-4 line-clamp-3">
-                  {post.description}
-                </p>
-                <div class="flex items-center justify-between">
-                  <time class="text-xs text-suuna-text-muted">
-                    {new Date(post.pubDate).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
-                  </time>
-                  <a 
-                    href={post.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors"
-                  >
-                    Read more →
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+                 <!-- Posts Grid -->
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                   {feed.posts.map((post) => (
+                     <article class="card p-6 group">
+                       <div class="aspect-video mb-4 overflow-hidden rounded-lg">
+                         {post.image ? (
+                           <img 
+                             src={post.image} 
+                             alt={post.title}
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             loading="lazy"
+                           />
+                         ) : (
+                           <div class="w-full h-full bg-suuna-forest/50 flex items-center justify-center">
+                             <span class="text-suuna-text-muted text-sm">No image available</span>
+                           </div>
+                         )}
+                       </div>
+                       <h4 class="text-lg font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors">
+                         {post.title}
+                       </h4>
+                       <p class="text-suuna-text-muted text-sm mb-4 line-clamp-3">
+                         {post.description}
+                       </p>
+                       <div class="flex items-center justify-between">
+                         <time class="text-xs text-suuna-text-muted">
+                           {new Date(post.pubDate).toLocaleDateString('en-US', {
+                             year: 'numeric',
+                             month: 'short',
+                             day: 'numeric'
+                           })}
+                         </time>
+                         <a 
+                           href={post.link}
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors"
+                         >
+                           Read more →
+                         </a>
+                       </div>
+                     </article>
+                   ))}
+                 </div>
 
           <!-- Subscribe Form -->
           <div class="text-center">

@@ -17,36 +17,46 @@ export interface SubstackFeed {
 
 // Parse RSS XML to extract posts
 function parseRSSFeed(xmlText: string, authorName: string): SubstackPost[] {
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-  const items = xmlDoc.querySelectorAll('item');
-  
   const posts: SubstackPost[] = [];
   
-  items.forEach((item, index) => {
-    if (index >= 3) return; // Only get top 3 posts
+  // Simple regex-based parsing for server-side compatibility
+  const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+  let match;
+  let count = 0;
+  
+  while ((match = itemRegex.exec(xmlText)) !== null && count < 3) {
+    const itemContent = match[1];
     
-    const title = item.querySelector('title')?.textContent || '';
-    const link = item.querySelector('link')?.textContent || '';
-    const pubDate = item.querySelector('pubDate')?.textContent || '';
-    const description = item.querySelector('description')?.textContent || '';
+    const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>|<title>(.*?)<\/title>/);
+    const linkMatch = itemContent.match(/<link>(.*?)<\/link>/);
+    const pubDateMatch = itemContent.match(/<pubDate>(.*?)<\/pubDate>/);
+    const descriptionMatch = itemContent.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>|<description>(.*?)<\/description>/);
     
-    // Extract image from description or content
-    let image = '';
-    const imgMatch = description.match(/<img[^>]+src="([^"]+)"/);
-    if (imgMatch) {
-      image = imgMatch[1];
+    if (titleMatch && linkMatch && pubDateMatch) {
+      const title = titleMatch[1] || titleMatch[2] || '';
+      const link = linkMatch[1] || '';
+      const pubDate = pubDateMatch[1] || '';
+      const description = descriptionMatch ? (descriptionMatch[1] || descriptionMatch[2] || '') : '';
+      
+      // Extract image from description
+      let image = '';
+      const imgMatch = description.match(/<img[^>]+src="([^"]+)"/);
+      if (imgMatch) {
+        image = imgMatch[1];
+      }
+      
+      posts.push({
+        title: title.trim(),
+        link: link.trim(),
+        pubDate: pubDate.trim(),
+        description: description.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+        image,
+        author: authorName
+      });
+      
+      count++;
     }
-    
-    posts.push({
-      title,
-      link,
-      pubDate,
-      description: description.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
-      image,
-      author: authorName
-    });
-  });
+  }
   
   return posts;
 }
@@ -55,7 +65,11 @@ function parseRSSFeed(xmlText: string, authorName: string): SubstackPost[] {
 export async function fetchSubstackFeed(url: string, authorName: string): Promise<SubstackFeed> {
   try {
     const feedUrl = `${url}/feed`;
-    const response = await fetch(feedUrl);
+    const response = await fetch(feedUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; SUUNA-Bot/1.0)'
+      }
+    });
     
     if (!response.ok) {
       throw new Error(`Failed to fetch feed: ${response.status}`);

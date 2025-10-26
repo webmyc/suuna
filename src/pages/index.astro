@@ -2,11 +2,12 @@
 import Base from '../components/layout/Base.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import SubstackFeeds from '../components/sections/SubstackFeeds.astro';
+import RecentArticles from '../components/sections/RecentArticles.astro';
 import EventsSection from '../components/sections/EventsSection.astro';
 import FacilitatorsTeaser from '../components/sections/FacilitatorsTeaser.astro';
 import CoCreateSection from '../components/sections/CoCreateSection.astro';
 import NewsletterSection from '../components/sections/NewsletterSection.astro';
+import SuunaHero from '../components/sections/SuunaHero.astro';
 
 // Page metadata
 const title = 'SUUNA - Learning from nature, together';
@@ -68,10 +69,10 @@ const description = 'Community platform for wisdom creators, facilitators, and i
       </div>
     </section>
 
-    <!-- Substack Feeds Section -->
-    <div id="community">
-      <SubstackFeeds />
-    </div>
+           <!-- Substack Feeds Section -->
+           <div id="community">
+             <RecentArticles />
+           </div>
 
     <!-- Events Section -->
     <EventsSection />
@@ -79,14 +80,17 @@ const description = 'Community platform for wisdom creators, facilitators, and i
     <!-- Facilitators Teaser -->
     <FacilitatorsTeaser />
 
-    <!-- Newsletter Section -->
-    <NewsletterSection />
+           <!-- Newsletter Section -->
+           <NewsletterSection />
 
-    <!-- Co-Create Section -->
-    <CoCreateSection />
-  </main>
-  
-  <Footer />
+           <!-- Co-Create Section -->
+           <CoCreateSection />
+
+           <!-- SUUNA Hero Section (from respira.cafe/suuna) -->
+           <SuunaHero />
+         </main>
+
+         <Footer />
 </Base>
 
 <style>
