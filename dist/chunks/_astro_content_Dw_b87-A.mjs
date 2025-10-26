@@ -21,7 +21,7 @@ createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"facilitators":{"type":"content","entries":{"dana-dragomirescu":"/src/content/facilitators/dana-dragomirescu.mdx","laura-maria-yara":"/src/content/facilitators/laura-maria-yara.mdx","maria-hoier":"/src/content/facilitators/maria-hoier.mdx","melissa-louise":"/src/content/facilitators/melissa-louise.mdx","stephanie-canavesio":"/src/content/facilitators/stephanie-canavesio.mdx"}}};
+lookupMap = {"facilitators":{"type":"content","entries":{"laura-maria-yara":"/src/content/facilitators/laura-maria-yara.mdx","dana-dragomirescu":"/src/content/facilitators/dana-dragomirescu.mdx","maria-hoier":"/src/content/facilitators/maria-hoier.mdx","melissa-louise":"/src/content/facilitators/melissa-louise.mdx","stephanie-canavesio":"/src/content/facilitators/stephanie-canavesio.mdx"}}};
 
 new Set(Object.keys(lookupMap));
 
