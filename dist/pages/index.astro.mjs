@@ -1,169 +1,92 @@
-import { c as createComponent, m as maybeRenderHead, d as addAttribute, a as renderTemplate, r as renderComponent } from '../chunks/vendor_Mq3Ymznp.mjs';
+/* empty css                                 */
+import { c as createComponent, m as maybeRenderHead, d as addAttribute, a as renderTemplate, r as renderComponent } from '../chunks/astro/server_h_zt6oxU.mjs';
 import 'kleur/colors';
-import { $ as $$Base, a as $$Header, b as $$Footer } from '../chunks/Footer_afRxHXGC.mjs';
+import { $ as $$Base, a as $$Header, b as $$Footer } from '../chunks/Footer_CofZNDX7.mjs';
 import 'clsx';
-import { g as getCollection } from '../chunks/_astro_content_Dw_b87-A.mjs';
+import { g as getCollection } from '../chunks/_astro_content_ZEBTFbDb.mjs';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
 
-const $$SubstackFeeds = createComponent(($$result, $$props, $$slots) => {
-  const substackFeeds = [
-    {
-      title: "SUUNA Community",
-      description: "Latest posts from SUUNA Community",
-      url: "https://suuna.substack.com",
-      posts: [
-        {
-          title: "Welcome to SUUNA",
-          link: "https://suuna.substack.com/p/welcome-to-suuna",
-          pubDate: "2024-01-15",
-          description: "Discover the SUUNA ecosystem and how we're building intentional communities together.",
-          image: "/img/substack/suuna-welcome.jpg",
-          author: "SUUNA Community"
-        },
-        {
-          title: "The Future of Community Building",
-          link: "https://suuna.substack.com/p/future-community-building",
-          pubDate: "2024-01-10",
-          description: "Exploring new paradigms for creating meaningful connections and sustainable communities.",
-          image: "/img/substack/community-building.jpg",
-          author: "SUUNA Community"
-        },
-        {
-          title: "Facilitator Spotlight: Meet Our Guides",
-          link: "https://suuna.substack.com/p/facilitator-spotlight",
-          pubDate: "2024-01-05",
-          description: "Get to know the wisdom creators and facilitators who make SUUNA special.",
-          image: "/img/substack/facilitator-spotlight.jpg",
-          author: "SUUNA Community"
-        }
-      ]
-    },
-    {
-      title: "Dana Dragomirescu",
-      description: "Latest posts from Dana Dragomirescu",
-      url: "https://danadragomirescu.substack.com",
-      posts: [
-        {
-          title: "Ecology of Emotions",
-          link: "https://danadragomirescu.substack.com/p/ecology-emotions",
-          pubDate: "2024-01-12",
-          description: "Understanding how our emotional landscape shapes our relationships and community connections.",
-          image: "/img/substack/dana-emotions.jpg",
-          author: "Dana Dragomirescu"
-        },
-        {
-          title: "The Art of Deep Listening",
-          link: "https://danadragomirescu.substack.com/p/deep-listening",
-          pubDate: "2024-01-08",
-          description: "Practices for cultivating authentic communication and presence in relationships.",
-          image: "/img/substack/deep-listening.jpg",
-          author: "Dana Dragomirescu"
-        },
-        {
-          title: "Building Resilient Communities",
-          link: "https://danadragomirescu.substack.com/p/resilient-communities",
-          pubDate: "2024-01-03",
-          description: "How to create spaces where people can thrive and grow together.",
-          image: "/img/substack/resilient-communities.jpg",
-          author: "Dana Dragomirescu"
-        }
-      ]
-    },
-    {
-      title: "Melissa Louise",
-      description: "Latest posts from Melissa Louise",
-      url: "https://melissalouise.substack.com",
-      posts: [
-        {
-          title: "Pleasure as a Path to Power",
-          link: "https://melissalouise.substack.com/p/pleasure-power",
-          pubDate: "2024-01-14",
-          description: "Exploring how embracing pleasure can transform our relationship with power and agency.",
-          image: "/img/substack/pleasure-power.jpg",
-          author: "Melissa Louise"
-        },
-        {
-          title: "Intimacy Beyond the Physical",
-          link: "https://melissalouise.substack.com/p/intimacy-beyond-physical",
-          pubDate: "2024-01-09",
-          description: "Deepening connections through emotional and spiritual intimacy practices.",
-          image: "/img/substack/intimacy-beyond.jpg",
-          author: "Melissa Louise"
-        },
-        {
-          title: "Creating Sacred Spaces",
-          link: "https://melissalouise.substack.com/p/sacred-spaces",
-          pubDate: "2024-01-04",
-          description: "How to design environments that support healing, growth, and transformation.",
-          image: "/img/substack/sacred-spaces.jpg",
-          author: "Melissa Louise"
-        }
-      ]
-    },
-    {
-      title: "Laura Maria Yara",
-      description: "Latest posts from Laura Maria Yara",
-      url: "https://lauramariayara.substack.com",
-      posts: [
-        {
-          title: "Rewriting the Sacred Feminine",
-          link: "https://lauramariayara.substack.com/p/sacred-feminine",
-          pubDate: "2024-01-13",
-          description: "Reclaiming and redefining what it means to embody the divine feminine in modern times.",
-          image: "/img/substack/sacred-feminine.jpg",
-          author: "Laura Maria Yara"
-        },
-        {
-          title: "The Womb as Oracle",
-          link: "https://lauramariayara.substack.com/p/womb-oracle",
-          pubDate: "2024-01-07",
-          description: "Connecting with the wisdom and intuition that flows through our body's sacred center.",
-          image: "/img/substack/womb-oracle.jpg",
-          author: "Laura Maria Yara"
-        },
-        {
-          title: "Cycles of Creation",
-          link: "https://lauramariayara.substack.com/p/cycles-creation",
-          pubDate: "2024-01-02",
-          description: "Understanding how natural cycles inform our creative and spiritual practices.",
-          image: "/img/substack/cycles-creation.jpg",
-          author: "Laura Maria Yara"
-        }
-      ]
-    },
-    {
-      title: "Reflector's Reflections",
-      description: "Latest posts from Reflector's Reflections",
-      url: "https://reflectorsreflections.substack.com",
-      posts: [
-        {
-          title: "Human Design for Reflectors",
-          link: "https://reflectorsreflections.substack.com/p/human-design-reflectors",
-          pubDate: "2024-01-11",
-          description: "Understanding the unique gifts and challenges of the Reflector type in Human Design.",
-          image: "/img/substack/human-design-reflectors.jpg",
-          author: "Reflector's Reflections"
-        },
-        {
-          title: "The Art of Reflection",
-          link: "https://reflectorsreflections.substack.com/p/art-reflection",
-          pubDate: "2024-01-06",
-          description: "How to use reflection as a tool for personal growth and community building.",
-          image: "/img/substack/art-reflection.jpg",
-          author: "Reflector's Reflections"
-        },
-        {
-          title: "Navigating Life as a Reflector",
-          link: "https://reflectorsreflections.substack.com/p/navigating-life-reflector",
-          pubDate: "2024-01-01",
-          description: "Practical guidance for living authentically as a Reflector in a Generator-dominated world.",
-          image: "/img/substack/navigating-life.jpg",
-          author: "Reflector's Reflections"
-        }
-      ]
+function parseRSSFeed(xmlText, authorName) {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+  const items = xmlDoc.querySelectorAll("item");
+  const posts = [];
+  items.forEach((item, index) => {
+    if (index >= 3) return;
+    const title = item.querySelector("title")?.textContent || "";
+    const link = item.querySelector("link")?.textContent || "";
+    const pubDate = item.querySelector("pubDate")?.textContent || "";
+    const description = item.querySelector("description")?.textContent || "";
+    let image = "";
+    const imgMatch = description.match(/<img[^>]+src="([^"]+)"/);
+    if (imgMatch) {
+      image = imgMatch[1];
     }
+    posts.push({
+      title,
+      link,
+      pubDate,
+      description: description.replace(/<[^>]*>/g, "").substring(0, 150) + "...",
+      image,
+      author: authorName
+    });
+  });
+  return posts;
+}
+async function fetchSubstackFeed(url, authorName) {
+  try {
+    const feedUrl = `${url}/feed`;
+    const response = await fetch(feedUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch feed: ${response.status}`);
+    }
+    const xmlText = await response.text();
+    const posts = parseRSSFeed(xmlText, authorName);
+    return {
+      title: authorName,
+      description: `Latest posts from ${authorName}`,
+      url,
+      posts
+    };
+  } catch (error) {
+    console.error(`Error fetching Substack feed for ${authorName}:`, error);
+    return {
+      title: authorName,
+      description: `Latest posts from ${authorName}`,
+      url,
+      posts: []
+    };
+  }
+}
+async function fetchAllSubstackFeeds() {
+  const feeds = [
+    { url: "https://suuna.substack.com", name: "SUUNA Community" },
+    { url: "https://danadragomirescu.substack.com", name: "Dana Dragomirescu" },
+    { url: "https://melissalouise.substack.com", name: "Melissa Louise" },
+    { url: "https://lauramariayara.substack.com", name: "Laura Maria Yara" },
+    { url: "https://reflectorsreflections.substack.com", name: "Reflector's Reflections" }
   ];
+  const feedPromises = feeds.map(
+    (feed) => fetchSubstackFeed(feed.url, feed.name)
+  );
+  return Promise.all(feedPromises);
+}
+
+const $$SubstackFeeds = createComponent(async ($$result, $$props, $$slots) => {
+  let substackFeeds;
+  try {
+    substackFeeds = await fetchAllSubstackFeeds();
+  } catch (error) {
+    console.error("Error fetching Substack feeds:", error);
+    substackFeeds = [
+      { title: "SUUNA Community", description: "Latest posts from SUUNA Community", url: "https://suuna.substack.com", posts: [] },
+      { title: "Dana Dragomirescu", description: "Latest posts from Dana Dragomirescu", url: "https://danadragomirescu.substack.com", posts: [] },
+      { title: "Melissa Louise", description: "Latest posts from Melissa Louise", url: "https://melissalouise.substack.com", posts: [] },
+      { title: "Laura Maria Yara", description: "Latest posts from Laura Maria Yara", url: "https://lauramariayara.substack.com", posts: [] },
+      { title: "Reflector's Reflections", description: "Latest posts from Reflector's Reflections", url: "https://reflectorsreflections.substack.com", posts: [] }
+    ];
+  }
   return renderTemplate`${maybeRenderHead()}<section class="py-16 bg-gradient-to-b from-suuna-bg to-suuna-forest"> <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> <div class="text-center mb-12"> <h2 class="text-3xl font-serif font-bold text-suuna-text-light mb-4">
 Community Voices
 </h2> <p class="text-lg text-suuna-text-muted max-w-2xl mx-auto">

@@ -7,7 +7,7 @@
        url("/fonts/architype-bayer-type-w90.woff2") format("woff2"),
        url("/fonts/architype-bayer-type-w90.woff") format("woff"),
        url("/fonts/architype-bayer-type-w90.ttf") format("truetype"),
-       url("/fonts/architype-bayer-type-w90.svg#Architype%20Bayer-type%20W90") format("svg");
+       url("/fonts/architype-bayer-type-w90.svg#ArchitypeBayer-typeW90") format("svg");
   font-display: swap;
 }
 
