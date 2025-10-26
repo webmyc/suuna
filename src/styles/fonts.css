@@ -21,7 +21,14 @@
 
 /* Ensure SUUNA wordmark uses Architype font everywhere */
 .suuna-wordmark,
-[class*="suuna"],
+span.suuna-font {
+  font-family: "Architype Bayer-type W90", sans-serif !important;
+  letter-spacing: 0.05em;
+  font-weight: normal;
+}
+
+/* Ensure SUUNA wordmark uses Architype font everywhere */
+.suuna-wordmark,
 span.suuna-font {
   font-family: "Architype Bayer-type W90", sans-serif !important;
   letter-spacing: 0.05em;
