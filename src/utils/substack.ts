@@ -1,4 +1,6 @@
 // Substack RSS feed parser utility
+import { loadArticlesFromCache, saveArticlesToCache } from './cache';
+
 export interface SubstackPost {
   title: string;
   link: string;
@@ -24,7 +26,7 @@ function parseRSSFeed(xmlText: string, authorName: string): SubstackPost[] {
   let match;
   let count = 0;
   
-  while ((match = itemRegex.exec(xmlText)) !== null && count < 3) {
+  while ((match = itemRegex.exec(xmlText)) !== null && count < 6) {
     const itemContent = match[1];
     
     const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>|<title>(.*?)<\/title>/);
@@ -38,11 +40,63 @@ function parseRSSFeed(xmlText: string, authorName: string): SubstackPost[] {
       const pubDate = pubDateMatch[1] || '';
       const description = descriptionMatch ? (descriptionMatch[1] || descriptionMatch[2] || '') : '';
       
-      // Extract image from description
+      // Extract image from description with multiple fallback methods
       let image = '';
+      
+      // Method 1: Look for img tags in description
       const imgMatch = description.match(/<img[^>]+src="([^"]+)"/);
       if (imgMatch) {
         image = imgMatch[1];
+        console.log(`Method 1 found image: ${image}`);
+      }
+      
+      // Method 2: Look for Substack's image URLs in the content
+      if (!image) {
+        const substackImgMatch = description.match(/https:\/\/substackcdn\.com\/image\/[^"'\s]+/);
+        if (substackImgMatch) {
+          image = substackImgMatch[0];
+          console.log(`Method 2 found image: ${image}`);
+        }
+      }
+      
+      // Method 3: Look for any image URL in the description
+      if (!image) {
+        const anyImgMatch = description.match(/https:\/\/[^"'\s]*\.(jpg|jpeg|png|gif|webp)/i);
+        if (anyImgMatch) {
+          image = anyImgMatch[0];
+          console.log(`Method 3 found image: ${image}`);
+        }
+      }
+      
+      // Method 4: Look for Substack's image URLs in the entire item content
+      if (!image) {
+        const itemImgMatch = itemContent.match(/https:\/\/substackcdn\.com\/image\/[^"'\s]+/);
+        if (itemImgMatch) {
+          image = itemImgMatch[0];
+          console.log(`Method 4 found image: ${image}`);
+        }
+      }
+      
+      // Method 5: Look for any image URL in the entire item content
+      if (!image) {
+        const itemAnyImgMatch = itemContent.match(/https:\/\/[^"'\s]*\.(jpg|jpeg|png|gif|webp)/i);
+        if (itemAnyImgMatch) {
+          image = itemAnyImgMatch[0];
+          console.log(`Method 5 found image: ${image}`);
+        }
+      }
+      
+      // Clean up image URL if found
+      if (image) {
+        // Remove any query parameters that might cause issues
+        image = image.split('?')[0];
+        // Ensure it's a valid URL
+        if (!image.startsWith('http')) {
+          image = '';
+        }
+        console.log(`Final cleaned image URL: ${image}`);
+      } else {
+        console.log(`No image found for post: ${title}`);
       }
       
       posts.push({
@@ -65,6 +119,8 @@ function parseRSSFeed(xmlText: string, authorName: string): SubstackPost[] {
 export async function fetchSubstackFeed(url: string, authorName: string): Promise<SubstackFeed> {
   try {
     const feedUrl = `${url}/feed`;
+    console.log(`Fetching Substack feed: ${feedUrl}`);
+    
     const response = await fetch(feedUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; SUUNA-Bot/1.0)'
@@ -77,6 +133,11 @@ export async function fetchSubstackFeed(url: string, authorName: string): Promis
     
     const xmlText = await response.text();
     const posts = parseRSSFeed(xmlText, authorName);
+    
+    console.log(`Found ${posts.length} posts for ${authorName}`);
+    posts.forEach((post, index) => {
+      console.log(`Post ${index + 1}: ${post.title} - Image: ${post.image ? 'Yes' : 'No'}`);
+    });
     
     return {
       title: authorName,
@@ -95,8 +156,17 @@ export async function fetchSubstackFeed(url: string, authorName: string): Promis
   }
 }
 
-// Fetch all Substack feeds
+// Fetch all Substack feeds with caching
 export async function fetchAllSubstackFeeds(): Promise<SubstackFeed[]> {
+  // Try to load from cache first
+  const cachedFeeds = await loadArticlesFromCache();
+  if (cachedFeeds) {
+    console.log('Using cached articles');
+    return cachedFeeds;
+  }
+  
+  console.log('Fetching fresh articles from Substack feeds...');
+  
   const feeds = [
     { url: 'https://suuna.substack.com', name: 'SUUNA Community' },
     { url: 'https://danadragomirescu.substack.com', name: 'Dana Dragomirescu' },
@@ -109,7 +179,16 @@ export async function fetchAllSubstackFeeds(): Promise<SubstackFeed[]> {
     fetchSubstackFeed(feed.url, feed.name)
   );
   
-  return Promise.all(feedPromises);
+  const results = await Promise.all(feedPromises);
+  
+  // Save to cache for next time
+  try {
+    await saveArticlesToCache(results);
+  } catch (error) {
+    console.warn('Failed to save articles to cache:', error);
+  }
+  
+  return results;
 }
 
 // Format date for display

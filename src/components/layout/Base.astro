@@ -50,10 +50,22 @@ const canonicalURL = canonical ? new URL(canonical, Astro.site) : Astro.url;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
     
-           <!-- Preload critical fonts -->
-           <link rel="preload" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-           <link rel="preload" href="/fonts/a959448c957069dae7d52078616ebdc8.woff2" as="font" type="font/woff2" crossorigin />
-           <link rel="preload" href="/fonts/a959448c957069dae7d52078616ebdc8.woff" as="font" type="font/woff" crossorigin />
+          <!-- Preload critical fonts -->
+          <link rel="preload" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+          <link rel="preload" href="/fonts/a959448c957069dae7d52078616ebdc8.woff2" as="font" type="font/woff2" crossorigin />
+          <link rel="preload" href="/fonts/a959448c957069dae7d52078616ebdc8.woff" as="font" type="font/woff" crossorigin />
+          
+          <!-- Force font loading -->
+          <style>
+            @font-face {
+              font-family: "Architype Bayer-type W90";
+              src: url("/fonts/a959448c957069dae7d52078616ebdc8.woff2") format("woff2"),
+                   url("/fonts/a959448c957069dae7d52078616ebdc8.woff") format("woff");
+              font-display: swap;
+              font-weight: normal;
+              font-style: normal;
+            }
+          </style>
     
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">

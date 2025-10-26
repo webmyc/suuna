@@ -5,7 +5,6 @@ import Footer from '../components/layout/Footer.astro';
 import RecentArticles from '../components/sections/RecentArticles.astro';
 import IndividualSubstack from '../components/sections/IndividualSubstack.astro';
 import EventsSection from '../components/sections/EventsSection.astro';
-import FacilitatorsTeaser from '../components/sections/FacilitatorsTeaser.astro';
 import CoCreateSection from '../components/sections/CoCreateSection.astro';
 import NewsletterSection from '../components/sections/NewsletterSection.astro';
 import SuunaHero from '../components/sections/SuunaHero.astro';
@@ -51,7 +50,7 @@ const description = 'Community platform for wisdom creators, facilitators, and i
         <div class="reveal mt-12 flex flex-col sm:flex-row gap-4 justify-center">
           <a 
             href="#community"
-            class="btn-primary inline-flex items-center px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105"
+            class="inline-flex items-center gap-3 px-8 py-4 bg-suuna-accent text-suuna-bg font-semibold text-lg rounded-full hover:bg-suuna-accent-muted transition-colors shadow-lg"
           >
             Join the Community
           </a>
@@ -59,10 +58,10 @@ const description = 'Community platform for wisdom creators, facilitators, and i
             href="https://suuna.org"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-secondary inline-flex items-center px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105"
+            class="inline-flex items-center gap-3 px-8 py-4 border-2 border-suuna-accent text-suuna-accent font-semibold text-lg rounded-full hover:bg-suuna-accent/10 transition-colors shadow-lg"
           >
             Visit SUUNA.org
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
             </svg>
           </a>
@@ -109,17 +108,14 @@ const description = 'Community platform for wisdom creators, facilitators, and i
     <!-- Events Section -->
     <EventsSection />
 
-    <!-- Facilitators Teaser -->
-    <FacilitatorsTeaser />
+    <!-- Newsletter Section -->
+    <NewsletterSection />
 
-           <!-- Newsletter Section -->
-           <NewsletterSection />
+    <!-- Co-Create Section -->
+    <CoCreateSection />
 
-           <!-- Co-Create Section -->
-           <CoCreateSection />
-
-           <!-- SUUNA Hero Section (from respira.cafe/suuna) -->
-           <SuunaHero />
+    <!-- SUUNA Hero Section (from respira.cafe/suuna) -->
+    <SuunaHero />
          </main>
 
          <Footer />
