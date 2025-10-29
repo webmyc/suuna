@@ -1,0 +1,53 @@
+[
+  {
+    "id": "dana-dragomirescu",
+    "name": "Dana Dragomirescu",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Dana",
+    "headline": "Ecology of Emotions - Guiding emotional wellness through nature's wisdom",
+    "location": "Bucharest, Romania",
+    "tags": ["Emotional Intelligence", "Nature Connection", "Healing"],
+    "links": [
+      { "type": "site", "url": "https://danadragomirescu.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "melissa-louise",
+    "name": "Melissa Louise",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Melissa",
+    "headline": "Pleasure Advocate - Embodiment and sacred sensuality practices",
+    "location": "Online",
+    "tags": ["Embodiment", "Pleasure", "Sacred Feminine"],
+    "links": [
+      { "type": "site", "url": "https://melissalouise.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "laura-maria-yara",
+    "name": "Laura Maria Yara",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Laura",
+    "headline": "Womb Oracle & Feminine Guide - Deep feminine healing and ancestral wisdom",
+    "location": "Portugal",
+    "tags": ["Womb Wisdom", "Feminine Healing", "Ancestral"],
+    "links": [
+      { "type": "site", "url": "https://lauramariayara.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "reflectors-reflections",
+    "name": "Reflector's Reflections",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Reflector",
+    "headline": "Human Design insights and reflective wisdom for intentional living",
+    "location": "Online",
+    "tags": ["Human Design", "Reflection", "Wisdom"],
+    "links": [
+      { "type": "site", "url": "https://reflectorsreflections.substack.com" }
+    ],
+    "featured": false
+  }
+]
