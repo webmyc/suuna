@@ -1,0 +1,93 @@
+name: Fetch New Articles Daily
+
+on:
+  schedule:
+    # Run every day at 6 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  fetch-articles:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: |
+          cd sites/suuna
+          npm install
+      
+      - name: Fetch and cache articles
+        run: |
+          cd sites/suuna
+          # Create a script to fetch articles and cache them
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Create cache directory
+          const cacheDir = path.join(process.cwd(), 'src', 'cache');
+          if (!fs.existsSync(cacheDir)) {
+            fs.mkdirSync(cacheDir, { recursive: true });
+          }
+          
+          // Import the substack utility
+          const { fetchAllSubstackFeeds } = require('./src/utils/substack.ts');
+          
+          async function cacheArticles() {
+            try {
+              console.log('Fetching articles from Substack feeds...');
+              const feeds = await fetchAllSubstackFeeds();
+              
+              // Save to cache file
+              const cacheFile = path.join(cacheDir, 'articles.json');
+              fs.writeFileSync(cacheFile, JSON.stringify(feeds, null, 2));
+              
+              console.log('Articles cached successfully!');
+              console.log('Total feeds:', feeds.length);
+              console.log('Total articles:', feeds.reduce((sum, feed) => sum + feed.posts.length, 0));
+            } catch (error) {
+              console.error('Error caching articles:', error);
+              process.exit(1);
+            }
+          }
+          
+          cacheArticles();
+          "
+      
+      - name: Build site with cached articles
+        run: |
+          cd sites/suuna
+          npm run build
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Check if there are any changes
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add .
+            git commit -m "Update articles cache - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi
+      
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: sites/suuna

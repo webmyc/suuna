@@ -1,57 +1,129 @@
 [
   {
-    "id": "dana-dragomirescu",
-    "name": "Dana Dragomirescu",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Dana&backgroundColor=10b981",
-    "headline": "Ecology of Emotions",
-    "bio": "Guiding emotional wellness through nature's wisdom and deep somatic practices.",
-    "location": "Bucharest, Romania",
-    "tags": ["Emotional Intelligence", "Nature Connection", "Somatic Healing"],
+    "id": "stephanie-canavesio",
+    "name": "Stephanie Canavesio",
+    "headline": "Presence Embodied, Psychotherapist, Compassionate Inquiry, Meditation",
+    "bio": "Stephanie Canavesio is a psychotherapist, meditation facilitator, and Compassionate Inquiry practitioner trained in the approach of Dr. Gabor Maté. Her work is dedicated to guiding individuals through deep self-exploration, emotional healing, and transformation. With a background in mindfulness, somatic awareness, and nervous system regulation, Stephanie creates a safe and nurturing space for clients to uncover the unconscious patterns and past imprints shaping their present lives.",
+    "location": "Online",
+    "tags": ["Psychotherapy", "Meditation", "Compassionate Inquiry", "Somatic Awareness", "Nervous System Regulation"],
     "links": [
-      { "type": "site", "url": "https://danadragomirescu.substack.com" },
-      { "type": "calendar", "url": "https://lu.ma/suuna" }
+      { "type": "site", "url": "https://presenceembodied.com" },
+      { "type": "substack", "url": "https://presenceembodied.substack.com" }
     ],
-    "featured": true
+    "featured": true,
+    "image": "/img/facilitators/stephanie-canavesio.jpg"
+  },
+  {
+    "id": "maria-hoier",
+    "name": "Maria Hoier",
+    "headline": "Intelligent Intimacy",
+    "bio": "Maria Hoier is the founder of Intelligent Intimacy, a singer and writer, and a pioneer in integrating psychology, somatic practice, and archetypal frameworks into modern relational development. With a background in Eastern medicine, psychology, and adult human development, she has spent over two decades weaving together science, myth, and lived experience to guide individuals and groups into deeper intimacy, integrity, and embodied connection.",
+    "location": "Online",
+    "tags": ["Intimacy", "Psychology", "Somatic Practice", "Relational Development", "Trauma-Informed"],
+    "links": [
+      { "type": "site", "url": "https://intelligentintimacy.org" }
+    ],
+    "featured": true,
+    "image": "/img/facilitators/maria-hoier.jpg"
+  },
+  {
+    "id": "kumu-ramsay-taum",
+    "name": "Kumu Ramsay Taum",
+    "headline": "Hawaiian elder",
+    "bio": "Kumu Ramsay Taum is a distinguished visionary leader whose expertise spans across cultural sustainability, transformational leadership, and facilitation of Hawaiian traditions. He integrates Native Hawaiian values into contemporary business practices, making him a sought-after resource for organizations aiming to foster community brilliance and strategic partnerships.",
+    "location": "Hawaii",
+    "tags": ["Cultural Sustainability", "Transformational Leadership", "Hawaiian Traditions", "Ho'oponopono", "Mediation"],
+    "links": [],
+    "featured": true,
+    "image": "/img/facilitators/kumu-ramsay-taum.jpg"
   },
   {
     "id": "melissa-louise",
     "name": "Melissa Louise",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Melissa&backgroundColor=6366f1",
-    "headline": "Pleasure Advocate",
-    "bio": "Embodiment coach specializing in sacred sensuality and feminine empowerment.",
+    "headline": "Pleasure advocate & intimacy coach",
+    "bio": "Welcome to the transformative world of Melissa Louise, your dedicated Pleasure Advocate and Erotic Blueprint Coach. With years of experience as a sex, intimacy, and relationship expert, Melissa is here to empower individuals to embrace their true sexual selves. Whether you are a woman seeking to feel more alive, orgasmic, and fulfilled at any stage of life, or a man striving to become more attractive, powerful, and successful, you have found your guide.",
     "location": "Online",
-    "tags": ["Embodiment", "Sacred Pleasure", "Feminine Power"],
+    "tags": ["Pleasure", "Intimacy", "Erotic Blueprint", "Sex Education", "Relationship Coaching"],
     "links": [
-      { "type": "site", "url": "https://melissalouise.substack.com" },
-      { "type": "calendar", "url": "https://lu.ma/suuna" }
+      { "type": "site", "url": "https://melissalouise.world" },
+      { "type": "substack", "url": "https://melissalouise.substack.com" },
+      { "type": "site", "url": "https://unzipped.studio" }
     ],
-    "featured": true
+    "featured": true,
+    "image": "/img/facilitators/melissa-louise.jpg"
   },
   {
     "id": "laura-maria-yara",
     "name": "Laura Maria Yara",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Laura&backgroundColor=ec4899",
-    "headline": "Womb Oracle & Feminine Guide",
-    "bio": "Deep feminine healing through ancestral wisdom and womb consciousness.",
+    "headline": "Rewriting the Sacred Feminine",
+    "bio": "Laura-Maria Yara is a Mother Earth woman, serving the Divine Mother by rewriting the sacred feminine in the female body. She is a mother, storyteller, traveler of unseen worlds, midwife of transformation, and womb oracle.",
     "location": "Portugal",
-    "tags": ["Womb Wisdom", "Feminine Healing", "Ancestral Medicine"],
+    "tags": ["Sacred Feminine", "Womb Oracle", "Mother Earth", "Transformation", "Storytelling"],
     "links": [
-      { "type": "site", "url": "https://lauramariayara.substack.com" },
-      { "type": "calendar", "url": "https://lu.ma/suuna" }
+      { "type": "site", "url": "https://lauramariayara.org" },
+      { "type": "substack", "url": "https://lauramariayara.substack.com" }
     ],
-    "featured": true
+    "featured": true,
+    "image": "/img/facilitators/laura-maria-yara.jpg"
   },
   {
-    "id": "reflectors-reflections",
-    "name": "Reflector's Reflections",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Reflector&backgroundColor=8b5cf6",
-    "headline": "Human Design Guide",
-    "bio": "Human Design insights and reflective wisdom for intentional living.",
-    "location": "Online",
-    "tags": ["Human Design", "Self-Discovery", "Intentional Living"],
+    "id": "dana-dragomirescu",
+    "name": "Dana Dragomirescu",
+    "headline": "Ecology of emotions & relationships",
+    "bio": "Dana Dragomirescu is a trainer and counselor in relationships and communication through the ESPERE® Method, a classical psychodrama director and trainer-in-training. As a woman, wife, mother, and creator, Dana facilitates workshops and personal development programs. Her mission is to bring practices that support the being as a whole through sensory reconnection, body awareness, and the integration of healthy emotional and relational ecology.",
+    "location": "Romania",
+    "tags": ["Relationships", "Communication", "ESPERE Method", "Psychodrama", "Emotional Ecology"],
     "links": [
-      { "type": "site", "url": "https://reflectorsreflections.substack.com" }
+      { "type": "site", "url": "https://dana.earth" },
+      { "type": "substack", "url": "https://danadragomirescu.substack.com" }
     ],
-    "featured": false
+    "featured": true,
+    "image": "/img/facilitators/dana-dragomirescu.jpg"
+  },
+  {
+    "id": "malina-lilay-meraki",
+    "name": "Mălina Lilay Meraki",
+    "headline": "Bridging worlds through dance",
+    "bio": "Mălina Lilay Meraki is the creator of The ALTAR of Dance, a facilitator of transformational movement, holistic dance, and embodiment. At her core, she is a traveler, weaving stories between the inner and outer worlds. She integrates holistic dance, yoga, qi gong, Reiki, intuitive movement, feminine practices, movement meditation, rituals, ceremonies, storytelling, and voice activation in her work.",
+    "location": "Online",
+    "tags": ["Dance", "Transformational Movement", "Embodiment", "Holistic Dance", "Voice Activation"],
+    "links": [],
+    "featured": false,
+    "image": "/img/facilitators/malina-lilay-meraki.jpg"
+  },
+  {
+    "id": "maria-magdalena-asaftei",
+    "name": "Maria Magdalena Asaftei",
+    "headline": "Women's bodywork & flow",
+    "bio": "Maria Magdalena Asaftei is a licensed therapist with over 10 years of experience in Bowen, Rejuvance, Gua Sha, and Meridian Flow. Since 2021, she has launched seven online programs designed to educate and inspire women to connect with their bodies and inner selves. Her work is centered on the beautiful physical and energetic systems that make up each of us, offering simple yet powerful techniques for achieving balance and a deeper sense of interconnection.",
+    "location": "Romania",
+    "tags": ["Bodywork", "Bowen", "Gua Sha", "Meridian Flow", "Women's Health"],
+    "links": [],
+    "featured": false,
+    "image": "/img/facilitators/maria-magdalena-asaftei.jpg"
+  },
+  {
+    "id": "ioana-lazar",
+    "name": "Ioana Lazăr",
+    "headline": "Conscious cooking",
+    "bio": "Ioana Lazăr is the creator of Make a Wish Food Circle, where she has gathered over 10 years of passion for vegan, vegetarian, Ayurvedic, and conscious cooking. Over the years, she has shared her love of food in various ways, from personal bicycle deliveries to individual retreat menus, camps, family events, and pop-up lunches. Recently, she has been sharing her knowledge through online courses on Intuitive Cooking and Introduction to Ayurveda, her deep creative love.",
+    "location": "Romania",
+    "tags": ["Conscious Cooking", "Ayurveda", "Vegan", "Vegetarian", "Intuitive Cooking"],
+    "links": [
+      { "type": "site", "url": "https://bliss.suuna.ro" }
+    ],
+    "featured": false,
+    "image": "/img/facilitators/ioana-lazar.jpg"
+  },
+  {
+    "id": "claudia-constantin",
+    "name": "Claudia Constantin",
+    "headline": "Dreamwork & breathwork",
+    "bio": "Claudia Constantin is a transpersonal therapist, a guide in conscious dreamwork and expanded perception states, and a facilitator of Holotropic Breathwork. She is also a mother to a daughter, bringing a deep sense of nurturing and care to her work. Join Claudia's Dream Circles, subscribe to our events calendar.",
+    "location": "Romania",
+    "tags": ["Dreamwork", "Breathwork", "Transpersonal Therapy", "Holotropic Breathwork", "Dream Circles"],
+    "links": [],
+    "featured": false,
+    "image": "/img/facilitators/claudia-constantin.jpg"
   }
 ]

@@ -172,6 +172,7 @@ export async function fetchAllSubstackFeeds(): Promise<SubstackFeed[]> {
     { url: 'https://danadragomirescu.substack.com', name: 'Dana Dragomirescu' },
     { url: 'https://melissalouise.substack.com', name: 'Melissa Louise' },
     { url: 'https://lauramariayara.substack.com', name: 'Laura Maria Yara' },
+    { url: 'https://presenceembodied.substack.com', name: 'Stephanie Canavesio' },
     { url: 'https://reflectorsreflections.substack.com', name: "Reflector's Reflections" },
   ];
   
