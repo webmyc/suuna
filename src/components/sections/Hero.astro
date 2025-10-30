@@ -1,0 +1,40 @@
+---
+// Hero Section
+---
+
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+  <!-- Gradient background -->
+  <div class="absolute inset-0 bg-primary"></div>
+  <div class="absolute inset-0 gradient-radial from-accent/5 via-transparent to-transparent"></div>
+
+  <!-- Animated Background Elements -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse" style="animation-duration: 4s;"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/3 rounded-full blur-3xl animate-pulse" style="animation-duration: 6s; animation-delay: 2s;"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-primary mb-8 leading-tight tracking-tight">
+      Bring your gifts to your community with{' '}
+      <span class="font-suuna text-accent" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span>
+    </h1>
+
+    <p class="text-xl md:text-2xl text-secondary max-w-3xl mx-auto mb-12 leading-relaxed">
+      We help creators amplify their message and grow their communities — without the technical or marketing headaches.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="#discover"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white text-lg font-semibold rounded-full transition-all hover:scale-105 hover:shadow-lg"
+      >
+        Co-create with SUUNA
+      </a>
+      <a
+        href="#events"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-accent text-accent text-lg font-semibold rounded-full transition-all hover:bg-accent/10"
+      >
+        Explore events
+      </a>
+    </div>
+  </div>
+</section>

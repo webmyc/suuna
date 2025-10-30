@@ -1,0 +1,116 @@
+:root {
+  --suuna-bg: #0b1612;
+  --suuna-accent: #d4c372;
+  --suuna-accent-muted: #998f5a;
+  --suuna-text-light: #f5f5f0;
+  --suuna-text-muted: #cfcfc4;
+  --suuna-forest: #1d352b;
+  --suuna-sand: #ebe4d2;
+}
+
+/* Dark theme base */
+html {
+  background-color: var(--suuna-bg);
+  color: var(--suuna-text-light);
+}
+
+body {
+  background: linear-gradient(135deg, var(--suuna-bg) 0%, var(--suuna-forest) 100%);
+  min-height: 100vh;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Breathing animation for hero elements */
+.breathing-circle {
+  animation: breathing 4s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Gradient backgrounds */
+.gradient-forest {
+  background: linear-gradient(135deg, var(--suuna-bg) 0%, var(--suuna-forest) 50%, #18362b 100%);
+}
+
+.gradient-sand {
+  background: linear-gradient(135deg, var(--suuna-sand) 0%, #f5f5f0 100%);
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: rgba(29, 53, 43, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 195, 114, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--suuna-accent);
+  color: var(--suuna-bg);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--suuna-accent-muted);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--suuna-text-light);
+  border: 2px solid var(--suuna-accent);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--suuna-accent);
+  color: var(--suuna-bg);
+}
+
+/* Text colors */
+.text-accent {
+  color: var(--suuna-accent);
+}
+
+.text-muted {
+  color: var(--suuna-text-muted);
+}
+
+/* Card styles */
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--suuna-accent);
+  transform: translateY(-4px);
+}
