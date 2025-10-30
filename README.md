@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SUUNA.ro Website
 
 A community magazine and platform portal for SUUNA - showcasing wisdom creators, facilitators, and intentional communities.
@@ -84,6 +83,3 @@ No environment variables required for basic functionality.
 - LCP: < 2.2s
 - CLS: < 0.01
 - SEO optimized with proper meta tags and JSON-LD schema
-=======
-# suuna
->>>>>>> d11d11b33ebef4b8be23766a8e698c852baca536
