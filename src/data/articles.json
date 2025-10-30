@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "title": "Learning from Nature: Ancient Wisdom for Modern Times",
+    "url": "https://suuna.substack.com",
+    "image": "/images/articles/nature-wisdom.jpg",
+    "excerpt": "Exploring how nature's patterns can guide us toward more intentional living and deeper community connections.",
+    "tags": ["Nature", "Wisdom", "Community"],
+    "author": "SUUNA Community"
+  },
+  {
+    "id": "2",
+    "title": "The Art of Emotional Ecology",
+    "url": "https://danadragomirescu.substack.com",
+    "excerpt": "Understanding our emotional landscape through the lens of natural ecosystems.",
+    "tags": ["Emotions", "Healing", "Nature"],
+    "author": "Dana Dragomirescu"
+  },
+  {
+    "id": "3",
+    "title": "Embodied Pleasure as a Spiritual Practice",
+    "url": "https://melissalouise.substack.com",
+    "excerpt": "Reclaiming pleasure as a sacred path to self-discovery and healing.",
+    "tags": ["Embodiment", "Spirituality", "Healing"],
+    "author": "Melissa Louise"
+  }
+]

@@ -1,0 +1,72 @@
+---
+import Base from '../components/layout/Base.astro';
+import Hero from '../components/sections/Hero.astro';
+import { EventsCarousel } from '../components/sections/EventsCarousel';
+import { FacilitatorsCarousel } from '../components/sections/FacilitatorsCarousel';
+import { DiscoverGrid } from '../components/sections/DiscoverGrid';
+
+// Load data
+import eventsData from '../data/events.json';
+import facilitatorsData from '../data/facilitators.json';
+import articlesData from '../data/articles.json';
+
+// Page metadata
+const title = 'SUUNA - Learning from nature, together';
+const description = 'Community platform for wisdom creators, facilitators, and intentional communities. Join SUUNA to amplify your message and grow your community.';
+---
+
+<Base title={title} description={description} canonical="https://suuna.ro">
+  <Hero />
+
+  <!-- Events Carousel -->
+  <EventsCarousel client:load events={eventsData} />
+
+  <!-- Facilitators Carousel -->
+  <FacilitatorsCarousel client:load facilitators={facilitatorsData} />
+
+  <!-- Discover Grid with Filtering -->
+  <DiscoverGrid
+    client:load
+    events={eventsData}
+    facilitators={facilitatorsData}
+    articles={articlesData}
+  />
+
+  <!-- Community CTA -->
+  <section class="py-24 bg-secondary">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+          Join the <span class="font-suuna text-accent" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span> Community
+        </h2>
+        <p class="text-xl text-secondary max-w-2xl mx-auto mb-8">
+          Whether you're a facilitator, wisdom keeper, or seeking connection with intentional communities,
+          there's a place for you here.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <a
+          href="https://lu.ma/suuna"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-full transition-all hover:scale-105 hover:shadow-lg"
+        >
+          Explore More Events
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+
+        <a
+          href="https://suuna.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 border-2 border-accent text-accent font-semibold rounded-full transition-all hover:bg-accent/10"
+        >
+          Visit SUUNA.org
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

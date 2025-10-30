@@ -1,0 +1,15 @@
+[
+  {
+    "id": "sample-1",
+    "url": "https://lu.ma/suuna",
+    "title": "Community Gathering: Winter Solstice Celebration",
+    "start": "2025-12-21T18:00:00Z",
+    "end": "2025-12-21T21:00:00Z",
+    "location": "Bucharest, Romania",
+    "image": "/images/events/solstice.jpg",
+    "host": "SUUNA Community",
+    "price": "Free",
+    "tags": ["Community", "Celebration", "Nature"],
+    "excerpt": "Join us for a sacred gathering to honor the winter solstice and connect with nature's wisdom."
+  }
+]

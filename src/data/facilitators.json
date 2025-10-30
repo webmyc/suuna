@@ -1,0 +1,57 @@
+[
+  {
+    "id": "dana-dragomirescu",
+    "name": "Dana Dragomirescu",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Dana&backgroundColor=10b981",
+    "headline": "Ecology of Emotions",
+    "bio": "Guiding emotional wellness through nature's wisdom and deep somatic practices.",
+    "location": "Bucharest, Romania",
+    "tags": ["Emotional Intelligence", "Nature Connection", "Somatic Healing"],
+    "links": [
+      { "type": "site", "url": "https://danadragomirescu.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "melissa-louise",
+    "name": "Melissa Louise",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Melissa&backgroundColor=6366f1",
+    "headline": "Pleasure Advocate",
+    "bio": "Embodiment coach specializing in sacred sensuality and feminine empowerment.",
+    "location": "Online",
+    "tags": ["Embodiment", "Sacred Pleasure", "Feminine Power"],
+    "links": [
+      { "type": "site", "url": "https://melissalouise.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "laura-maria-yara",
+    "name": "Laura Maria Yara",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Laura&backgroundColor=ec4899",
+    "headline": "Womb Oracle & Feminine Guide",
+    "bio": "Deep feminine healing through ancestral wisdom and womb consciousness.",
+    "location": "Portugal",
+    "tags": ["Womb Wisdom", "Feminine Healing", "Ancestral Medicine"],
+    "links": [
+      { "type": "site", "url": "https://lauramariayara.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "reflectors-reflections",
+    "name": "Reflector's Reflections",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Reflector&backgroundColor=8b5cf6",
+    "headline": "Human Design Guide",
+    "bio": "Human Design insights and reflective wisdom for intentional living.",
+    "location": "Online",
+    "tags": ["Human Design", "Self-Discovery", "Intentional Living"],
+    "links": [
+      { "type": "site", "url": "https://reflectorsreflections.substack.com" }
+    ],
+    "featured": false
+  }
+]

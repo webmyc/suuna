@@ -1,0 +1,58 @@
+---
+// Events section component with Luma calendar embed
+---
+
+<section class="py-16 bg-gradient-to-b from-suuna-forest to-suuna-bg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-serif font-bold text-suuna-text-light mb-4">
+        Upcoming Events
+      </h2>
+      <p class="text-lg text-suuna-text-muted max-w-2xl mx-auto">
+        Join our community gatherings, workshops, and transformative experiences
+      </p>
+    </div>
+
+    <div class="reveal">
+      <div class="glass rounded-xl p-8 max-w-4xl mx-auto">
+        <div class="text-center mb-6">
+          <h3 class="text-xl font-serif font-semibold text-suuna-text-light mb-2">
+            <span class="suuna-font" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span> Community Calendar
+          </h3>
+          <p class="text-suuna-text-muted">
+            Discover upcoming events and join our community gatherings
+          </p>
+        </div>
+        
+        <!-- Luma Calendar Embed -->
+        <div class="flex justify-center">
+          <iframe
+            src="https://luma.com/embed/calendar/cal-rx0Dc6lhU837mI3/events"
+            width="600"
+            height="450"
+            frameborder="0"
+            style="border: 1px solid rgba(191, 203, 218, 0.53); border-radius: 8px;"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0"
+            class="w-full max-w-2xl"
+          ></iframe>
+        </div>
+        
+        <div class="text-center mt-6">
+          <a 
+            href="https://lu.ma/suuna"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105"
+          >
+            View All Events on Luma
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
