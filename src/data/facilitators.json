@@ -125,5 +125,18 @@
     "links": [],
     "featured": false,
     "image": "/img/facilitators/claudia-constantin.jpg"
+  },
+  {
+    "id": "reflectors-reflections",
+    "name": "Reflector's Reflections",
+    "headline": "Human Design with Dirk Nellens",
+    "bio": "Human Design Reflections of Dirk Nellens. This space is dedicated to sharing insights on our unique way of being, navigating life's energies, and finding harmony in the cosmic dance. Over 1,000 subscribers.",
+    "location": "Online",
+    "tags": ["Human Design", "Self-Discovery", "Intentional Living", "Cosmic Dance", "Energy Navigation"],
+    "links": [
+      { "type": "substack", "url": "https://reflectorsreflections.substack.com" }
+    ],
+    "featured": true,
+    "image": "/img/facilitators/reflectors-reflections.jpg"
   }
 ]

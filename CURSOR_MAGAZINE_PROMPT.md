@@ -23,14 +23,16 @@ This is an Astro 4.x project for SUUNA.ro - a community magazine showcasing wisd
 For each facilitator in `src/data/facilitators.json`, create a dedicated section:
 
 **Featured Facilitators** (with Substack feeds):
-- **Stephanie Canavesio** - "Presence Embodied, Psychotherapist, Compassionate Inquiry, Meditation" (https://presenceembodied.substack.com)
-- **Maria Hoier** - "Intelligent Intimacy" (no Substack, but include profile)
-- **Kumu Ramsay Taum** - "Hawaiian elder" (no Substack, but include profile)
+- **SUUNA** - official substack https://suuna.substack.com
 - **Melissa Louise** - "Pleasure advocate & intimacy coach" (https://melissalouise.substack.com)
 - **Laura Maria Yara** - "Rewriting the Sacred Feminine" (https://lauramariayara.substack.com)
 - **Dana Dragomirescu** - "Ecology of emotions & relationships" (https://danadragomirescu.substack.com)
+- **Reflector's Reflections** - "Human Design with Dirk Nellens" (https://reflectorsreflections.substack.com)
 
 **Additional Facilitators** (profiles only):
+- Stephanie Canavesio - "Presence Embodied, Psychotherapist, Compassionate Inquiry, Meditation"
+- Maria Hoier - "Intelligent Intimacy"
+- Kumu Ramsay Taum - "Hawaiian elder"
 - Mălina Lilay Meraki - "Bridging worlds through dance"
 - Maria Magdalena Asaftei - "Women's bodywork & flow"
 - Ioana Lazăr - "Conscious cooking"
@@ -53,6 +55,8 @@ Each facilitator section should include:
 **Update Existing**:
 - `src/pages/index.astro` - Main page layout with new sections
 - `src/pages/facilitators.astro` - Facilitators page with all profiles
+- `src/components/sections/FacilitatorsTeaser.astro` - Add facilitator photos
+- Any other sections that display facilitators - ensure photos are included
 
 ### 4. Data Integration
 
@@ -61,13 +65,12 @@ Each facilitator section should include:
 - `src/utils/cache.ts` - Caching system for articles
 - `src/data/facilitators.json` - Complete facilitator data with images
 
-**Substack Feeds to Fetch**:
+**Substack Feeds to Fetch** (5 feeds total):
 - https://suuna.substack.com (SUUNA Community)
 - https://danadragomirescu.substack.com (Dana Dragomirescu)
 - https://melissalouise.substack.com (Melissa Louise)
 - https://lauramariayara.substack.com (Laura Maria Yara)
-- https://presenceembodied.substack.com (Stephanie Canavesio)
-- https://reflectorsreflections.substack.com (Reflector's Reflections)
+- https://reflectorsreflections.substack.com (Reflector's Reflections - Dirk Nellens)
 
 ### 5. Styling Requirements
 
@@ -108,6 +111,8 @@ Each facilitator section should include:
 - All facilitator images are in `/public/img/facilitators/`
 - Use Astro Image component for optimization
 - Fallback to placeholder if image missing
+- **IMPORTANT**: Add facilitator photos to ALL existing sections that display facilitators
+- Update `FacilitatorsTeaser.astro` and any other components to include actual photos instead of placeholders
 
 ### 7. Implementation Steps
 
@@ -131,7 +136,12 @@ Each facilitator section should include:
    - index.astro with new sections
    - facilitators.astro with all facilitators
 
-5. **Test and optimize**:
+5. **Add facilitator photos to existing sections**:
+   - Update `FacilitatorsTeaser.astro` to use actual photos from `/public/img/facilitators/`
+   - Check all other components that display facilitators and add photos
+   - Replace any placeholder images with real facilitator photos
+
+6. **Test and optimize**:
    - Ensure responsive design
    - Test with different screen sizes
    - Optimize images and performance
@@ -217,5 +227,14 @@ const { facilitator, articles = [] } = Astro.props;
 4. `src/components/ui/FacilitatorCard.astro` (new)
 5. `src/pages/index.astro` (update)
 6. `src/pages/facilitators.astro` (update)
+7. `src/components/sections/FacilitatorsTeaser.astro` (add photos)
+8. Any other components displaying facilitators (add photos)
+
+## Important Notes
+
+- **Only fetch from 5 Substack feeds** for now: SUUNA, Dana, Melissa, Laura Maria, Reflector's Reflections
+- **Add facilitator photos everywhere** - update all existing sections to use real photos
+- **Use existing data** in `src/data/facilitators.json` and `src/utils/substack.ts`
+- **All images are ready** in `/public/img/facilitators/`
 
 Use the existing data in `src/data/facilitators.json` and `src/utils/substack.ts`. All images are already available in `/public/img/facilitators/`.
