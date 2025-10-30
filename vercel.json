@@ -2,15 +2,5 @@
   "framework": "astro",
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
-  "outputDirectory": "dist",
-  "functions": {
-    "app/api/**/*.ts": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "build": {
-    "env": {
-      "NODE_VERSION": "20"
-    }
-  }
+  "outputDirectory": "dist"
 }
