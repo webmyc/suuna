@@ -1,9 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
+import facilitatorsData from '../../data/facilitators.json';
 
-// Get featured facilitators (first 4)
-const facilitators = await getCollection('facilitators');
-const featuredFacilitators = facilitators.slice(0, 4);
+// Get featured facilitators only
+const featuredFacilitators = facilitatorsData.filter(f => f.featured);
 ---
 
 <section class="py-16 bg-gradient-to-b from-suuna-bg to-suuna-forest">
@@ -20,34 +19,42 @@ const featuredFacilitators = facilitators.slice(0, 4);
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       {featuredFacilitators.map((facilitator) => (
         <div class="reveal-stagger">
-          <article class="card p-6 group h-full">
+          <article class="card p-6 group h-full flex flex-col">
             <div class="aspect-square mb-4 overflow-hidden rounded-lg">
-              <img 
-                src={facilitator.data.image} 
-                alt={facilitator.data.name}
+              <img
+                src={facilitator.avatar}
+                alt={facilitator.name}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
             </div>
-            
+
             <h3 class="text-lg font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors">
-              {facilitator.data.name}
+              {facilitator.name}
             </h3>
-            
+
             <p class="text-suuna-accent text-sm font-medium mb-3">
-              {facilitator.data.role}
+              {facilitator.headline}
             </p>
-            
+
+            <p class="text-xs text-suuna-text-muted mb-3 line-clamp-2 flex-1">
+              {facilitator.bio}
+            </p>
+
             <div class="flex items-center justify-between mt-auto">
               <span class="text-xs text-suuna-text-muted">
-                📍 {facilitator.data.location}
+                📍 {facilitator.location}
               </span>
-              <a 
-                href={`/facilitators/${facilitator.slug}`}
-                class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors"
-              >
-                View →
-              </a>
+              {facilitator.links && facilitator.links[0] && (
+                <a
+                  href={facilitator.links[0].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors"
+                >
+                  View →
+                </a>
+              )}
             </div>
           </article>
         </div>

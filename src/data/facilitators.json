@@ -1,14 +1,39 @@
 [
   {
-    "id": "dana-dragomirescu",
-    "name": "Dana Dragomirescu",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Dana&backgroundColor=10b981",
-    "headline": "Ecology of Emotions",
-    "bio": "Guiding emotional wellness through nature's wisdom and deep somatic practices.",
-    "location": "Bucharest, Romania",
-    "tags": ["Emotional Intelligence", "Nature Connection", "Somatic Healing"],
+    "id": "stephanie-canavesio",
+    "name": "Stephanie Canavesio",
+    "avatar": "/img/facilitators/stephanie-canavesio.jpg",
+    "headline": "Presence Embodied",
+    "bio": "Psychotherapist specializing in Compassionate Inquiry and meditation practices. Guiding deep presence and embodied healing.",
+    "location": "France",
+    "tags": ["Psychotherapy", "Compassionate Inquiry", "Meditation", "Embodiment"],
     "links": [
-      { "type": "site", "url": "https://danadragomirescu.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "maria-hoier",
+    "name": "Maria Hoier",
+    "avatar": "/img/facilitators/maria-hoier.jpg",
+    "headline": "Intelligent Intimacy",
+    "bio": "Facilitating intelligent intimacy and conscious relating. Bringing wisdom to connection and relationships.",
+    "location": "Online",
+    "tags": ["Intimacy", "Relationships", "Conscious Relating"],
+    "links": [
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "kumu-ramsay-taum",
+    "name": "Kumu Ramsay Taum",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Kumu&backgroundColor=059669",
+    "headline": "Hawaiian Elder",
+    "bio": "Hawaiian cultural practitioner and wisdom keeper. Sharing ancestral teachings and practices from the islands.",
+    "location": "Hawaii",
+    "tags": ["Hawaiian Wisdom", "Ancestral Teachings", "Cultural Practices"],
+    "links": [
       { "type": "calendar", "url": "https://lu.ma/suuna" }
     ],
     "featured": true
@@ -16,41 +41,115 @@
   {
     "id": "melissa-louise",
     "name": "Melissa Louise",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Melissa&backgroundColor=6366f1",
-    "headline": "Pleasure Advocate",
-    "bio": "Embodiment coach specializing in sacred sensuality and feminine empowerment.",
+    "avatar": "/img/facilitators/melissa-louise.jpg",
+    "headline": "Pleasure Advocate & Intimacy Coach",
+    "bio": "Embodiment coach specializing in sacred sensuality and feminine empowerment. Guiding women to reclaim their pleasure.",
     "location": "Online",
-    "tags": ["Embodiment", "Sacred Pleasure", "Feminine Power"],
+    "tags": ["Embodiment", "Sacred Pleasure", "Feminine Power", "Intimacy"],
     "links": [
       { "type": "site", "url": "https://melissalouise.substack.com" },
+      { "type": "substack", "url": "https://melissalouise.substack.com" },
       { "type": "calendar", "url": "https://lu.ma/suuna" }
     ],
-    "featured": true
+    "featured": true,
+    "hasSubstack": true
   },
   {
     "id": "laura-maria-yara",
     "name": "Laura Maria Yara",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Laura&backgroundColor=ec4899",
-    "headline": "Womb Oracle & Feminine Guide",
-    "bio": "Deep feminine healing through ancestral wisdom and womb consciousness.",
+    "avatar": "/img/facilitators/laura-maria-yara.jpg",
+    "headline": "Rewriting the Sacred Feminine",
+    "bio": "Deep feminine healing through ancestral wisdom and womb consciousness. Oracle for the divine feminine awakening.",
     "location": "Portugal",
-    "tags": ["Womb Wisdom", "Feminine Healing", "Ancestral Medicine"],
+    "tags": ["Womb Wisdom", "Feminine Healing", "Ancestral Medicine", "Sacred Feminine"],
     "links": [
       { "type": "site", "url": "https://lauramariayara.substack.com" },
+      { "type": "substack", "url": "https://lauramariayara.substack.com" },
       { "type": "calendar", "url": "https://lu.ma/suuna" }
     ],
-    "featured": true
+    "featured": true,
+    "hasSubstack": true
+  },
+  {
+    "id": "dana-dragomirescu",
+    "name": "Dana Dragomirescu",
+    "avatar": "/img/facilitators/dana-dragomirescu.jpg",
+    "headline": "Ecology of Emotions & Relationships",
+    "bio": "Guiding emotional wellness through nature's wisdom and deep somatic practices. Exploring the ecology of emotions and conscious relating.",
+    "location": "Bucharest, Romania",
+    "tags": ["Emotional Intelligence", "Nature Connection", "Somatic Healing", "Relationships"],
+    "links": [
+      { "type": "site", "url": "https://danadragomirescu.substack.com" },
+      { "type": "substack", "url": "https://danadragomirescu.substack.com" },
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": true,
+    "hasSubstack": true
   },
   {
     "id": "reflectors-reflections",
-    "name": "Reflector's Reflections",
-    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Reflector&backgroundColor=8b5cf6",
-    "headline": "Human Design Guide",
-    "bio": "Human Design insights and reflective wisdom for intentional living.",
+    "name": "Dirk Nellens",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Dirk&backgroundColor=8b5cf6",
+    "headline": "Human Design with Reflector's Reflections",
+    "bio": "Human Design insights and reflective wisdom for intentional living. Guiding self-discovery through the Human Design system.",
     "location": "Online",
-    "tags": ["Human Design", "Self-Discovery", "Intentional Living"],
+    "tags": ["Human Design", "Self-Discovery", "Intentional Living", "Reflector"],
     "links": [
-      { "type": "site", "url": "https://reflectorsreflections.substack.com" }
+      { "type": "site", "url": "https://reflectorsreflections.substack.com" },
+      { "type": "substack", "url": "https://reflectorsreflections.substack.com" }
+    ],
+    "featured": true,
+    "hasSubstack": true
+  },
+  {
+    "id": "malina-lilay-meraki",
+    "name": "Mălina Lilay Meraki",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Malina&backgroundColor=ec4899",
+    "headline": "Bridging Worlds Through Dance",
+    "bio": "Movement facilitator bridging inner and outer worlds through conscious dance and embodied expression.",
+    "location": "Romania",
+    "tags": ["Dance", "Movement", "Embodiment", "Expression"],
+    "links": [
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "maria-magdalena-asaftei",
+    "name": "Maria Magdalena Asaftei",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Magdalena&backgroundColor=f43f5e",
+    "headline": "Women's Bodywork & Flow",
+    "bio": "Guiding women through somatic bodywork and flow practices for deep feminine healing and embodiment.",
+    "location": "Romania",
+    "tags": ["Bodywork", "Feminine Flow", "Somatic Healing", "Women's Work"],
+    "links": [
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "ioana-lazar",
+    "name": "Ioana Lazăr",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Ioana&backgroundColor=f59e0b",
+    "headline": "Conscious Cooking",
+    "bio": "Bringing mindfulness and intention to the kitchen. Exploring food as medicine and nourishment for body and soul.",
+    "location": "Romania",
+    "tags": ["Conscious Cooking", "Food as Medicine", "Mindfulness", "Nourishment"],
+    "links": [
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
+    ],
+    "featured": false
+  },
+  {
+    "id": "claudia-constantin",
+    "name": "Claudia Constantin",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Claudia&backgroundColor=06b6d4",
+    "headline": "Dreamwork & Breathwork",
+    "bio": "Facilitating deep transformation through dreamwork and breathwork practices. Exploring the wisdom of the subconscious.",
+    "location": "Romania",
+    "tags": ["Dreamwork", "Breathwork", "Transformation", "Subconscious"],
+    "links": [
+      { "type": "calendar", "url": "https://lu.ma/suuna" }
     ],
     "featured": false
   }
