@@ -1,96 +1,159 @@
 ---
 import Base from '../components/layout/Base.astro';
-import Header from '../components/layout/Header.astro';
-import Footer from '../components/layout/Footer.astro';
-import { getCollection } from 'astro:content';
+import guidesData from '../data/facilitators.json';
 
-// Get all guides
-const guides = await getCollection('facilitators');
-const sortedGuides = guides.sort((a, b) => a.data.name.localeCompare(b.data.name));
-
+// Page metadata
 const title = 'Guides - SUUNA';
 const description = 'Meet the visionary teachers, healers, and community builders who are co-creating intentional spaces for transformation and growth.';
+
+// Sort guides by featured first, then alphabetically
+const sortedGuides = guidesData.sort((a, b) => {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  return a.name.localeCompare(b.name);
+});
 ---
 
-<Base 
-  title={title}
-  description={description}
-  canonical="https://suuna.ro/facilitators"
->
-  <Header />
-  
-  <main class="min-h-screen bg-bone">
-    <!-- Hero Section -->
-    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-moss/10 overflow-hidden">
-      <!-- Subtle organic background -->
+<Base title={title} description={description} canonical="https://suuna.ro/guides">
+  <div class="min-h-screen bg-bone">
+    <!-- Hero Section - Bold and Warm -->
+    <section class="relative pt-36 pb-24 px-4 bg-gradient-to-br from-bone via-white to-sage/10 overflow-hidden">
+      <!-- Organic background -->
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-20 left-1/3 w-80 h-80 bg-gradient-to-br from-moss/15 to-sage/10 rounded-full blur-3xl animate-breathe-slow"></div>
-        <div class="absolute bottom-10 right-1/3 w-72 h-72 bg-gradient-to-br from-honey/15 to-terracotta/5 rounded-full blur-3xl animate-breathe-slow" style="animation-delay: 1.5s;"></div>
+        <div class="absolute top-20 left-1/3 w-[500px] h-[500px] bg-gradient-to-br from-sage/15 to-moss/8 rounded-full blur-[120px] animate-float-slow"></div>
+        <div class="absolute bottom-10 right-1/3 w-[450px] h-[450px] bg-gradient-to-br from-honey/12 to-terracotta/6 rounded-full blur-[120px] animate-float-slower"></div>
       </div>
 
-      <div class="relative z-10 max-w-5xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-semibold text-charcoal mb-8 leading-tight">
-          <span class="font-suuna" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span> Family of Creators
+      <div class="relative z-10 max-w-6xl mx-auto text-center">
+        <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-semibold text-charcoal mb-10 leading-none tracking-tight">
+          Our Guides
         </h1>
-        <p class="text-xl md:text-2xl text-ash max-w-3xl mx-auto leading-relaxed font-light">
-          Meet the visionary teachers, healers, and community builders who are co-creating intentional spaces for transformation and growth.
+        <p class="text-2xl sm:text-3xl md:text-4xl text-ash max-w-4xl mx-auto leading-relaxed font-light mb-6">
+          Wisdom keepers, teachers, and healers co-creating intentional spaces for transformation.
         </p>
-        <div class="w-24 h-1 bg-gradient-to-r from-moss to-sage mx-auto rounded-full mt-8"></div>
+        <div class="w-32 h-1.5 bg-gradient-to-r from-sage via-moss to-sage mx-auto rounded-full"></div>
       </div>
     </section>
 
-    <!-- Guides Grid -->
-    <section class="py-16 bg-gradient-to-b from-suuna-forest to-suuna-bg">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sortedGuides.map((guide) => (
-            <div class="reveal-stagger">
-              <article class="card p-6 group h-full">
-                <div class="aspect-square mb-6 overflow-hidden rounded-lg">
+    <!-- Guides Grid - Bold Cards with Real Presence -->
+    <section class="py-24 px-4 bg-gradient-to-b from-white to-bone">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {sortedGuides.map((guide) => {
+            const siteLink = guide.links?.find(l => l.type === 'site');
+            const substackLink = guide.links?.find(l => l.type === 'substack');
+
+            return (
+              <article class="group bg-white/95 backdrop-blur-sm rounded-[32px] overflow-hidden shadow-2xl shadow-sage/10 hover:shadow-2xl hover:shadow-sage/20 transition-all duration-500 hover:-translate-y-2">
+                {/* Guide Photo */}
+                <div class="aspect-square overflow-hidden relative">
                   <img
-                    src={guide.data.image}
-                    alt={guide.data.name}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    src={guide.image}
+                    alt={guide.name}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
+                  {guide.featured && (
+                    <div class="absolute top-6 right-6 bg-terracotta text-white px-5 py-2.5 rounded-[16px] text-sm font-bold shadow-xl shadow-terracotta/40">
+                      Featured
+                    </div>
+                  )}
                 </div>
 
-                <h3 class="text-xl font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors">
-                  {guide.data.name}
-                </h3>
+                {/* Guide Info */}
+                <div class="p-8">
+                  <h3 class="text-3xl font-display font-semibold text-charcoal mb-3 group-hover:text-sage transition-colors leading-tight">
+                    {guide.name}
+                  </h3>
 
-                <p class="text-suuna-accent font-medium mb-3">
-                  {guide.data.role}
-                </p>
+                  <p class="text-lg text-terracotta font-semibold mb-4">
+                    {guide.headline}
+                  </p>
 
-                <p class="text-suuna-text-muted text-sm mb-4 line-clamp-3">
-                  {guide.data.bio.substring(0, 150)}...
-                </p>
+                  <p class="text-base text-ash/90 leading-relaxed mb-6 line-clamp-3">
+                    {guide.bio}
+                  </p>
 
-                <div class="flex items-center justify-between mt-auto">
-                  <span class="text-xs text-suuna-text-muted">
-                    📍 {guide.data.location}
-                  </span>
-                  <a
-                    href={`/guides/${guide.slug}`}
-                    class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors"
-                  >
-                    View Profile →
-                  </a>
+                  {/* Tags */}
+                  {guide.tags && guide.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      {guide.tags.slice(0, 3).map((tag) => (
+                        <span class="px-4 py-2 rounded-[14px] bg-stone/40 text-charcoal text-sm font-medium border border-sage/20">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Location */}
+                  {guide.location && (
+                    <div class="flex items-center gap-2 text-ash mb-8">
+                      <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                      <span class="font-medium">{guide.location}</span>
+                    </div>
+                  )}
+
+                  {/* Action Buttons */}
+                  <div class="flex gap-3">
+                    <a
+                      href={`/guides/${guide.id}`}
+                      class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-br from-sage to-forest text-white font-bold text-base rounded-[20px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
+                    >
+                      View Profile
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </a>
+                    {siteLink && (
+                      <a
+                        href={siteLink.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center w-14 h-14 bg-white border-2 border-sage/30 text-sage rounded-[18px] hover:bg-sage/5 hover:border-sage/50 transition-all duration-300 hover:scale-105"
+                        title="Visit website"
+                      >
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
-  </main>
-  
-  <Footer />
-</Base>
 
-<style>
-  @import '../styles/fonts.css';
-  @import '../styles/theme.css';
-  @import '../styles/reveal.css';
-</style>
+    <!-- Community CTA -->
+    <section class="relative py-28 px-4 bg-gradient-to-br from-sage via-forest to-sage overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/3 left-1/4 w-[550px] h-[550px] bg-white/8 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-moss/25 rounded-full blur-[120px]"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <h2 class="text-5xl sm:text-6xl md:text-7xl font-display font-semibold text-white mb-8 leading-tight tracking-tight"
+            style="text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);">
+          Want to become a Guide?
+        </h2>
+        <p class="text-2xl sm:text-3xl text-white/95 max-w-3xl mx-auto mb-16 leading-relaxed font-light">
+          Share your wisdom and offerings with the SUUNA community.
+        </p>
+        <a
+          href="/join#guides"
+          class="group inline-flex items-center gap-3 px-14 py-6 bg-white text-sage font-bold text-xl rounded-[28px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40"
+        >
+          <span class="group-hover:scale-105 transition-transform duration-300">Join as Guide</span>
+          <svg class="w-7 h-7 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </div>
+</Base>
