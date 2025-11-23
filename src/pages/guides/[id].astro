@@ -65,7 +65,7 @@ const description = guide.bio_short || guide.headline;
             <!-- Tags -->
             <div class="flex flex-wrap gap-2 mb-8">
               {guide.tags.map((tag: string) => (
-                <span class="px-3 py-1 bg-stone text-charcoal rounded-md text-sm">
+                <span class="px-4 py-2 bg-stone/40 text-charcoal rounded-xl text-sm font-medium border border-sage/10">
                   {tag}
                 </span>
               ))}
@@ -78,12 +78,12 @@ const description = guide.bio_short || guide.headline;
                   href={guide.booking_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-sage text-white font-semibold rounded-md hover:bg-forest-dark transition-all hover:scale-105 shadow-lg"
+                  class="group inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-br from-sage to-forest text-white font-semibold rounded-2xl hover:shadow-xl hover:shadow-sage/30 transition-all duration-300 hover:scale-105 shadow-lg shadow-sage/20"
                 >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                   </svg>
-                  Book a Session
+                  <span class="group-hover:scale-105 transition-transform duration-300">Book a Session</span>
                 </a>
               )}
 
@@ -92,12 +92,12 @@ const description = guide.bio_short || guide.headline;
                   href={guide.substack_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-6 py-3 border-2 border-sage text-sage hover:bg-sage hover:text-white rounded-md font-medium transition-all"
+                  class="group inline-flex items-center gap-2 px-7 py-3.5 bg-white/80 backdrop-blur-sm border-2 border-sage/30 text-sage hover:bg-white hover:border-sage/50 font-medium rounded-2xl transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
                 >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
-                  Subscribe
+                  <span class="group-hover:scale-105 transition-transform duration-300">Subscribe</span>
                 </a>
               )}
             </div>
@@ -156,10 +156,10 @@ const description = guide.bio_short || guide.headline;
                   href={guideOfferings[0].link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-terracotta text-white font-semibold rounded-md hover:bg-clay transition-all hover:scale-105"
+                  class="group inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-br from-terracotta to-clay text-white font-semibold rounded-2xl hover:shadow-xl hover:shadow-terracotta/30 transition-all duration-300 hover:scale-105 shadow-lg"
                 >
-                  Learn More
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span class="group-hover:scale-105 transition-transform duration-300">Learn More</span>
+                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                   </svg>
                 </a>
