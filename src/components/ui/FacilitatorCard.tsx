@@ -13,7 +13,7 @@ export function FacilitatorCard({ facilitator }: Props) {
       <div className="flex items-start gap-4 mb-4">
         <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-accent/30 flex-shrink-0 group-hover:ring-accent transition-all">
           <img
-            src={facilitator.avatar}
+            src={facilitator.image}
             alt={facilitator.name}
             className="w-full h-full object-cover"
             loading="lazy"

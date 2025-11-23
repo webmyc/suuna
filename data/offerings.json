@@ -1,0 +1,42 @@
+[
+  {
+    "guide_id": "stephanie-canavesio",
+    "title": "Compassionate Inquiry Workshop",
+    "date": "2025-04-15",
+    "type": "workshop",
+    "description": "Deep dive into Dr. Gabor Maté's approach. Learn to explore unconscious patterns through guided inquiry.",
+    "image": "/images/offerings/ci-workshop.jpg",
+    "link": "https://lu.ma/compassionate-inquiry-april",
+    "featured": true
+  },
+  {
+    "guide_id": "melissa-louise",
+    "title": "Erotic Blueprint Discovery",
+    "date": "2025-04-10",
+    "type": "workshop",
+    "description": "Discover your unique blueprint and learn to communicate desires authentically.",
+    "image": "/images/offerings/erotic-blueprint.jpg",
+    "link": "https://melissalouise.com/blueprint-discovery",
+    "featured": true
+  },
+  {
+    "guide_id": "laura-maria-yara",
+    "title": "Magma Mater: Sacred Feminine Journey",
+    "date": "2025-04-25",
+    "type": "course",
+    "description": "8-week journey into sacred feminine power through womb work and embodied practices.",
+    "image": "/images/offerings/magma-mater.jpg",
+    "link": "https://bliss.suuna.ro/magma-mater",
+    "featured": true
+  },
+  {
+    "guide_id": "dana-dragomirescu",
+    "title": "Ecologia Emoțiilor și Relațiilor",
+    "date": "2025-04-18",
+    "type": "workshop",
+    "description": "Workshop pentru reconectarea cu corpul și emoțiile prin metoda ESPERE®.",
+    "image": "/images/offerings/ecologia-emotiilor.jpg",
+    "link": "https://lu.ma/ecologia-emotiilor",
+    "featured": true
+  }
+]
