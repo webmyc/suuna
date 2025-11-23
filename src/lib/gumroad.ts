@@ -17,6 +17,34 @@ interface GumroadResponse {
     products: any[];
 }
 
+// Helper function to strip HTML tags and decode HTML entities
+function stripHtml(html: string): string {
+    if (!html) return '';
+
+    // Remove HTML tags
+    let text = html.replace(/<[^>]*>/g, '');
+
+    // Decode common HTML entities
+    const entities: Record<string, string> = {
+        '&nbsp;': ' ',
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&quot;': '"',
+        '&#39;': "'",
+        '&hellip;': '...',
+    };
+
+    Object.entries(entities).forEach(([entity, char]) => {
+        text = text.replace(new RegExp(entity, 'g'), char);
+    });
+
+    // Clean up extra whitespace
+    text = text.replace(/\s+/g, ' ').trim();
+
+    return text;
+}
+
 export async function getProducts(): Promise<GumroadProduct[]> {
     const token = import.meta.env.GUMROAD_ACCESS_TOKEN;
 
@@ -58,7 +86,7 @@ export async function getProducts(): Promise<GumroadProduct[]> {
                 }).format(p.price / 100),
                 published: p.published,
                 tags: p.tags || [],
-                description: p.description_text || p.description || '',
+                description: stripHtml(p.description_text || p.description || ''),
                 short_url: p.short_url
             }));
     } catch (error) {
@@ -66,3 +94,4 @@ export async function getProducts(): Promise<GumroadProduct[]> {
         return [];
     }
 }
+
