@@ -11,24 +11,6 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
 
 <Base title={title} description={description} canonical="https://suuna.ro/manifesto">
   <div class="min-h-screen bg-bone dark:bg-[#0D1B22]">
-    <!-- Language Toggle - Bold and Present -->
-    <div class="fixed top-28 right-8 z-50">
-      <div class="flex gap-2 bg-white/95 dark:bg-[#1E2B38]/95 backdrop-blur-md border-2 border-sage/30 dark:border-moss/30 rounded-xl px-4 py-3 shadow-xl shadow-sage/20 dark:shadow-black/20">
-        <a
-          href="/manifesto?lang=ro"
-          class={`px-6 py-3 text-base font-semibold rounded-lg transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest-dark dark:from-moss dark:to-sage text-white shadow-lg shadow-sage/30' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone hover:bg-stone/50 dark:hover:bg-white/10 hover:scale-105'}`}
-        >
-          RO
-        </a>
-        <a
-          href="/manifesto?lang=en"
-          class={`px-6 py-3 text-base font-semibold rounded-lg transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest-dark dark:from-moss dark:to-sage text-white shadow-lg shadow-sage/30' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone hover:bg-stone/50 dark:hover:bg-white/10 hover:scale-105'}`}
-        >
-          EN
-        </a>
-      </div>
-    </div>
-
     <!-- Hero Section - Bold and Breathing -->
     <section class="relative pt-40 pb-28 px-4 bg-gradient-to-br from-bone via-white to-stone/20 dark:from-[#0D1B22] dark:via-[#1E2B38] dark:to-[#0D1B22]/50 overflow-hidden">
       <!-- Bold organic background with depth -->
