@@ -10,19 +10,19 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
 ---
 
 <Base title={title} description={description} canonical="https://suuna.ro/manifesto">
-  <div class="min-h-screen bg-bone text-charcoal">
+  <div class="min-h-screen bg-white">
     <!-- Language Toggle -->
     <div class="fixed top-24 right-8 z-50">
-      <div class="flex gap-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-md">
+      <div class="flex gap-1 bg-white border border-stone rounded-md px-2 py-1.5 shadow-sm">
         <a
           href="/manifesto?lang=ro"
-          class={`px-3 py-1 rounded-full transition-all ${lang === 'ro' ? 'bg-sage text-white' : 'text-ash hover:text-charcoal'}`}
+          class={`px-3 py-1.5 text-sm font-medium rounded transition-all ${lang === 'ro' ? 'bg-sage text-white' : 'text-charcoal/60 hover:text-charcoal'}`}
         >
           RO
         </a>
         <a
           href="/manifesto?lang=en"
-          class={`px-3 py-1 rounded-full transition-all ${lang === 'en' ? 'bg-sage text-white' : 'text-ash hover:text-charcoal'}`}
+          class={`px-3 py-1.5 text-sm font-medium rounded transition-all ${lang === 'en' ? 'bg-sage text-white' : 'text-charcoal/60 hover:text-charcoal'}`}
         >
           EN
         </a>
@@ -30,9 +30,9 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
     </div>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-display font-bold text-forest-dark mb-6">
+    <section class="pt-32 pb-12 px-4 bg-stone/20">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-display font-semibold text-charcoal mb-4">
           Manifesto
         </h1>
       </div>
@@ -40,100 +40,100 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
 
     <!-- Romanian Content -->
     {lang === 'ro' && (
-      <article class="max-w-3xl mx-auto px-4 pb-24 prose prose-lg">
-        <h2 class="font-display text-3xl md:text-4xl text-forest-dark mb-8">
+      <article class="max-w-2xl mx-auto px-4 py-16">
+        <h2 class="font-display text-2xl md:text-3xl text-charcoal mb-5 font-semibold">
           Pentru creatorii care scriu, vorbesc, filmează — cu inimă.
         </h2>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed mb-5 text-charcoal/80">
           Dacă ai simțit vreodată că dai tot ce ai mai bun în conținutul tău — postări, newslettere, clipuri, cursuri — și totuși e ca și cum vorbele tale se pierd într-un ocean de zgomot... ești în locul potrivit.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed mb-5 text-charcoal/80">
           Dacă ai construit în timp o comunitate, fie mică, fie mare, dar te întrebi cum ai putea transforma această relație într-un spațiu mai stabil, mai viu, mai sustenabil — poate că ai simțit deja că e timpul pentru un nou tip de spațiu.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed mb-5 text-charcoal/80">
           Un spațiu unde conținutul tău să nu fie filtrat de algoritmi, ci primit de oameni care chiar îl caută.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed mb-10 text-charcoal/80">
           Unde atenția nu e tranzacționată, ci respectată.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal mb-5 font-semibold">
           Ce este SUUNA?
         </h3>
 
-        <p class="text-lg leading-relaxed mb-6">
-          <strong class="text-sage">SUUNA înseamnă: suntem împreună.</strong>
+        <p class="text-base leading-relaxed mb-5 text-charcoal/80">
+          <strong class="text-sage font-semibold">SUUNA înseamnă: suntem împreună.</strong>
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
-          Este o platformă comunitară, construită pentru creatori ca tine. Un loc care îți oferă suport tehnic și spațiu de exprimare, dar și ceva mai greu de găsit în online-ul de azi: <strong>sens și continuitate</strong>.
+        <p class="text-base leading-relaxed mb-5 text-charcoal/80">
+          Este o platformă comunitară, construită pentru creatori ca tine. Un loc care îți oferă suport tehnic și spațiu de exprimare, dar și ceva mai greu de găsit în online-ul de azi: <strong class="font-semibold">sens și continuitate</strong>.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed mb-5 text-charcoal/80">
           Gândește-te la SUUNA ca la un sat digital, unde fiecare creator are propria casă (propriul canal, brand, ofertă), dar contribuie și la viața satului: prin idei, texte, episoade audio sau video.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed mb-10 text-charcoal/80">
           Fiecare are locul lui, vocea lui, stilul lui. Nimeni nu trebuie să se conformeze. Nu este vorba de uniformizare, ci de <strong>sprijin reciproc</strong>.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           De ce facem asta?
         </h3>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Pentru că social media s-a transformat într-un joc al atenției, unde algoritmii decid ce merită văzut.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Pentru că prea mulți creatori valoroși ajung să își dubleze munca doar ca să „joace jocul".
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Pentru că în ciuda like-urilor și reach-ului, <strong>valoarea reală se diluează</strong>.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           Și mai ales, pentru că am întâlnit creatori ca tine. Care scriu săptămânal articole pline de sens. Care vorbesc despre vindecare, transformare, claritate, identitate. Care pun întrebări bune și oferă răspunsuri sincere.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           Dar care nu au un loc în care să își simtă munca ca fiind <strong>apreciată, susținută, și — foarte concret — să se transforme și în venit sustenabil</strong>.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           Ce oferă SUUNA?
         </h3>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">Vizibilitate curată.</strong> Fără reclame. Fără algoritmi. Doar oameni care caută conținut cu sens.
         </p>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">O comunitate care se construiește împreună.</strong> Publicul nu este al platformei. Este al tău. Iar comunitățile tale se alătură altora — în beneficiul tuturor.
         </p>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">Spațiu pentru contribuție.</strong> Tu alegi în ce formă vrei să contribui: text, audio, video — în ritmul tău. Poți publica ce vrei, când vrei. Nu există KPI-uri, doar coerență.
         </p>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">Suport tehnic și strategic.</strong> Dacă ai nevoie de ajutor cu platforme, email marketing, plăți, integrări — echipa SUUNA e acolo.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           <strong class="text-sage">Un model de revenue sharing.</strong> Contribuția ta poate aduce venit. Proporțional. Clar. Fără presiune.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           Nu este pentru tine dacă:
         </h3>
 
-        <ul class="space-y-3 mb-12">
+        <ul class="space-y-3 mb-10">
           <li>Vrei doar un loc unde să postezi din când în când, fără angajament sau ritmicitate.</li>
           <li>Te interesează mai mult reach-ul decât relația.</li>
           <li>Nu vrei să colaborezi cu alți creatori.</li>
@@ -141,11 +141,11 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
           <li>Nu ești pregătit(ă) să îți asumi propria voce, propria formă, propriul parcurs.</li>
         </ul>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           Este pentru tine dacă:
         </h3>
 
-        <ul class="space-y-3 mb-12">
+        <ul class="space-y-3 mb-10">
           <li>Simți că ai ceva valoros de oferit</li>
           <li>Ai deja o practică de publicare (newsletter, podcast, blog, etc.)</li>
           <li>Vrei ca vocea ta să ajungă mai departe, dar în condiții care te susțin</li>
@@ -153,19 +153,19 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
           <li>Ești deschis(ă) la colaborare, nu competiție</li>
         </ul>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           Hai să ne cunoaștem
         </h3>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Dacă ai ajuns până aici și simți o chemare, nu e nevoie să te decizi acum. Tot ce propun e o conversație deschisă, ca între oameni care creează.
         </p>
 
-        <p class="text-lg leading-relaxed mb-8">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-8">
           Poți programa o întâlnire aici: 👉 <a href="https://cal.com/mihai-love/suuna" class="text-sage hover:text-forest-dark underline" target="_blank" rel="noopener noreferrer">cal.com/mihai-love/suuna</a>
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Vor fi 30 de minute fără pitch. Doar să vedem dacă ne potrivim. Dacă da, construim împreună. Dacă nu, mă bucur că ne-am cunoscut.
         </p>
 
@@ -173,7 +173,7 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
           <strong>Suntem împreună.</strong>
         </p>
 
-        <p class="text-lg leading-relaxed">
+        <p class="text-base leading-relaxed text-charcoal/80">
           — Mihai
         </p>
       </article>
@@ -182,99 +182,99 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
     <!-- English Content -->
     {lang === 'en' && (
       <article class="max-w-3xl mx-auto px-4 pb-24 prose prose-lg">
-        <h2 class="font-display text-3xl md:text-4xl text-forest-dark mb-8">
+        <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold mb-8">
           For creators who write, speak, create — with heart.
         </h2>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           If you've ever felt like you're giving your best to your content — posts, newsletters, videos, courses — and yet it feels like your words are lost in an ocean of noise... you're in the right place.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           If you've built a community over time, whether small or large, but you're wondering how you could transform this relationship into a more stable, alive, sustainable space — perhaps you've already felt it's time for a new kind of space.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           A space where your content isn't filtered by algorithms, but received by people who are actually seeking it.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           Where attention isn't transacted, but respected.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           What is SUUNA?
         </h3>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           <strong class="text-sage">SUUNA means: we are together.</strong>
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           It's a community platform, built for creators like you. A place that offers you technical support and space for expression, but also something harder to find in today's online world: <strong>meaning and continuity</strong>.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Think of SUUNA as a digital village, where each creator has their own home (their own channel, brand, offering), but also contributes to the life of the village: through ideas, texts, audio or video episodes.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           Everyone has their place, their voice, their style. No one has to conform. This isn't about uniformity, but about <strong>mutual support</strong>.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           Why are we doing this?
         </h3>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Because social media has become an attention game, where algorithms decide what deserves to be seen.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Because too many valuable creators end up doubling their work just to "play the game".
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           Because despite likes and reach, <strong>real value gets diluted</strong>.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           And especially because we've met creators like you. Who write weekly articles full of meaning. Who speak about healing, transformation, clarity, identity. Who ask good questions and offer honest answers.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           But who don't have a place where their work feels <strong>appreciated, supported, and — very concretely — transformed into sustainable income</strong>.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           What does SUUNA offer?
         </h3>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">Clean visibility.</strong> No ads. No algorithms. Just people seeking meaningful content.
         </p>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">A community built together.</strong> The audience isn't the platform's. It's yours. And your communities join with others — to everyone's benefit.
         </p>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">Space for contribution.</strong> You choose how you want to contribute: text, audio, video — at your pace. You can publish what you want, when you want. No KPIs, just coherence.
         </p>
 
-        <p class="text-lg leading-relaxed mb-4">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-4">
           <strong class="text-sage">Technical and strategic support.</strong> If you need help with platforms, email marketing, payments, integrations — the SUUNA team is there.
         </p>
 
-        <p class="text-lg leading-relaxed mb-12">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-10">
           <strong class="text-sage">A revenue sharing model.</strong> Your contribution can generate income. Proportional. Clear. Without pressure.
         </p>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           This isn't for you if:
         </h3>
 
-        <ul class="space-y-3 mb-12">
+        <ul class="space-y-3 mb-10">
           <li>You just want a place to post occasionally, without commitment or rhythm.</li>
           <li>You're more interested in reach than relationship.</li>
           <li>You don't want to collaborate with other creators.</li>
@@ -282,11 +282,11 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
           <li>You're not ready to claim your own voice, your own form, your own path.</li>
         </ul>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           This is for you if:
         </h3>
 
-        <ul class="space-y-3 mb-12">
+        <ul class="space-y-3 mb-10">
           <li>You feel you have something valuable to offer</li>
           <li>You already have a publishing practice (newsletter, podcast, blog, etc.)</li>
           <li>You want your voice to reach further, but in conditions that support you</li>
@@ -294,19 +294,19 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
           <li>You're open to collaboration, not competition</li>
         </ul>
 
-        <h3 class="font-display text-2xl md:text-3xl text-forest-dark mb-6">
+        <h3 class="font-display text-xl md:text-2xl text-charcoal font-semibold mb-5">
           Let's get to know each other
         </h3>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           If you've made it this far and feel a call, you don't need to decide now. All I'm proposing is an open conversation, between people who create.
         </p>
 
-        <p class="text-lg leading-relaxed mb-8">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-8">
           You can schedule a meeting here: 👉 <a href="https://cal.com/mihai-love/suuna" class="text-sage hover:text-forest-dark underline" target="_blank" rel="noopener noreferrer">cal.com/mihai-love/suuna</a>
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-base leading-relaxed text-charcoal/80 mb-5">
           It will be 30 minutes without pitch. Just to see if we're a fit. If yes, we build together. If not, I'm glad we met.
         </p>
 
@@ -314,7 +314,7 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
           <strong>We are together.</strong>
         </p>
 
-        <p class="text-lg leading-relaxed">
+        <p class="text-base leading-relaxed text-charcoal/80">
           — Mihai
         </p>
       </article>

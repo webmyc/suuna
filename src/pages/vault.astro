@@ -56,7 +56,7 @@ const products = [
     <!-- Hero Section -->
     <section class="pt-32 pb-12 px-4">
       <div class="max-w-7xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-display font-bold text-forest-dark mb-6">
+        <h1 class="text-4xl md:text-5xl font-display font-semibold text-charcoal mb-6">
           SUUNA Vault
         </h1>
         <p class="text-xl md:text-2xl text-ash max-w-2xl mx-auto">
@@ -70,11 +70,11 @@ const products = [
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
-            <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+            <article class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
               <!-- Product Image -->
-              <div class="aspect-video bg-gradient-to-br from-sage to-forest-dark relative overflow-hidden">
+              <div class="aspect-video bg-sage relative overflow-hidden">
                 {product.featured && (
-                  <div class="absolute top-4 right-4 bg-terracotta text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <div class="absolute top-4 right-4 bg-terracotta text-white px-3 py-1 rounded-md text-sm font-medium">
                     Featured
                   </div>
                 )}
@@ -89,7 +89,7 @@ const products = [
               <!-- Product Info -->
               <div class="p-6">
                 <div class="flex items-start justify-between mb-3">
-                  <h3 class="text-xl font-display font-bold text-forest-dark leading-tight flex-1">
+                  <h3 class="text-xl font-display font-bold text-charcoal leading-tight flex-1">
                     {product.title}
                   </h3>
                   <span class="text-2xl font-bold text-sage ml-4">
@@ -109,7 +109,7 @@ const products = [
                   href={product.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="block w-full text-center px-6 py-3 bg-sage text-white font-semibold rounded-full hover:bg-forest-dark transition-all hover:scale-105"
+                  class="block w-full text-center px-6 py-3 bg-sage text-white font-semibold rounded-md hover:bg-forest-dark transition-all hover:scale-105"
                 >
                   View on Gumroad
                 </a>
@@ -123,8 +123,8 @@ const products = [
     <!-- CTA Section -->
     <section class="py-16 px-4">
       <div class="max-w-4xl mx-auto">
-        <div class="bg-gradient-to-br from-terracotta to-clay rounded-2xl p-12 text-center text-white">
-          <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+        <div class="bg-sage rounded-xl p-12 text-center text-white">
+          <h2 class="text-2xl md:text-3xl font-display font-semibold mb-6">
             Are You a Guide?
           </h2>
           <p class="text-lg md:text-xl mb-8 opacity-90">
@@ -132,7 +132,7 @@ const products = [
           </p>
           <a
             href="/join"
-            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-terracotta font-semibold rounded-full hover:bg-bone transition-all hover:scale-105 shadow-lg"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-terracotta font-semibold rounded-md hover:bg-bone transition-all hover:scale-105 shadow-lg"
           >
             Partner with SUUNA
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
