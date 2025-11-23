@@ -30,8 +30,8 @@ const currentPath = Astro.url.pathname;
           Manifesto
         </a>
         <a
-          href="/facilitators"
-          class={`text-base font-medium transition-colors ${currentPath.startsWith('/facilitators') || currentPath.startsWith('/guides') ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
+          href="/guides"
+          class={`text-base font-medium transition-colors ${currentPath.startsWith('/guides') ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
         >
           Guides
         </a>
@@ -92,7 +92,7 @@ const currentPath = Astro.url.pathname;
     <nav class="px-4 py-5 space-y-2">
       <a href="/" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Home</a>
       <a href="/manifesto" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Manifesto</a>
-      <a href="/facilitators" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Guides</a>
+      <a href="/guides" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Guides</a>
       <a href="/events" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Events</a>
       <a href="/articles" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Articles</a>
       <a href="/vault" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Vault</a>
