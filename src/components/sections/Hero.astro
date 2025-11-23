@@ -6,7 +6,7 @@
   <!-- Large organic background shapes with real depth -->
   <div class="absolute inset-0 overflow-hidden">
     <!-- Main glow -->
-    <div class="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-gradient-radial from-sage/30 via-sage/10 to-transparent rounded-full blur-[100px] animate-breathe-slow"></div>
+    <div class="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] gradient-radial from-sage/30 via-sage/10 to-transparent rounded-full blur-[100px] animate-breathe-slow"></div>
 
     <!-- Floating organic shapes -->
     <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gradient-to-br from-terracotta/20 via-honey/15 to-transparent rounded-full blur-3xl animate-float-slow"></div>
@@ -110,10 +110,6 @@
     }
   }
 
-  @keyframes gradient-radial {
-    background: radial-gradient(circle at center, var(--tw-gradient-stops));
-  }
-
   .animate-float-slow {
     animation: float-slow 20s ease-in-out infinite;
   }
@@ -132,9 +128,5 @@
 
   .animate-bounce-slow {
     animation: bounce-slow 3s ease-in-out infinite;
-  }
-
-  .bg-gradient-radial {
-    background: radial-gradient(circle at center, var(--tw-gradient-stops));
   }
 </style>

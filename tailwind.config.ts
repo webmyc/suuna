@@ -69,10 +69,9 @@ const config: Config = {
         full: '9999px',  // pills
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-        // Legacy fonts (keep for backwards compatibility)
+        sans: ['"League Spartan"', 'system-ui', 'sans-serif'],
+        display: ['"PT Serif"', 'Georgia', 'serif'],
+        body: ['"League Spartan"', 'system-ui', 'sans-serif'],
         spartan: ['"League Spartan"', 'system-ui', 'sans-serif'],
         serif: ['"PT Serif"', 'Georgia', 'serif'],
         suuna: ['"Architype Bayer-type W90"', 'sans-serif'],
@@ -100,6 +99,9 @@ const config: Config = {
         '4xl': '2.25rem',   // 36px
         '5xl': '3rem',      // 48px
         '6xl': '3.75rem',   // 60px
+        '7xl': '4.5rem',    // 72px
+        '8xl': '6rem',      // 96px
+        '9xl': '8rem',      // 128px
       },
       backdropBlur: {
         xxs: '2px',

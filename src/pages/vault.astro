@@ -5,47 +5,96 @@ import Base from '../components/layout/Base.astro';
 const title = 'SUUNA Vault - Workshops & Courses';
 const description = 'Workshops, courses, and masterclasses from our guides. Access exclusive content and transformational offerings.';
 
-// For now, we'll use placeholder data for Gumroad products
-// In production, this would fetch from Gumroad API or be managed in a JSON file
+// Real products from bliss.suuna.ro (SUUNA Community Vault)
 const products = [
   {
-    id: 'magma-mater',
-    title: 'Magma Mater: Sacred Feminine Journey',
-    creator: 'Laura-Maria Yara',
-    price: '€297',
-    description: '8-week journey into sacred feminine power through womb work and embodied practices.',
-    image: '/images/vault/magma-mater.jpg',
-    link: 'https://bliss.suuna.ro/magma-mater',
-    featured: true
-  },
-  {
-    id: 'blueprint-course',
-    title: 'Erotic Blueprint Mastery',
+    id: 'pleasure-masterclass',
+    title: 'Pleasure Masterclass Bundle',
     creator: 'Melissa Louise',
-    price: '€197',
-    description: 'Complete course to discover and master your unique erotic blueprint.',
-    image: '/images/vault/erotic-blueprint.jpg',
-    link: 'https://bliss.suuna.ro/erotic-blueprint',
+    price: '€135',
+    description: 'Complete 3-part masterclass series on feminine pleasure, orgasm, and embodied sexuality.',
+    image: '/images/vault/melissa-louise-pleasure.jpg',
+    link: 'https://bliss.suuna.ro/l/pleasure-class',
     featured: true
   },
   {
-    id: 'ci-training',
-    title: 'Compassionate Inquiry Training',
-    creator: 'Stephanie Canavesio',
-    price: '€247',
-    description: 'Deep dive into Dr. Gabor Maté\'s approach to trauma healing and self-discovery.',
-    image: '/images/vault/compassionate-inquiry.jpg',
-    link: 'https://bliss.suuna.ro/compassionate-inquiry',
+    id: 'magma-mater',
+    title: 'MAGMA MATER - Complete Bundle',
+    creator: 'Laura Maria Yara',
+    price: '€99',
+    description: 'Sacred feminine journey through the two fundamental practices of womb reconnection. In Romanian & Portuguese.',
+    image: '/images/vault/laura-magma-mater.jpg',
+    link: 'https://bliss.suuna.ro/l/mm',
     featured: true
   },
   {
-    id: 'espere-workshop',
-    title: 'Ecologia Emoțiilor - Workshop Series',
-    creator: 'Dana Dragomirescu',
-    price: '€147',
-    description: 'Workshop series pentru reconectarea cu corpul și emoțiile prin metoda ESPERE®.',
-    image: '/images/vault/ecologia-emotiilor.jpg',
-    link: 'https://bliss.suuna.ro/ecologia-emotiilor',
+    id: 'intimate-wellness',
+    title: 'Your Intimate Wellness Masterclass Series',
+    creator: 'Ruth Ramsay',
+    price: '€165',
+    description: 'Complete intimate wellness series covering mind, body, and life. 3-part masterclass bundle.',
+    image: '/images/vault/ruth-ramsay-intimate.jpg',
+    link: 'https://bliss.suuna.ro/l/ruth',
+    featured: true
+  },
+  {
+    id: 'intuitive-cooking',
+    title: 'Intuitive Cooking',
+    creator: 'Ioana Lazăr',
+    price: '€99',
+    description: 'Make a Wish Food Circle - Learn to cook intuitively with Ayurvedic wisdom and conscious connection.',
+    image: '/images/vault/ioana-cooking.jpg',
+    link: 'https://bliss.suuna.ro/l/intuitive-cooking',
+    featured: true
+  },
+  {
+    id: 'ayurveda-course',
+    title: 'Curs de Ayurveda - Teorie și Practică',
+    creator: 'Ioana Lazăr',
+    price: '€77',
+    description: 'Be your own healer - Complete Ayurveda course in theory and practice.',
+    image: '/images/vault/ioana-ayurveda.jpg',
+    link: 'https://bliss.suuna.ro/l/ayurveda',
+    featured: false
+  },
+  {
+    id: 'rhythms-to-thrive',
+    title: 'Rhythms to Thrive - 21-Day Program',
+    creator: 'Ioana Lazăr',
+    price: '€90',
+    description: '21-day program to reconnect with your natural rhythms and thrive in your daily life.',
+    image: '/images/vault/ioana-rhythms.jpg',
+    link: 'https://bliss.suuna.ro/l/rythms-to-thrive',
+    featured: false
+  },
+  {
+    id: 'femeie-in-corp',
+    title: 'Femeie în Corp de Femeie',
+    creator: 'Laura Maria Yara',
+    price: '€22+',
+    description: 'Pay-what-you-want offering on feminine embodiment and reconnection with the female body.',
+    image: '/images/vault/laura-femeie.jpg',
+    link: 'https://bliss.suuna.ro/l/femeie-in-corp-de-femeie',
+    featured: false
+  },
+  {
+    id: 'return-to-her',
+    title: 'Return to Her - Guided Practice',
+    creator: 'Melissa Louise',
+    price: '€33',
+    description: '100-minute guided practice for returning to your feminine essence and embodied presence.',
+    image: '/images/vault/melissa-return.jpg',
+    link: 'https://bliss.suuna.ro/l/return',
+    featured: false
+  },
+  {
+    id: 'retete-ayurvedice',
+    title: '12 Rețete Ayurvedice de Zi cu Zi',
+    creator: 'Ioana Lazăr',
+    price: '€18',
+    description: 'Daily Ayurvedic recipes to nourish body and soul. 5-star rated.',
+    image: '/images/vault/ioana-retete.jpg',
+    link: 'https://bliss.suuna.ro/l/retete-ayurvedice',
     featured: false
   }
 ];
@@ -59,7 +108,7 @@ const products = [
       <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-20 left-1/3 w-[550px] h-[550px] bg-gradient-to-br from-sage/18 to-forest/8 rounded-full blur-[120px] animate-float-slow"></div>
         <div class="absolute bottom-10 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-honey/18 to-terracotta/8 rounded-full blur-[120px] animate-float-slower"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-radial from-sage/8 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] gradient-radial from-sage/8 to-transparent rounded-full blur-3xl"></div>
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto text-center">

@@ -65,7 +65,7 @@
 
   html {
     @apply scroll-smooth;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'League Spartan', system-ui, sans-serif;
   }
 
   body {
@@ -73,7 +73,7 @@
     background-color: #FAF8F5; /* bone - light background */
     color: #2C2C2C; /* charcoal - dark text */
     transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'League Spartan', system-ui, sans-serif;
   }
 
   /* Ensure dark mode has proper contrast */
@@ -84,7 +84,7 @@
 
   /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'PT Serif', serif;
     @apply font-semibold tracking-tight;
   }
 
