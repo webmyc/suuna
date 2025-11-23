@@ -5,10 +5,10 @@ import type { Facilitator } from '../../types'
 import '../../../src/styles/carousel.css'
 
 interface Props {
-  facilitators: Facilitator[]
+  guides: Facilitator[]
 }
 
-export function FacilitatorsCarousel({ facilitators }: Props) {
+export function FacilitatorsCarousel({ guides }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     loop: true,
@@ -39,10 +39,10 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
     emblaApi.on('reInit', onSelect)
   }, [emblaApi, onSelect])
 
-  if (facilitators.length === 0) return null
+  if (guides.length === 0) return null
 
   return (
-    <section id="facilitators" className="relative py-20 md:py-32 bg-gradient-to-br from-white via-bone to-sage/5 overflow-hidden">
+    <section id="guides" className="relative py-20 md:py-32 bg-gradient-to-br from-white via-bone to-sage/5 overflow-hidden">
       {/* Warm background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-gradient-to-br from-honey/8 to-terracotta/5 rounded-full blur-[100px]"></div>
@@ -53,10 +53,10 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
         <div className="flex items-center justify-between mb-16">
           <div className="max-w-2xl">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-4 leading-tight tracking-tight">
-              Meet Our Facilitators
+              Meet Our Guides
             </h2>
             <p className="text-xl md:text-2xl text-ash font-light leading-relaxed">
-              Connect with wisdom keepers and guides from our community
+              Connect with wisdom keepers from our community
             </p>
           </div>
 
@@ -82,18 +82,18 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
 
         <div className="embla" ref={emblaRef}>
           <div className="embla__container">
-            {facilitators.map((facilitator) => {
-              const siteLink = facilitator.links?.find(l => l.type === 'site')
-              const calendarLink = facilitator.links?.find(l => l.type === 'calendar')
+            {guides.map((guide) => {
+              const siteLink = guide.links?.find(l => l.type === 'site')
+              const calendarLink = guide.links?.find(l => l.type === 'calendar')
 
               return (
-                <div key={facilitator.id} className="embla__slide">
+                <div key={guide.id} className="embla__slide">
                   <article className="bg-white/95 backdrop-blur-sm rounded-[32px] p-8 shadow-2xl shadow-honey/15 hover:shadow-2xl hover:shadow-honey/25 transition-all duration-500 hover:-translate-y-2 group h-full flex flex-col">
                     <div className="flex items-start gap-5 mb-6">
                       <div className="relative w-24 h-24 rounded-[24px] overflow-hidden ring-4 ring-honey/20 flex-shrink-0 group-hover:ring-honey/40 transition-all duration-300 group-hover:scale-105">
                         <img
-                          src={facilitator.avatar}
-                          alt={facilitator.name}
+                          src={guide.avatar}
+                          alt={guide.name}
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
@@ -101,32 +101,32 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
 
                       <div className="flex-1 min-w-0">
                         <h3 className="text-2xl font-display font-semibold text-charcoal mb-2 group-hover:text-terracotta transition-colors leading-tight">
-                          {facilitator.name}
+                          {guide.name}
                         </h3>
                         <p className="text-base text-terracotta font-semibold">
-                          {facilitator.headline}
+                          {guide.headline}
                         </p>
-                        {facilitator.location && (
+                        {guide.location && (
                           <div className="flex items-center gap-2 text-sm text-ash mt-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <span>{facilitator.location}</span>
+                            <span>{guide.location}</span>
                           </div>
                         )}
                       </div>
                     </div>
 
-                    {facilitator.bio && (
+                    {guide.bio && (
                       <p className="text-base text-ash/80 leading-relaxed mb-5 flex-1">
-                        {facilitator.bio}
+                        {guide.bio}
                       </p>
                     )}
 
-                    {facilitator.tags && facilitator.tags.length > 0 && (
+                    {guide.tags && guide.tags.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-6">
-                        {facilitator.tags.slice(0, 3).map((tag) => (
+                        {guide.tags.slice(0, 3).map((tag) => (
                           <span key={tag} className="px-3 py-1.5 rounded-[12px] bg-bone text-charcoal text-sm font-medium border border-stone/30">
                             {tag}
                           </span>

@@ -4,11 +4,11 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import { getCollection } from 'astro:content';
 
-// Get all facilitators
-const facilitators = await getCollection('facilitators');
-const sortedFacilitators = facilitators.sort((a, b) => a.data.name.localeCompare(b.data.name));
+// Get all guides
+const guides = await getCollection('facilitators');
+const sortedGuides = guides.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
-const title = 'Facilitators - SUUNA';
+const title = 'Guides - SUUNA';
 const description = 'Meet the visionary teachers, healers, and community builders who are co-creating intentional spaces for transformation and growth.';
 ---
 
@@ -39,40 +39,40 @@ const description = 'Meet the visionary teachers, healers, and community builder
       </div>
     </section>
 
-    <!-- Facilitators Grid -->
+    <!-- Guides Grid -->
     <section class="py-16 bg-gradient-to-b from-suuna-forest to-suuna-bg">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sortedFacilitators.map((facilitator) => (
+          {sortedGuides.map((guide) => (
             <div class="reveal-stagger">
               <article class="card p-6 group h-full">
                 <div class="aspect-square mb-6 overflow-hidden rounded-lg">
-                  <img 
-                    src={facilitator.data.image} 
-                    alt={facilitator.data.name}
+                  <img
+                    src={guide.data.image}
+                    alt={guide.data.name}
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
                 </div>
-                
+
                 <h3 class="text-xl font-serif font-semibold text-suuna-text-light mb-2 group-hover:text-suuna-accent transition-colors">
-                  {facilitator.data.name}
+                  {guide.data.name}
                 </h3>
-                
+
                 <p class="text-suuna-accent font-medium mb-3">
-                  {facilitator.data.role}
+                  {guide.data.role}
                 </p>
-                
+
                 <p class="text-suuna-text-muted text-sm mb-4 line-clamp-3">
-                  {facilitator.data.bio.substring(0, 150)}...
+                  {guide.data.bio.substring(0, 150)}...
                 </p>
-                
+
                 <div class="flex items-center justify-between mt-auto">
                   <span class="text-xs text-suuna-text-muted">
-                    📍 {facilitator.data.location}
+                    📍 {guide.data.location}
                   </span>
-                  <a 
-                    href={`/facilitators/${facilitator.slug}`}
+                  <a
+                    href={`/guides/${guide.slug}`}
                     class="text-suuna-accent hover:text-suuna-accent-muted text-sm font-medium transition-colors"
                   >
                     View Profile →
