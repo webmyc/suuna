@@ -13,7 +13,7 @@ const { title, description, canonical } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,13 +37,10 @@ const { title, description, canonical } = Astro.props;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <!-- Fonts -->
+    <!-- Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&family=PT+Serif:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Theme Script (runs before page load to prevent flash) -->
     <script is:inline>
@@ -55,9 +52,9 @@ const { title, description, canonical } = Astro.props;
       })();
     </script>
   </head>
-  <body>
+  <body class="bg-monk-bg text-monk-text-secondary font-sans antialiased selection:bg-monk-accent selection:text-white">
     <Header />
-    <main class="pt-16">
+    <main class="pt-20 min-h-screen">
       <slot />
     </main>
     <Footer />

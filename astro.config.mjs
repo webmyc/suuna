@@ -10,6 +10,13 @@ export default defineConfig({
     react(),
     tailwind()
   ],
+  image: {
+    domains: ["public-files.gumroad.com"],
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "public-files.gumroad.com",
+    }],
+  },
   build: {
     assets: 'assets'
   }
