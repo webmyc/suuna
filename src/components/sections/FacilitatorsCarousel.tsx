@@ -42,34 +42,40 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
   if (facilitators.length === 0) return null
 
   return (
-    <section id="facilitators" className="py-16 md:py-24 bg-secondary">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-12">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
+    <section id="facilitators" className="relative py-20 md:py-32 bg-gradient-to-br from-white via-bone to-sage/5 overflow-hidden">
+      {/* Warm background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-gradient-to-br from-honey/8 to-terracotta/5 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-[550px] h-[550px] bg-gradient-to-br from-sage/8 to-moss/4 rounded-full blur-[100px]"></div>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between mb-16">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-4 leading-tight tracking-tight">
               Meet Our Facilitators
             </h2>
-            <p className="text-lg text-secondary">
+            <p className="text-xl md:text-2xl text-ash font-light leading-relaxed">
               Connect with wisdom keepers and guides from our community
             </p>
           </div>
 
-          <div className="hidden md:flex gap-2">
+          <div className="hidden md:flex gap-3">
             <button
               onClick={scrollPrev}
               disabled={!canScrollPrev}
-              className="w-12 h-12 rounded-full bg-elevated border border-border flex items-center justify-center transition-all hover:scale-105 hover:border-accent disabled:opacity-30 disabled:hover:scale-100"
+              className="w-14 h-14 rounded-[20px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 disabled:hover:scale-100 shadow-lg shadow-terracotta/10"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-5 h-5 text-primary" />
+              <ChevronLeft className="w-6 h-6 text-terracotta" />
             </button>
             <button
               onClick={scrollNext}
               disabled={!canScrollNext}
-              className="w-12 h-12 rounded-full bg-elevated border border-border flex items-center justify-center transition-all hover:scale-105 hover:border-accent disabled:opacity-30 disabled:hover:scale-100"
+              className="w-14 h-14 rounded-[20px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 disabled:hover:scale-100 shadow-lg shadow-terracotta/10"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-5 h-5 text-primary" />
+              <ChevronRight className="w-6 h-6 text-terracotta" />
             </button>
           </div>
         </div>
@@ -82,9 +88,9 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
 
               return (
                 <div key={facilitator.id} className="embla__slide">
-                  <article className="glass rounded-3xl p-6 hover-lift group h-full flex flex-col">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-accent/30 flex-shrink-0 group-hover:ring-accent transition-all">
+                  <article className="bg-white/95 backdrop-blur-sm rounded-[32px] p-8 shadow-2xl shadow-honey/15 hover:shadow-2xl hover:shadow-honey/25 transition-all duration-500 hover:-translate-y-2 group h-full flex flex-col">
+                    <div className="flex items-start gap-5 mb-6">
+                      <div className="relative w-24 h-24 rounded-[24px] overflow-hidden ring-4 ring-honey/20 flex-shrink-0 group-hover:ring-honey/40 transition-all duration-300 group-hover:scale-105">
                         <img
                           src={facilitator.avatar}
                           alt={facilitator.name}
@@ -94,15 +100,15 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-xl font-semibold text-primary mb-1 group-hover:text-accent transition-colors">
+                        <h3 className="text-2xl font-display font-semibold text-charcoal mb-2 group-hover:text-terracotta transition-colors leading-tight">
                           {facilitator.name}
                         </h3>
-                        <p className="text-sm text-accent font-medium">
+                        <p className="text-base text-terracotta font-semibold">
                           {facilitator.headline}
                         </p>
                         {facilitator.location && (
-                          <div className="flex items-center gap-1.5 text-xs text-secondary mt-2">
-                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="flex items-center gap-2 text-sm text-ash mt-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
@@ -113,30 +119,30 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
                     </div>
 
                     {facilitator.bio && (
-                      <p className="text-sm text-secondary leading-relaxed mb-4 flex-1">
+                      <p className="text-base text-ash/80 leading-relaxed mb-5 flex-1">
                         {facilitator.bio}
                       </p>
                     )}
 
                     {facilitator.tags && facilitator.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {facilitator.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="px-2 py-1 rounded-full bg-primary text-secondary text-xs font-medium">
+                          <span key={tag} className="px-3 py-1.5 rounded-[12px] bg-bone text-charcoal text-sm font-medium border border-stone/30">
                             {tag}
                           </span>
                         ))}
                       </div>
                     )}
 
-                    <div className="flex gap-2 mt-auto">
+                    <div className="flex gap-3 mt-auto">
                       {siteLink && (
                         <a
                           href={siteLink.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 border border-accent text-accent rounded-full text-sm font-medium transition-all hover:bg-accent/10"
+                          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-terracotta/30 text-terracotta rounded-[20px] text-base font-semibold transition-all hover:bg-terracotta/10 hover:border-terracotta/50 hover:scale-105"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                           </svg>
                           Profile
@@ -147,9 +153,9 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
                           href={calendarLink.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-accent text-white rounded-full text-sm font-semibold transition-all hover:scale-105"
+                          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-br from-terracotta to-clay text-white rounded-[20px] text-base font-semibold transition-all hover:scale-105 hover:shadow-xl hover:shadow-terracotta/40 group/button"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 group-hover/button:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
                           Book
@@ -164,22 +170,22 @@ export function FacilitatorsCarousel({ facilitators }: Props) {
         </div>
 
         {/* Mobile navigation */}
-        <div className="flex md:hidden justify-center gap-2 mt-8">
+        <div className="flex md:hidden justify-center gap-3 mt-10">
           <button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
-            className="w-12 h-12 rounded-full bg-elevated border border-border flex items-center justify-center transition-all hover:scale-105 hover:border-accent disabled:opacity-30"
+            className="w-14 h-14 rounded-[20px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 shadow-lg shadow-terracotta/10"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-5 h-5 text-primary" />
+            <ChevronLeft className="w-6 h-6 text-terracotta" />
           </button>
           <button
             onClick={scrollNext}
             disabled={!canScrollNext}
-            className="w-12 h-12 rounded-full bg-elevated border border-border flex items-center justify-center transition-all hover:scale-105 hover:border-accent disabled:opacity-30"
+            className="w-14 h-14 rounded-[20px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 shadow-lg shadow-terracotta/10"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-5 h-5 text-primary" />
+            <ChevronRight className="w-6 h-6 text-terracotta" />
           </button>
         </div>
       </div>

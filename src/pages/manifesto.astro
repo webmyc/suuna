@@ -11,48 +11,50 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
 
 <Base title={title} description={description} canonical="https://suuna.ro/manifesto">
   <div class="min-h-screen bg-white">
-    <!-- Language Toggle -->
-    <div class="fixed top-24 right-8 z-50">
-      <div class="flex gap-2 bg-white/90 backdrop-blur-sm border-2 border-sage/20 rounded-2xl px-3 py-2 shadow-lg shadow-sage/10">
+    <!-- Language Toggle - Bold and Present -->
+    <div class="fixed top-28 right-8 z-50">
+      <div class="flex gap-2 bg-white/95 backdrop-blur-md border-2 border-sage/30 rounded-[20px] px-4 py-3 shadow-xl shadow-sage/20">
         <a
           href="/manifesto?lang=ro"
-          class={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-md' : 'text-ash hover:text-charcoal hover:bg-stone/30'}`}
+          class={`px-6 py-3 text-base font-semibold rounded-[16px] transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
         >
           RO
         </a>
         <a
           href="/manifesto?lang=en"
-          class={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-md' : 'text-ash hover:text-charcoal hover:bg-stone/30'}`}
+          class={`px-6 py-3 text-base font-semibold rounded-[16px] transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
         >
           EN
         </a>
       </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-stone/20 overflow-hidden">
-      <!-- Subtle organic background -->
+    <!-- Hero Section - Bold and Breathing -->
+    <section class="relative pt-40 pb-28 px-4 bg-gradient-to-br from-bone via-white to-stone/20 overflow-hidden">
+      <!-- Bold organic background with depth -->
       <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-20 right-1/4 w-72 h-72 bg-gradient-to-br from-sage/15 to-moss/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 left-1/3 w-64 h-64 bg-gradient-to-br from-terracotta/10 to-honey/5 rounded-full blur-3xl"></div>
+        <div class="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-sage/15 to-moss/8 rounded-full blur-[120px] animate-float-slow"></div>
+        <div class="absolute bottom-10 left-1/3 w-[450px] h-[450px] bg-gradient-to-br from-terracotta/12 to-honey/8 rounded-full blur-[120px] animate-float-slower"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-radial from-honey/6 to-transparent rounded-full blur-3xl"></div>
       </div>
 
-      <div class="relative z-10 max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-semibold text-charcoal mb-6 leading-tight">
+      <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-semibold text-charcoal mb-10 leading-none tracking-tight"
+            style="text-shadow: 0 4px 30px rgba(74, 124, 89, 0.1);">
           Manifesto
         </h1>
-        <div class="w-24 h-1 bg-gradient-to-r from-sage to-forest mx-auto rounded-full"></div>
+        <div class="w-32 h-2 bg-gradient-to-r from-sage via-forest to-sage mx-auto rounded-full shadow-lg shadow-sage/30"></div>
       </div>
     </section>
 
-    <!-- Romanian Content -->
+    <!-- Romanian Content - Bold Typography with Breathing Room -->
     {lang === 'ro' && (
-      <article class="max-w-2xl mx-auto px-4 py-16">
-        <h2 class="font-display text-2xl md:text-3xl text-charcoal mb-5 font-semibold">
+      <article class="max-w-3xl mx-auto px-4 py-20">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-charcoal mb-8 font-semibold leading-tight tracking-tight">
           Pentru creatorii care scriu, vorbesc, filmează — cu inimă.
         </h2>
 
-        <p class="text-base leading-relaxed mb-5 text-charcoal/80">
+        <p class="text-lg md:text-xl leading-relaxed mb-7 text-charcoal/80 font-light">
           Dacă ai simțit vreodată că dai tot ce ai mai bun în conținutul tău — postări, newslettere, clipuri, cursuri — și totuși e ca și cum vorbele tale se pierd într-un ocean de zgomot... ești în locul potrivit.
         </p>
 

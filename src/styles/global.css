@@ -270,4 +270,12 @@
   .animate-float {
     animation: float 8s ease-in-out infinite;
   }
+
+  .animate-float-slow {
+    animation: float 15s ease-in-out infinite;
+  }
+
+  .animate-float-slower {
+    animation: float 20s ease-in-out infinite;
+  }
 }
