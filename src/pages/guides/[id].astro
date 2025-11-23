@@ -23,8 +23,14 @@ const description = guide.bio_short || guide.headline;
 <Base title={title} description={description} canonical={`https://suuna.ro/guides/${guide.id}`}>
   <div class="min-h-screen bg-bone">
     <!-- Hero Section -->
-    <section class="pt-32 pb-16 px-4">
-      <div class="max-w-5xl mx-auto">
+    <section class="relative pt-32 pb-16 px-4 bg-gradient-to-br from-bone via-white to-stone/20 overflow-hidden">
+      <!-- Subtle organic background -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-20 right-1/4 w-64 h-64 bg-gradient-to-br from-sage/10 to-moss/5 rounded-full blur-3xl animate-breathe-slow"></div>
+        <div class="absolute bottom-10 left-1/4 w-56 h-56 bg-gradient-to-br from-terracotta/10 to-honey/5 rounded-full blur-3xl animate-breathe-slow" style="animation-delay: 2s;"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto">
         <div class="flex flex-col md:flex-row gap-8 items-start">
           <!-- Guide Photo -->
           <div class="w-full md:w-1/3">

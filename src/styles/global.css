@@ -237,4 +237,37 @@
   [data-animate].animate-in:nth-child(4) { transition-delay: 300ms; }
   [data-animate].animate-in:nth-child(5) { transition-delay: 400ms; }
   [data-animate].animate-in:nth-child(6) { transition-delay: 500ms; }
+
+  /* Organic breathing animations */
+  @keyframes breathe-slow {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(20px, -20px) scale(1.05);
+    }
+    50% {
+      transform: translate(-10px, 10px) scale(0.95);
+    }
+    75% {
+      transform: translate(-20px, -10px) scale(1.02);
+    }
+  }
+
+  .animate-breathe-slow {
+    animation: breathe-slow 6s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
 }

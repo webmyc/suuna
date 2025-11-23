@@ -24,31 +24,38 @@ const description = 'Join the community as a learner or share your work as a gui
 
   <div class="min-h-screen bg-bone">
     <!-- Hero Section -->
-    <section class="pt-32 pb-12 px-4">
-      <div class="max-w-7xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-display font-semibold text-charcoal mb-6">
+    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-moss/10 overflow-hidden">
+      <!-- Subtle organic background -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-20 right-1/4 w-80 h-80 bg-gradient-to-br from-moss/15 to-sage/10 rounded-full blur-3xl animate-breathe-slow"></div>
+        <div class="absolute bottom-10 left-1/4 w-72 h-72 bg-gradient-to-br from-terracotta/10 to-honey/5 rounded-full blur-3xl animate-breathe-slow" style="animation-delay: 1.5s;"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-semibold text-charcoal mb-8 leading-tight">
           Find Your Place in SUUNA
         </h1>
-        <p class="text-xl md:text-2xl text-ash max-w-2xl mx-auto">
+        <p class="text-xl md:text-2xl text-ash max-w-2xl mx-auto leading-relaxed font-light">
           Whether you're seeking belonging or sharing your gifts.
         </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-moss to-sage mx-auto rounded-full mt-8"></div>
       </div>
     </section>
 
     <!-- Two Paths Section -->
-    <section class="py-12 px-4">
+    <section class="py-20 px-4">
       <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
           <!-- For Learners -->
-          <article class="bg-white rounded-xl p-12 shadow-lg hover:shadow-xl transition-all">
-            <div class="text-6xl mb-6 text-center">🌱</div>
+          <article class="group bg-white/90 backdrop-blur-sm rounded-2xl p-12 shadow-xl shadow-sage/10 hover:shadow-2xl hover:shadow-sage/15 transition-all duration-500 hover:-translate-y-1 border border-sage/10">
+            <div class="text-6xl mb-8 text-center animate-breathe-slow">🌱</div>
 
-            <h2 class="text-2xl md:text-3xl font-display font-semibold text-forest-dark mb-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-6 text-center">
               Join the Community
             </h2>
 
-            <p class="text-lg text-ash mb-8 text-center">
+            <p class="text-lg text-ash mb-10 text-center leading-relaxed">
               A free, intentional space to connect, learn, and contribute.
             </p>
 
@@ -93,10 +100,10 @@ const description = 'Join the community as a learner or share your work as a gui
             <div class="text-center">
               <button
                 onclick="mw('show')"
-                class="inline-flex items-center gap-2 px-8 py-4 bg-sage text-white font-semibold rounded-md hover:bg-forest-dark transition-all hover:scale-105 shadow-lg"
+                class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-sage to-forest text-white font-semibold rounded-2xl hover:shadow-xl hover:shadow-sage/30 transition-all duration-300 hover:scale-105 shadow-lg shadow-sage/25"
               >
-                Explore Community
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="group-hover:scale-105 transition-transform duration-300">Explore Community</span>
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
               </button>
@@ -104,18 +111,18 @@ const description = 'Join the community as a learner or share your work as a gui
           </article>
 
           <!-- For Guides -->
-          <article class="bg-white border border-sage/20 rounded-xl p-12 shadow-lg text-charcoal">
-            <div class="text-6xl mb-6 text-center">✨</div>
+          <article class="group bg-white/90 backdrop-blur-sm rounded-2xl p-12 shadow-xl shadow-terracotta/10 hover:shadow-2xl hover:shadow-terracotta/15 transition-all duration-500 hover:-translate-y-1 border border-terracotta/10">
+            <div class="text-6xl mb-8 text-center animate-breathe-slow" style="animation-delay: 1s;">✨</div>
 
-            <h2 class="text-2xl md:text-3xl font-display font-semibold mb-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-6 text-center">
               Share Your Work with SUUNA
             </h2>
 
-            <p class="text-lg mb-8 text-center opacity-90">
+            <p class="text-lg text-ash mb-10 text-center leading-relaxed">
               We provide the platform, tools, and community.
             </p>
 
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8">
+            <div class="bg-stone/30 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-terracotta/10">
               <h3 class="text-xl font-display font-bold mb-4">What you get:</h3>
 
               <div class="space-y-3">
@@ -168,10 +175,10 @@ const description = 'Join the community as a learner or share your work as a gui
                 href="https://cal.com/mihai-love/suuna"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-8 py-4 bg-white text-sage font-semibold rounded-md hover:bg-bone transition-all hover:scale-105 shadow-lg"
+                class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-terracotta to-clay text-white font-semibold rounded-2xl hover:shadow-xl hover:shadow-terracotta/30 transition-all duration-300 hover:scale-105 shadow-lg shadow-terracotta/25"
               >
-                Schedule a Conversation
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="group-hover:scale-105 transition-transform duration-300">Schedule a Conversation</span>
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
               </a>
@@ -183,20 +190,20 @@ const description = 'Join the community as a learner or share your work as a gui
     </section>
 
     <!-- Manifesto CTA -->
-    <section class="py-16 px-4">
+    <section class="py-20 px-4 bg-gradient-to-br from-stone/20 to-bone">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl md:text-3xl font-display font-semibold text-forest-dark mb-6">
+        <h2 class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-6 leading-tight">
           Want to learn more about SUUNA?
         </h2>
-        <p class="text-lg text-ash mb-8">
+        <p class="text-lg md:text-xl text-ash mb-10 leading-relaxed">
           Read our manifesto to understand our vision and values.
         </p>
         <a
           href="/manifesto"
-          class="inline-flex items-center gap-2 px-8 py-4 border-2 border-sage text-sage hover:bg-sage hover:text-charcoal rounded-md font-medium transition-all"
+          class="group inline-flex items-center gap-2 px-8 py-4 bg-white/90 backdrop-blur-sm border-2 border-sage/30 text-charcoal font-medium rounded-2xl hover:bg-white hover:border-sage/50 transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg shadow-sage/10"
         >
-          Read Our Manifesto
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span class="group-hover:scale-105 transition-transform duration-300">Read Our Manifesto</span>
+          <svg class="w-5 h-5 text-sage group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
         </a>

@@ -1,42 +1,83 @@
 ---
-// Hero Section - Clean & Minimal
+// Hero Section - Warm, Organic, Breathing
 ---
 
-<section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-white">
-  <!-- Subtle gradient background -->
-  <div class="absolute inset-0 bg-gradient-to-b from-sage/3 via-transparent to-transparent"></div>
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-bone via-white to-stone/30">
+  <!-- Subtle organic background elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-sage/20 to-moss/10 rounded-full blur-3xl animate-float" style="animation-duration: 8s;"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-gradient-to-br from-terracotta/15 to-honey/10 rounded-full blur-3xl animate-float" style="animation-duration: 10s; animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-moss/5 to-transparent rounded-full blur-3xl"></div>
+  </div>
 
   <!-- Content -->
-  <div class="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+  <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
     <!-- SUUNA Wordmark -->
-    <h1 class="mb-6">
-      <span
-        class="font-suuna text-sage text-7xl md:text-8xl inline-block"
-        style="font-family: 'Architype Bayer-type W90', sans-serif !important; letter-spacing: 0.05em;"
-      >
-        SUUNA
-      </span>
-    </h1>
+    <div class="mb-8 animate-breathe">
+      <h1 class="inline-block">
+        <span
+          class="font-suuna text-sage text-7xl md:text-8xl lg:text-9xl inline-block"
+          style="font-family: 'Architype Bayer-type W90', sans-serif !important; letter-spacing: 0.05em;
+          text-shadow: 0 2px 20px rgba(74, 124, 89, 0.15);"
+        >
+          SUUNA
+        </span>
+      </h1>
+    </div>
 
     <!-- Tagline -->
-    <p class="text-lg md:text-xl text-charcoal/70 max-w-xl mx-auto mb-10">
+    <p class="text-lg md:text-xl text-charcoal/70 max-w-xl mx-auto mb-12 leading-relaxed font-light">
       A platform for intentional communities
     </p>
 
-    <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+    <!-- CTAs with warmth -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
       <a
         href="/join"
-        class="inline-flex items-center justify-center px-6 py-2.5 bg-sage text-white font-medium rounded-md transition-all hover:bg-forest-dark"
+        class="group inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-br from-sage to-forest rounded-2xl text-white font-medium shadow-lg shadow-sage/25 hover:shadow-xl hover:shadow-sage/30 transition-all duration-300 hover:-translate-y-0.5"
       >
-        Join the Community
+        <span class="group-hover:scale-105 transition-transform duration-300">Join the Community</span>
       </a>
       <a
         href="/manifesto"
-        class="inline-flex items-center justify-center px-6 py-2.5 border border-charcoal/15 text-charcoal font-medium rounded-md transition-all hover:border-sage hover:text-sage"
+        class="group inline-flex items-center justify-center px-8 py-3.5 bg-white/80 backdrop-blur-sm border-2 border-sage/20 text-charcoal font-medium rounded-2xl hover:bg-white hover:border-sage/40 transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md"
       >
-        Read Our Manifesto
+        <span class="group-hover:scale-105 transition-transform duration-300">Read Our Manifesto</span>
       </a>
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(20px, -20px) scale(1.05);
+    }
+    50% {
+      transform: translate(-10px, 10px) scale(0.95);
+    }
+    75% {
+      transform: translate(-20px, -10px) scale(1.02);
+    }
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+</style>

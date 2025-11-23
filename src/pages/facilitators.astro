@@ -19,18 +19,23 @@ const description = 'Meet the visionary teachers, healers, and community builder
 >
   <Header />
   
-  <main class="pt-16">
+  <main class="min-h-screen bg-bone">
     <!-- Hero Section -->
-    <section class="py-16 bg-gradient-to-b from-suuna-bg to-suuna-forest">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h1 class="text-4xl md:text-5xl font-serif font-bold text-suuna-text-light mb-6">
-            <span class="suuna-font" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span> Family of Creators
-          </h1>
-          <p class="text-xl text-suuna-text-muted max-w-3xl mx-auto">
-            Meet the visionary teachers, healers, and community builders who are co-creating intentional spaces for transformation and growth.
-          </p>
-        </div>
+    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-moss/10 overflow-hidden">
+      <!-- Subtle organic background -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-20 left-1/3 w-80 h-80 bg-gradient-to-br from-moss/15 to-sage/10 rounded-full blur-3xl animate-breathe-slow"></div>
+        <div class="absolute bottom-10 right-1/3 w-72 h-72 bg-gradient-to-br from-honey/15 to-terracotta/5 rounded-full blur-3xl animate-breathe-slow" style="animation-delay: 1.5s;"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-semibold text-charcoal mb-8 leading-tight">
+          <span class="font-suuna" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span> Family of Creators
+        </h1>
+        <p class="text-xl md:text-2xl text-ash max-w-3xl mx-auto leading-relaxed font-light">
+          Meet the visionary teachers, healers, and community builders who are co-creating intentional spaces for transformation and growth.
+        </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-moss to-sage mx-auto rounded-full mt-8"></div>
       </div>
     </section>
 
