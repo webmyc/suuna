@@ -15,6 +15,14 @@
 @layer base {
   /* Light theme (default) */
   :root {
+    /* Monkshub Colors - Light Mode */
+    --monk-bg: 250 250 250; /* #FAFAFA */
+    --monk-surface: 255 255 255; /* #FFFFFF */
+    --monk-text-primary: 8 8 8; /* #080808 */
+    --monk-text-secondary: 82 82 82; /* #525252 */
+    --monk-border: 229 229 229; /* #E5E5E5 */
+    
+    /* Legacy theme colors */
     --color-bg-primary: 250 250 249; /* stone-50 */
     --color-bg-secondary: 255 255 255; /* white */
     --color-bg-elevated: 255 255 255; /* white */
@@ -38,6 +46,14 @@
 
   /* Dark theme */
   :root[data-theme='dark'] {
+    /* Monkshub Colors - Dark Mode */
+    --monk-bg: 10 28 23; /* Dark forest */
+    --monk-surface: 20 42 37; /* Slightly lighter forest */
+    --monk-text-primary: 250 250 250; /* Near white */
+    --monk-text-secondary: 180 180 180; /* Light gray */
+    --monk-border: 40 60 55; /* Subtle dark border */
+    
+    /* Legacy theme colors */
     --color-bg-primary: 10 28 23; /* forest dark */
     --color-bg-secondary: 14 42 34; /* forest medium */
     --color-bg-elevated: 20 54 44; /* forest light */

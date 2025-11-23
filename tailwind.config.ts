@@ -11,16 +11,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Monkshub Semantic Palette
+        // Monkshub Semantic Palette with Dark Mode Support
         monk: {
-          bg: '#FAFAFA',       // Canvas-Primary
-          surface: '#FFFFFF',  // Canvas-Secondary
+          bg: 'rgb(var(--monk-bg) / <alpha-value>)',
+          surface: 'rgb(var(--monk-surface) / <alpha-value>)',
           text: {
-            primary: '#080808',   // Headings
-            secondary: '#525252', // Body
+            primary: 'rgb(var(--monk-text-primary) / <alpha-value>)',
+            secondary: 'rgb(var(--monk-text-secondary) / <alpha-value>)',
           },
-          accent: '#146EF5',   // Brand Accent (Electric Blue)
-          border: '#E5E5E5',   // Subtle dividers
+          accent: '#146EF5',   // Brand Accent (Electric Blue) - same in both modes
+          border: 'rgb(var(--monk-border) / <alpha-value>)',
         },
         // Status Colors
         status: {
