@@ -13,66 +13,90 @@
 }
 
 @layer base {
-  /* Light theme (default) */
+  /* Light theme (default) - SUUNA Spec Colors */
   :root {
-    /* Monkshub Colors - Light Mode */
-    --monk-bg: 250 250 250; /* #FAFAFA */
-    --monk-surface: 255 255 255; /* #FFFFFF */
-    --monk-text-primary: 8 8 8; /* #080808 */
-    --monk-text-secondary: 82 82 82; /* #525252 */
-    --monk-border: 229 229 229; /* #E5E5E5 */
+    /* Primary Colors */
+    --forest-dark: 26 58 46; /* #1A3A2E */
+    --sage: 74 124 89; /* #4A7C59 */
+    --moss: 123 165 135; /* #7BA587 */
     
-    /* Legacy theme colors */
-    --color-bg-primary: 250 250 249; /* stone-50 */
+    /* Warm Accents */
+    --terracotta: 212 120 92; /* #D4785C */
+    --honey: 232 168 124; /* #E8A87C */
+    --clay: 164 93 63; /* #A45D3F */
+    
+    /* Neutrals */
+    --bone: 250 248 245; /* #FAF8F5 */
+    --stone: 232 229 224; /* #E8E5E0 */
+    --charcoal: 44 44 44; /* #2C2C2C */
+    --ash: 107 107 107; /* #6B6B6B */
+    
+    /* Background & Surface */
+    --color-bg-primary: 250 248 245; /* bone */
     --color-bg-secondary: 255 255 255; /* white */
     --color-bg-elevated: 255 255 255; /* white */
 
-    --color-text-primary: 28 25 23; /* stone-900 */
-    --color-text-secondary: 68 64 60; /* stone-700 */
-    --color-text-tertiary: 120 113 108; /* stone-500 */
-
-    --color-accent: 16 185 129; /* emerald-500 */
-    --color-accent-hover: 5 150 105; /* emerald-600 */
-    --color-accent-light: 158 230 214; /* SUUNA accent */
-
-    --color-border: 231 229 228; /* stone-200 */
-    --color-border-hover: 214 211 209; /* stone-300 */
-
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    /* Text Colors */
+    --color-text-primary: 44 44 44; /* charcoal */
+    --color-text-secondary: 107 107 107; /* ash */
+    --color-text-tertiary: 107 107 107; /* ash */
+    
+    /* Accent Colors */
+    --color-accent: 74 124 89; /* sage */
+    --color-accent-hover: 26 58 46; /* forest-dark */
+    --color-accent-light: 123 165 135; /* moss */
+    
+    /* Border Colors */
+    --color-border: 232 229 224; /* stone */
+    --color-border-hover: 212 120 92; /* terracotta */
+    
+    /* Warm, organic shadows - subtle and warm */
+    --shadow-sm: 0 1px 3px 0 rgba(26, 58, 46, 0.08), 0 1px 2px 0 rgba(26, 58, 46, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(26, 58, 46, 0.1), 0 2px 4px -1px rgba(26, 58, 46, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(26, 58, 46, 0.12), 0 4px 6px -2px rgba(26, 58, 46, 0.08);
+    --shadow-xl: 0 20px 25px -5px rgba(26, 58, 46, 0.15), 0 10px 10px -5px rgba(26, 58, 46, 0.1);
+    
+    /* Legacy compatibility - map to new colors */
+    --monk-bg: 250 248 245; /* bone */
+    --monk-surface: 255 255 255; /* white */
+    --monk-text-primary: 44 44 44; /* charcoal */
+    --monk-text-secondary: 107 107 107; /* ash */
+    --monk-border: 232 229 224; /* stone */
   }
 
-  /* Dark theme */
+  /* Dark theme - SUUNA Spec Colors */
   :root[data-theme='dark'] {
-    /* Monkshub Colors - Dark Mode */
-    --monk-bg: 10 28 23; /* Dark forest */
-    --monk-surface: 20 42 37; /* Slightly lighter forest */
-    --monk-text-primary: 250 250 250; /* Near white */
-    --monk-text-secondary: 180 180 180; /* Light gray */
-    --monk-border: 40 60 55; /* Subtle dark border */
+    /* Background & Surface */
+    --color-bg-primary: 13 27 34; /* #0D1B22 */
+    --color-bg-secondary: 30 43 56; /* #1E2B38 */
+    --color-bg-elevated: 30 43 56; /* #1E2B38 */
     
-    /* Legacy theme colors */
-    --color-bg-primary: 10 28 23; /* forest dark */
-    --color-bg-secondary: 14 42 34; /* forest medium */
-    --color-bg-elevated: 20 54 44; /* forest light */
-
-    --color-text-primary: 245 247 245; /* near white */
-    --color-text-secondary: 191 192 189; /* muted light */
-    --color-text-tertiary: 120 113 108; /* stone-500 */
-
-    --color-accent: 158 230 214; /* SUUNA accent */
-    --color-accent-hover: 124 196 181; /* SUUNA accent hover */
+    /* Text Colors */
+    --color-text-primary: 250 248 245; /* bone */
+    --color-text-secondary: 184 197 208; /* #B8C5D0 */
+    --color-text-tertiary: 184 197 208; /* #B8C5D0 */
+    
+    /* Accent Colors - same in dark mode */
+    --color-accent: 123 165 135; /* moss - lighter for dark mode */
+    --color-accent-hover: 158 230 214; /* lighter accent */
     --color-accent-light: 158 230 214;
 
+    /* Border Colors */
     --color-border: 255 255 255 / 0.1;
-    --color-border-hover: 255 255 255 / 0.15;
-
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6);
+    --color-border-hover: 123 165 135 / 0.3; /* moss */
+    
+    /* Warm shadows for dark mode */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    
+    /* Legacy compatibility */
+    --monk-bg: 13 27 34; /* #0D1B22 */
+    --monk-surface: 30 43 56; /* #1E2B38 */
+    --monk-text-primary: 250 248 245; /* bone */
+    --monk-text-secondary: 184 197 208; /* #B8C5D0 */
+    --monk-border: 40 60 55; /* subtle dark border */
   }
 
   * {
@@ -81,32 +105,56 @@
 
   html {
     @apply scroll-smooth;
-    font-family: 'League Spartan', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   body {
     @apply antialiased;
-    background-color: #FAF8F5; /* bone - light background */
-    color: #2C2C2C; /* charcoal - dark text */
+    background-color: rgb(var(--color-bg-primary));
+    color: rgb(var(--color-text-primary));
     transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: 'League Spartan', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   /* Ensure dark mode has proper contrast */
   :root[data-theme='dark'] body {
-    background-color: #0D1B22;
-    color: #FAF8F5;
+    background-color: rgb(var(--color-bg-primary));
+    color: rgb(var(--color-text-primary));
   }
 
-  /* Typography */
+  /* Typography - Inter for body, Cormorant Garamond for headings */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'PT Serif', serif;
+    font-family: 'Cormorant Garamond', serif;
     @apply font-semibold tracking-tight;
   }
 
-  /* Focus styles */
+  /* Focus styles - Accessibility */
   :focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-primary;
+    @apply outline-none ring-2 ring-sage dark:ring-moss ring-offset-2 ring-offset-bone dark:ring-offset-[#0D1B22];
+  }
+
+  /* Skip to main content link */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only.focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 
   /* Selection */
@@ -208,14 +256,14 @@
     }
   }
 
-  /* Hover lift effect */
+  /* Hover lift effect - subtle and warm */
   .hover-lift {
     @apply transition-all duration-300;
   }
 
   .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
   /* Scroll animations */

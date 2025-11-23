@@ -15,21 +15,21 @@ const sortedGuides = guidesData.sort((a, b) => {
 ---
 
 <Base title={title} description={description} canonical="https://suuna.ro/guides">
-  <div class="min-h-screen bg-bone">
+  <div class="min-h-screen bg-bone dark:bg-[#0D1B22]">
     <!-- Hero Section - Clean and Elegant -->
-    <section class="relative pt-32 pb-16 px-4 bg-monk-bg">
+    <section class="relative pt-32 pb-16 px-4 bg-bone dark:bg-[#0D1B22]">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl sm:text-6xl font-display font-bold text-monk-text-primary mb-4 leading-tight">
+        <h1 class="text-5xl sm:text-6xl font-display font-bold text-charcoal dark:text-bone mb-4 leading-tight">
           Our Guides
         </h1>
-        <p class="text-lg text-monk-text-secondary max-w-2xl mx-auto leading-relaxed">
+        <p class="text-lg text-ash dark:text-[#B8C5D0] max-w-2xl mx-auto leading-relaxed">
           Wisdom keepers, teachers, and healers co-creating intentional spaces for transformation.
         </p>
       </div>
     </section>
 
     <!-- Guides Grid - Elegant and Compact -->
-    <section class="py-16 px-4 bg-monk-bg">
+    <section class="py-16 px-4 bg-bone dark:bg-[#0D1B22]">
       <div class="mx-auto max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedGuides.map((guide) => {
@@ -37,7 +37,7 @@ const sortedGuides = guidesData.sort((a, b) => {
             const substackLink = guide.links?.find(l => l.type === 'substack');
 
             return (
-              <article class="group bg-monk-surface rounded-lg overflow-hidden border border-monk-border hover:shadow-lg transition-all">
+              <article class="group bg-white dark:bg-[#1E2B38] rounded-lg overflow-hidden border border-stone/30 dark:border-white/10 hover:shadow-lg transition-all">
                 {/* Guide Photo */}
                 <div class="aspect-square overflow-hidden relative">
                   <img
@@ -47,7 +47,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                     loading="lazy"
                   />
                   {guide.featured && (
-                    <div class="absolute top-3 right-3 bg-monk-accent text-white px-3 py-1 rounded-md text-xs font-semibold">
+                    <div class="absolute top-3 right-3 bg-sage dark:bg-moss text-white px-3 py-1 rounded-md text-xs font-semibold">
                       Featured
                     </div>
                   )}
@@ -55,15 +55,15 @@ const sortedGuides = guidesData.sort((a, b) => {
 
                 {/* Guide Info */}
                 <div class="p-4">
-                  <h3 class="text-lg font-display font-bold text-monk-text-primary mb-1 leading-tight">
+                  <h3 class="text-lg font-display font-bold text-charcoal dark:text-bone mb-1 leading-tight">
                     {guide.name}
                   </h3>
 
-                  <p class="text-sm text-monk-accent font-semibold mb-3">
+                  <p class="text-sm text-sage dark:text-moss font-semibold mb-3">
                     {guide.headline}
                   </p>
 
-                  <p class="text-sm text-monk-text-secondary leading-relaxed mb-3 line-clamp-2">
+                  <p class="text-sm text-ash dark:text-[#B8C5D0] leading-relaxed mb-3 line-clamp-2">
                     {guide.bio}
                   </p>
 
@@ -71,7 +71,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                   {guide.tags && guide.tags.length > 0 && (
                     <div class="flex flex-wrap gap-1.5 mb-3">
                       {guide.tags.slice(0, 3).map((tag) => (
-                        <span class="px-2 py-1 rounded-md bg-monk-bg text-monk-text-secondary text-xs font-medium border border-monk-border">
+                        <span class="px-2 py-1 rounded-md bg-bone dark:bg-[#0D1B22] text-ash dark:text-[#B8C5D0] text-xs font-medium border border-stone/30 dark:border-white/10">
                           {tag}
                         </span>
                       ))}
@@ -80,7 +80,7 @@ const sortedGuides = guidesData.sort((a, b) => {
 
                   {/* Location */}
                   {guide.location && (
-                    <div class="flex items-center gap-1.5 text-monk-text-secondary mb-3 text-xs">
+                    <div class="flex items-center gap-1.5 text-ash dark:text-[#B8C5D0] mb-3 text-xs">
                       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -93,7 +93,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                   <div class="flex gap-2">
                     <a
                       href={`/guides/${guide.id}`}
-                      class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-monk-accent text-white font-semibold text-sm rounded-lg hover:bg-opacity-90 transition-all"
+                      class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-sage dark:bg-moss text-white font-semibold text-sm rounded-lg hover:bg-forest-dark dark:hover:bg-sage transition-all"
                     >
                       View Profile
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                         href={siteLink.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center w-10 h-10 bg-monk-surface border border-monk-border text-monk-text-primary rounded-lg hover:bg-monk-bg transition-all"
+                        class="inline-flex items-center justify-center w-10 h-10 bg-bone dark:bg-[#0D1B22] border border-stone/30 dark:border-white/10 text-charcoal dark:text-bone rounded-lg hover:bg-stone/50 dark:hover:bg-white/10 transition-all"
                         title="Visit website"
                       >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,7 +124,7 @@ const sortedGuides = guidesData.sort((a, b) => {
 
 
     <!-- Community CTA -->
-    <section class="py-16 px-4 bg-monk-accent">
+    <section class="py-16 px-4 bg-sage dark:bg-moss">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-3xl sm:text-4xl font-display font-bold text-white mb-3">
           Want to become a Guide?
@@ -134,7 +134,7 @@ const sortedGuides = guidesData.sort((a, b) => {
         </p>
         <a
           href="/join#guides"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-monk-accent font-semibold text-base rounded-lg hover:bg-opacity-90 transition-all"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-sage dark:text-moss font-semibold text-base rounded-lg hover:bg-bone dark:hover:bg-white/90 transition-all"
         >
           <span>Join as Guide</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

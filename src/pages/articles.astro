@@ -1,11 +1,10 @@
 ---
 import Base from '../components/layout/Base.astro';
-import { Image } from 'astro:assets';
 import { fetchAllSubstackFeeds } from '../utils/substack';
 
 // Page metadata
-const title = 'Articles - SUUNA';
-const description = 'Insights & reflections - Wisdom from our community of guides.';
+const title = 'Insights & Reflections - SUUNA';
+const description = 'Wisdom from our community of guides. Articles, essays, and reflections on transformation, relationships, and intentional living.';
 
 // Fetch all Substack articles
 const feeds = await fetchAllSubstackFeeds();
@@ -19,61 +18,75 @@ const allPosts = feeds
 const featuredArticle = allPosts.find(post => post.image) || allPosts[0];
 
 // Get latest articles (excluding featured)
-const latestArticles = allPosts.filter(post => post !== featuredArticle).slice(0, 6);
+const latestArticles = allPosts.filter(post => post !== featuredArticle).slice(0, 12);
 
-// Get unique authors
-const authors = [...new Set(allPosts.map(post => post.author))];
+// Helper function to format date
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric' 
+  });
+}
+
+function formatShortDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    month: 'short', 
+    day: 'numeric' 
+  });
+}
 ---
 
 <Base title={title} description={description} canonical="https://suuna.ro/articles">
-  <div class="min-h-screen bg-monk-bg">
-    <!-- Hero Section -->
-    <section class="relative pt-24 pb-12 px-4 border-b border-monk-border">
+  <div class="min-h-screen bg-bone dark:bg-[#0D1B22]">
+    <!-- Hero Section - Editorial Style -->
+    <section class="relative pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 border-b border-stone/30 dark:border-white/10">
       <div class="max-w-6xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-display font-bold text-monk-text-primary mb-4 tracking-tight">
-          Insights & Reflections
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-charcoal dark:text-bone mb-4 sm:mb-6 tracking-tight leading-[1.1]">
+          Insights &<br class="hidden sm:block"/>Reflections
         </h1>
-        <p class="text-xl text-monk-text-secondary max-w-2xl">
+        <p class="text-lg sm:text-xl md:text-2xl text-ash dark:text-[#B8C5D0] max-w-3xl leading-relaxed">
           Wisdom from our community of guides.
         </p>
       </div>
     </section>
 
-    <!-- Featured Article -->
+    <!-- Featured Article - Large Hero -->
     {featuredArticle && (
-      <article class="relative border-b border-monk-border">
-        <a href={featuredArticle.link} target="_blank" rel="noopener noreferrer" class="block group">
-          <div class="max-w-6xl mx-auto px-4 py-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <article class="relative border-b border-stone/30 dark:border-white/10">
+        <a href={featuredArticle.link} target="_blank" rel="noopener noreferrer" class="block group focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 rounded-xl">
+          <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16 md:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
               {featuredArticle.image && (
-                <div class="relative aspect-[4/3] overflow-hidden rounded-lg">
+                <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
                   <img 
                     src={featuredArticle.image} 
-                    alt={featuredArticle.title}
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt={featuredArticle.title || 'Featured article image'}
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    loading="eager"
+                    width="800"
+                    height="600"
                   />
                 </div>
               )}
               <div class={featuredArticle.image ? '' : 'lg:col-span-2'}>
-                <div class="text-sm font-medium text-monk-accent mb-3 uppercase tracking-wide">
+                <div class="text-xs font-semibold text-sage dark:text-moss mb-3 sm:mb-4 uppercase tracking-[0.15em]">
                   Featured
                 </div>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-monk-text-primary mb-4 leading-tight group-hover:text-monk-accent transition-colors">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-charcoal dark:text-bone mb-4 sm:mb-6 leading-tight tracking-tight group-hover:text-sage dark:group-hover:text-moss transition-colors duration-300">
                   {featuredArticle.title}
                 </h2>
-                <div class="flex items-center gap-4 text-sm text-monk-text-secondary mb-6">
-                  <span class="font-medium">{featuredArticle.author}</span>
-                  <span>·</span>
+                <div class="flex items-center gap-4 text-sm text-ash dark:text-[#B8C5D0] mb-6 font-medium">
+                  <span>{featuredArticle.author}</span>
+                  <span class="text-stone/40 dark:text-white/20">·</span>
                   <time datetime={featuredArticle.pubDate}>
-                    {new Date(featuredArticle.pubDate).toLocaleDateString('en-US', { 
-                      month: 'long', 
-                      day: 'numeric', 
-                      year: 'numeric' 
-                    })}
+                    {formatDate(featuredArticle.pubDate)}
                   </time>
                 </div>
                 {featuredArticle.excerpt && (
-                  <p class="text-lg text-monk-text-secondary leading-relaxed line-clamp-4">
+                  <p class="text-lg md:text-xl text-ash dark:text-[#B8C5D0] leading-relaxed line-clamp-4">
                     {featuredArticle.excerpt}
                   </p>
                 )}
@@ -84,41 +97,41 @@ const authors = [...new Set(allPosts.map(post => post.author))];
       </article>
     )}
 
-    <!-- Latest Articles - 2 Column Editorial Layout -->
-    <section class="py-16 px-4">
+    <!-- Latest Articles - Editorial 2-Column Layout -->
+    <section class="py-12 sm:py-16 md:py-20 px-4">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-display font-bold text-monk-text-primary mb-12 pb-4 border-b border-monk-border">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-charcoal dark:text-bone mb-8 sm:mb-12 pb-4 sm:pb-6 border-b border-stone/30 dark:border-white/10">
           Latest
         </h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-12 lg:gap-x-16 gap-y-12 sm:gap-y-16 md:gap-y-20">
           {latestArticles.map((post) => (
             <article class="group">
-              <a href={post.link} target="_blank" rel="noopener noreferrer" class="block">
+              <a href={post.link} target="_blank" rel="noopener noreferrer" class="block focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 rounded-lg">
                 {post.image && (
-                  <div class="relative aspect-[16/9] overflow-hidden rounded-lg mb-4">
+                  <div class="relative aspect-[16/10] overflow-hidden rounded-lg mb-4 sm:mb-6">
                     <img 
                       src={post.image} 
-                      alt={post.title}
-                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      alt={post.title || 'Article image'}
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      loading="lazy"
+                      width="600"
+                      height="375"
                     />
                   </div>
                 )}
-                <h3 class="text-2xl font-display font-bold text-monk-text-primary mb-3 leading-tight group-hover:text-monk-accent transition-colors">
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-display font-bold text-charcoal dark:text-bone mb-3 sm:mb-4 leading-tight tracking-tight group-hover:text-sage dark:group-hover:text-moss transition-colors duration-300">
                   {post.title}
                 </h3>
-                <div class="flex items-center gap-3 text-sm text-monk-text-secondary mb-3">
-                  <span class="font-medium">{post.author}</span>
-                  <span>·</span>
+                <div class="flex items-center gap-3 text-sm text-ash dark:text-[#B8C5D0] mb-4 font-medium">
+                  <span>{post.author}</span>
+                  <span class="text-stone/40 dark:text-white/20">·</span>
                   <time datetime={post.pubDate}>
-                    {new Date(post.pubDate).toLocaleDateString('en-US', { 
-                      month: 'short', 
-                      day: 'numeric' 
-                    })}
+                    {formatShortDate(post.pubDate)}
                   </time>
                 </div>
                 {post.excerpt && (
-                  <p class="text-monk-text-secondary leading-relaxed line-clamp-3">
+                  <p class="text-base text-ash dark:text-[#B8C5D0] leading-relaxed line-clamp-3">
                     {post.excerpt}
                   </p>
                 )}
@@ -129,52 +142,51 @@ const authors = [...new Set(allPosts.map(post => post.author))];
       </div>
     </section>
 
-    <!-- By Author Sections -->
-    <section class="py-16 px-4 bg-monk-surface border-t border-monk-border">
+    <!-- By Author Sections - Editorial Style -->
+    <section class="py-12 sm:py-16 md:py-20 px-4 bg-stone/20 dark:bg-white/5 border-t border-stone/30 dark:border-white/10">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-display font-bold text-monk-text-primary mb-12 pb-4 border-b border-monk-border">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-charcoal dark:text-bone mb-12 sm:mb-16 pb-4 sm:pb-6 border-b border-stone/30 dark:border-white/10">
           By Author
         </h2>
 
-        <div class="space-y-20">
+        <div class="space-y-16 sm:space-y-20 md:space-y-24">
           {feeds.filter(feed => feed.posts.length > 0).map((feed) => (
             <div>
-              <div class="flex items-baseline justify-between mb-8">
-                <h3 class="text-2xl font-display font-bold text-monk-text-primary">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-8 sm:mb-12">
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-display font-bold text-charcoal dark:text-bone">
                   {feed.title}
                 </h3>
                 <a
                   href={feed.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-sm font-medium text-monk-accent hover:underline"
+                  class="text-sm font-semibold text-sage dark:text-moss hover:underline transition-colors focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 rounded"
                 >
                   Subscribe →
                 </a>
               </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
                 {feed.posts.slice(0, 3).map((post) => (
                   <article class="group">
-                    <a href={post.link} target="_blank" rel="noopener noreferrer" class="block">
+                    <a href={post.link} target="_blank" rel="noopener noreferrer" class="block focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 rounded-lg">
                       {post.image && (
-                        <div class="relative aspect-[4/3] overflow-hidden rounded-lg mb-3">
+                        <div class="relative aspect-[4/3] overflow-hidden rounded-lg mb-3 sm:mb-4">
                           <img 
                             src={post.image} 
-                            alt={post.title}
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            alt={post.title || 'Article image'}
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                            loading="lazy"
+                            width="400"
+                            height="300"
                           />
                         </div>
                       )}
-                      <h4 class="text-lg font-display font-bold text-monk-text-primary mb-2 leading-tight group-hover:text-monk-accent transition-colors line-clamp-2">
+                      <h4 class="text-base sm:text-lg md:text-xl font-display font-bold text-charcoal dark:text-bone mb-2 leading-tight tracking-tight group-hover:text-sage dark:group-hover:text-moss transition-colors duration-300 line-clamp-2">
                         {post.title}
                       </h4>
-                      <time datetime={post.pubDate} class="text-sm text-monk-text-secondary">
-                        {new Date(post.pubDate).toLocaleDateString('en-US', { 
-                          month: 'short', 
-                          day: 'numeric',
-                          year: 'numeric'
-                        })}
+                      <time datetime={post.pubDate} class="text-sm text-ash dark:text-[#B8C5D0] font-medium">
+                        {formatDate(post.pubDate)}
                       </time>
                     </a>
                   </article>

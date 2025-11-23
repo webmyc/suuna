@@ -9,26 +9,26 @@ export function FacilitatorCard({ facilitator }: Props) {
   const calendarLink = facilitator.links?.find(l => l.type === 'calendar')
 
   return (
-    <article className="bg-monk-surface rounded-lg p-4 border border-monk-border hover:shadow-md transition-all group h-full flex flex-col">
+    <article className="bg-white dark:bg-[#1E2B38] rounded-lg p-4 border border-stone/30 dark:border-white/10 hover:shadow-md transition-all group h-full flex flex-col">
       <div className="flex items-start gap-3 mb-3">
         <div className="relative w-14 h-14 rounded-md overflow-hidden flex-shrink-0">
           <img
             src={facilitator.image}
-            alt={facilitator.name}
+            alt={facilitator.name || 'Facilitator photo'}
             className="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="text-base font-display font-bold text-monk-text-primary mb-0.5 leading-tight">
+          <h3 className="text-base font-display font-bold text-charcoal dark:text-bone mb-0.5 leading-tight">
             {facilitator.name}
           </h3>
-          <p className="text-xs text-monk-accent font-semibold">
+          <p className="text-xs text-sage dark:text-moss font-semibold">
             {facilitator.headline}
           </p>
           {facilitator.location && (
-            <div className="flex items-center gap-1 text-xs text-monk-text-secondary mt-1">
+            <div className="flex items-center gap-1 text-xs text-ash dark:text-[#B8C5D0] mt-1">
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -40,7 +40,7 @@ export function FacilitatorCard({ facilitator }: Props) {
       </div>
 
       {facilitator.bio && (
-        <p className="text-xs text-monk-text-secondary leading-relaxed mb-3 flex-1 line-clamp-2">
+        <p className="text-xs text-ash dark:text-[#B8C5D0] leading-relaxed mb-3 flex-1 line-clamp-2">
           {facilitator.bio}
         </p>
       )}
@@ -48,7 +48,7 @@ export function FacilitatorCard({ facilitator }: Props) {
       {facilitator.tags && facilitator.tags.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-3">
           {facilitator.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className="px-2 py-0.5 rounded-md bg-monk-bg text-monk-text-secondary text-xs font-medium border border-monk-border">
+            <span key={tag} className="px-2 py-0.5 rounded-md bg-bone dark:bg-[#0D1B22] text-ash dark:text-[#B8C5D0] text-xs font-medium border border-stone/30 dark:border-white/10">
               {tag}
             </span>
           ))}
@@ -61,7 +61,7 @@ export function FacilitatorCard({ facilitator }: Props) {
             href={siteLink.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 border border-monk-border text-monk-text-primary rounded-md text-xs font-semibold transition-all hover:bg-monk-bg">
+            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 border border-stone/30 dark:border-white/10 text-charcoal dark:text-bone rounded-md text-xs font-semibold transition-all hover:bg-stone/50 dark:hover:bg-white/10">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
@@ -73,7 +73,7 @@ export function FacilitatorCard({ facilitator }: Props) {
             href={calendarLink.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 bg-monk-accent text-white rounded-md text-xs font-semibold transition-all hover:bg-opacity-90"
+            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 bg-sage dark:bg-moss text-white rounded-md text-xs font-semibold transition-all hover:bg-forest-dark dark:hover:bg-sage"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
