@@ -27,9 +27,9 @@ const description = guide.bio || guide.headline;
 ---
 
 <Base title={title} description={description} canonical={`https://suuna.ro/guides/${guide.id}`}>
-  <div class="min-h-screen bg-bone">
+  <div class="min-h-screen bg-bone dark:bg-[#0D1B22]">
     <!-- Hero Section - Bold and Present -->
-    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-sage/10 overflow-hidden">
+    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-sage/10 dark:from-[#0D1B22] dark:via-[#1E2B38] dark:to-sage/5 overflow-hidden">
       <!-- Bold organic background -->
       <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-sage/15 to-moss/8 rounded-full blur-[120px] animate-float-slow"></div>
@@ -40,28 +40,30 @@ const description = guide.bio || guide.headline;
         <div class="flex flex-col md:flex-row gap-12 items-start">
           <!-- Guide Photo - Large and Bold -->
           <div class="w-full md:w-2/5">
-            <div class="aspect-square rounded-[32px] overflow-hidden shadow-2xl shadow-sage/20 ring-4 ring-white/50">
+            <div class="aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-sage/20 dark:shadow-black/30 ring-4 ring-white/50 dark:ring-white/10">
               <img
                 src={guide.image}
-                alt={guide.name}
+                alt={guide.name || 'Guide photo'}
                 class="w-full h-full object-cover"
                 loading="eager"
+                width="600"
+                height="600"
               />
             </div>
           </div>
 
           <!-- Guide Info -->
           <div class="flex-1">
-            <h1 class="text-5xl sm:text-6xl md:text-7xl font-display font-semibold text-charcoal mb-6 leading-none tracking-tight">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-display font-semibold text-charcoal dark:text-bone mb-6 leading-none tracking-tight">
               {guide.name}
             </h1>
 
-            <p class="text-2xl sm:text-3xl text-terracotta font-semibold mb-8">
+            <p class="text-2xl sm:text-3xl text-terracotta dark:text-honey font-semibold mb-8">
               {guide.headline}
             </p>
 
             {guide.location && (
-              <div class="flex items-center gap-3 text-xl text-ash mb-10">
+              <div class="flex items-center gap-3 text-xl text-ash dark:text-[#B8C5D0] mb-10">
                 <svg class="w-7 h-7 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -74,7 +76,7 @@ const description = guide.bio || guide.headline;
             {guide.tags && guide.tags.length > 0 && (
               <div class="flex flex-wrap gap-3 mb-10">
                 {guide.tags.map((tag: string) => (
-                  <span class="px-5 py-3 bg-stone/50 text-charcoal rounded-[16px] text-base font-semibold border-2 border-sage/20">
+                  <span class="px-5 py-3 bg-stone/50 dark:bg-white/10 text-charcoal dark:text-bone rounded-xl text-base font-semibold border-2 border-sage/20 dark:border-moss/30">
                     {tag}
                   </span>
                 ))}
@@ -88,7 +90,7 @@ const description = guide.bio || guide.headline;
                   href={siteLink.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-sage to-forest text-white font-bold text-lg rounded-[24px] hover:shadow-2xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105 shadow-xl shadow-sage/30"
+                  class="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-br from-sage to-forest-dark dark:from-moss dark:to-sage text-white font-bold text-base sm:text-lg rounded-xl hover:shadow-2xl hover:shadow-sage/40 dark:hover:shadow-moss/40 transition-all duration-300 hover:scale-105 shadow-xl shadow-sage/30 dark:shadow-black/30 focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2"
                 >
                   <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
@@ -102,7 +104,7 @@ const description = guide.bio || guide.headline;
                   href={substackLink.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group inline-flex items-center gap-3 px-10 py-5 bg-white/95 backdrop-blur-sm border-3 border-sage/40 text-sage hover:bg-white hover:border-sage/60 font-bold text-lg rounded-[24px] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  class="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-white/95 dark:bg-[#1E2B38]/95 backdrop-blur-sm border-2 sm:border-3 border-sage/40 dark:border-moss/40 text-sage dark:text-moss hover:bg-white dark:hover:bg-[#1E2B38] hover:border-sage/60 dark:hover:border-moss/60 font-bold text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2"
                 >
                   <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -117,13 +119,13 @@ const description = guide.bio || guide.headline;
     </section>
 
     <!-- Biography - Generous and Readable -->
-    <section class="py-20 px-4 bg-white">
+    <section class="py-20 px-4 bg-white dark:bg-[#1E2B38]">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-10 leading-tight tracking-tight">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal dark:text-bone mb-10 leading-tight tracking-tight">
           About {guide.name}
         </h2>
-        <div class="prose prose-xl max-w-none">
-          <p class="text-xl leading-relaxed text-ash whitespace-pre-line">
+        <div class="prose prose-xl max-w-none dark:prose-invert">
+          <p class="text-xl leading-relaxed text-ash dark:text-[#B8C5D0] whitespace-pre-line">
             {guide.bio}
           </p>
         </div>
@@ -132,15 +134,15 @@ const description = guide.bio || guide.headline;
 
     <!-- Offerings - If Available -->
     {guideOfferings.length > 0 && (
-      <section class="py-20 px-4 bg-gradient-to-br from-stone/30 to-bone">
+      <section class="py-20 px-4 bg-gradient-to-br from-stone/30 to-bone dark:from-[#0D1B22] dark:to-[#1E2B38]">
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-12 leading-tight tracking-tight text-center">
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal dark:text-bone mb-12 leading-tight tracking-tight text-center">
             Offerings
           </h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {guideOfferings.map((offering) => (
-              <article class="group bg-white/95 backdrop-blur-sm rounded-[32px] overflow-hidden shadow-xl shadow-terracotta/10 hover:shadow-2xl hover:shadow-terracotta/20 transition-all duration-500 hover:-translate-y-2">
+              <article class="group bg-white/95 dark:bg-[#1E2B38]/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl shadow-terracotta/10 dark:shadow-black/30 hover:shadow-2xl hover:shadow-terracotta/20 dark:hover:shadow-black/40 transition-all duration-500 hover:-translate-y-2">
                 {/* Offering Image */}
                 <div class="aspect-video bg-gradient-to-br from-terracotta to-clay relative overflow-hidden">
                   <div class="absolute inset-0 flex items-center justify-center">
@@ -154,19 +156,19 @@ const description = guide.bio || guide.headline;
                 {/* Offering Info */}
                 <div class="p-8">
                   <div class="flex items-center gap-2 mb-4">
-                    <span class="px-4 py-2 bg-terracotta/10 text-terracotta rounded-[12px] text-sm font-bold capitalize">
+                    <span class="px-4 py-2 bg-terracotta/10 dark:bg-honey/20 text-terracotta dark:text-honey rounded-lg text-sm font-bold capitalize">
                       {offering.type}
                     </span>
-                    <span class="text-ash text-sm font-medium">
+                    <span class="text-ash dark:text-[#B8C5D0] text-sm font-medium">
                       {new Date(offering.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </span>
                   </div>
 
-                  <h3 class="text-2xl sm:text-3xl font-display font-bold text-charcoal mb-4 group-hover:text-terracotta transition-colors leading-tight">
+                  <h3 class="text-2xl sm:text-3xl font-display font-bold text-charcoal dark:text-bone mb-4 group-hover:text-terracotta dark:group-hover:text-honey transition-colors leading-tight">
                     {offering.title}
                   </h3>
 
-                  <p class="text-lg text-ash/90 mb-6 leading-relaxed">
+                  <p class="text-lg text-ash/90 dark:text-[#B8C5D0]/90 mb-6 leading-relaxed">
                     {offering.description}
                   </p>
 
@@ -174,7 +176,7 @@ const description = guide.bio || guide.headline;
                     href={offering.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="group/button inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-terracotta to-clay text-white font-bold text-base rounded-[20px] hover:shadow-xl hover:shadow-terracotta/40 transition-all duration-300 hover:scale-105 shadow-lg"
+                    class="group/button inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-terracotta to-clay dark:from-honey dark:to-terracotta text-white font-bold text-base rounded-xl hover:shadow-xl hover:shadow-terracotta/40 dark:hover:shadow-honey/40 transition-all duration-300 hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-terracotta focus:ring-offset-2"
                   >
                     <span class="group-hover/button:scale-105 transition-transform duration-300">Learn More</span>
                     <svg class="w-5 h-5 group-hover/button:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,13 +193,13 @@ const description = guide.bio || guide.headline;
 
     <!-- Newsletter CTA - If Substack -->
     {substackLink && (
-      <section class="py-20 px-4 bg-white">
+      <section class="py-20 px-4 bg-white dark:bg-[#1E2B38]">
         <div class="max-w-4xl mx-auto">
-          <div class="bg-gradient-to-br from-sage/10 to-moss/5 rounded-[32px] p-10 md:p-14 shadow-xl shadow-sage/10 border-2 border-sage/20">
-            <h2 class="text-4xl sm:text-5xl font-display font-semibold text-charcoal mb-6 leading-tight">
+          <div class="bg-gradient-to-br from-sage/10 to-moss/5 dark:from-sage/5 dark:to-moss/3 rounded-2xl sm:rounded-3xl p-10 md:p-14 shadow-xl shadow-sage/10 dark:shadow-black/30 border-2 border-sage/20 dark:border-moss/20">
+            <h2 class="text-4xl sm:text-5xl font-display font-semibold text-charcoal dark:text-bone mb-6 leading-tight">
               Subscribe to {guide.name}'s Newsletter
             </h2>
-            <p class="text-xl text-ash/90 mb-8 leading-relaxed">
+            <p class="text-xl text-ash/90 dark:text-[#B8C5D0]/90 mb-8 leading-relaxed">
               Get regular insights, updates, and wisdom delivered to your inbox.
             </p>
 
@@ -205,7 +207,7 @@ const description = guide.bio || guide.headline;
               href={substackLink.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-sage to-forest text-white font-bold text-lg rounded-[24px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105 shadow-lg"
+              class="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-br from-sage to-forest-dark dark:from-moss dark:to-sage text-white font-bold text-base sm:text-lg rounded-xl hover:shadow-xl hover:shadow-sage/40 dark:hover:shadow-moss/40 transition-all duration-300 hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2"
             >
               <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>

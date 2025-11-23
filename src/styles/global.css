@@ -100,16 +100,17 @@
   }
 
   * {
-    @apply border-border;
+    border-color: rgb(var(--color-border));
   }
 
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
   body {
-    @apply antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: rgb(var(--color-bg-primary));
     color: rgb(var(--color-text-primary));
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -125,12 +126,19 @@
   /* Typography - Inter for body, Cormorant Garamond for headings */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', serif;
-    @apply font-semibold tracking-tight;
+    font-weight: 600;
+    letter-spacing: -0.025em;
   }
 
   /* Focus styles - Accessibility */
   :focus-visible {
-    @apply outline-none ring-2 ring-sage dark:ring-moss ring-offset-2 ring-offset-bone dark:ring-offset-[#0D1B22];
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgb(74 124 89), 0 0 0 4px rgb(250 248 245);
+  }
+
+  :root[data-theme='dark'] :focus-visible {
+    box-shadow: 0 0 0 2px rgb(123 165 135), 0 0 0 4px rgb(13 27 34);
   }
 
   /* Skip to main content link */
@@ -159,12 +167,15 @@
 
   /* Selection */
   ::selection {
-    @apply bg-accent/20 text-primary;
+    background-color: rgb(var(--color-accent) / 0.2);
+    color: rgb(var(--color-text-primary));
   }
 
   /* Smooth transitions */
   * {
-    @apply transition-colors duration-200;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
   }
 }
 
@@ -258,7 +269,9 @@
 
   /* Hover lift effect - subtle and warm */
   .hover-lift {
-    @apply transition-all duration-300;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
   }
 
   .hover-lift:hover {
