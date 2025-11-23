@@ -1,0 +1,131 @@
+---
+import Base from '../components/layout/Base.astro';
+import { ArticleCard } from '../components/ui/ArticleCard';
+import { fetchAllSubstackFeeds } from '../utils/substack';
+
+// Page metadata
+const title = 'Articles - SUUNA';
+const description = 'Insights & reflections - Wisdom from our community of guides.';
+
+// Fetch all Substack articles
+const feeds = await fetchAllSubstackFeeds();
+
+// Combine all posts and sort by date
+const allPosts = feeds
+  .flatMap(feed => feed.posts)
+  .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+
+// Get filter parameter (optional)
+const authorFilter = Astro.url.searchParams.get('author');
+
+// Filter posts if author selected
+const filteredPosts = authorFilter
+  ? allPosts.filter(post => post.author === authorFilter)
+  : allPosts;
+
+// Get unique authors for filter dropdown
+const authors = [...new Set(allPosts.map(post => post.author))];
+---
+
+<Base title={title} description={description} canonical="https://suuna.ro/articles">
+  <div class="min-h-screen bg-bone">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-forest-dark mb-6">
+          Insights & Reflections
+        </h1>
+        <p class="text-xl md:text-2xl text-ash max-w-2xl mx-auto">
+          Wisdom from our community of guides.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-8 px-4">
+      <div class="max-w-7xl mx-auto flex justify-center">
+        <div class="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-md">
+          <label for="author-filter" class="text-sm font-medium text-ash">Filter by author:</label>
+          <select
+            id="author-filter"
+            class="bg-transparent border-none text-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-sage rounded-lg px-3 py-1"
+            onchange="window.location.href = this.value === 'all' ? '/articles' : `/articles?author=${encodeURIComponent(this.value)}`"
+          >
+            <option value="all" selected={!authorFilter}>All Authors</option>
+            {authors.map(author => (
+              <option value={author} selected={authorFilter === author}>
+                {author}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="py-12 px-4">
+      <div class="max-w-7xl mx-auto">
+        {filteredPosts.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map((post) => (
+              <ArticleCard client:load article={post} />
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-16">
+            <p class="text-xl text-ash">No articles found for this author.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Author Sections (when no filter) -->
+    {!authorFilter && feeds.length > 0 && (
+      <section class="py-16 px-4 bg-stone">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-forest-dark mb-12 text-center">
+            By Author
+          </h2>
+
+          <div class="space-y-16">
+            {feeds.filter(feed => feed.posts.length > 0).map((feed) => (
+              <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div class="flex items-center gap-4 mb-6">
+                  <h3 class="text-2xl font-display font-bold text-forest-dark">
+                    {feed.title}
+                  </h3>
+                  <a
+                    href={`/articles?author=${encodeURIComponent(feed.title)}`}
+                    class="text-sage hover:text-forest-dark transition-colors text-sm font-medium"
+                  >
+                    View all →
+                  </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {feed.posts.slice(0, 3).map((post) => (
+                    <ArticleCard client:load article={post} compact={true} />
+                  ))}
+                </div>
+
+                <div class="mt-6 flex justify-center">
+                  <a
+                    href={feed.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 border-2 border-sage text-sage hover:bg-sage hover:text-white rounded-full font-medium transition-all"
+                  >
+                    Subscribe on Substack
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </div>
+</Base>

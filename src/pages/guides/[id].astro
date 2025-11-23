@@ -1,0 +1,221 @@
+---
+import Base from '../../components/layout/Base.astro';
+import facilitatorsData from '../../../data/facilitators.json';
+import offeringsData from '../../../data/offerings.json';
+
+export async function getStaticPaths() {
+  return facilitatorsData.map((guide) => ({
+    params: { id: guide.id },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+
+// Get offerings for this guide
+const guideOfferings = offeringsData.filter(o => o.guide_id === guide.id);
+
+// Page metadata
+const title = `${guide.name} - SUUNA Guide`;
+const description = guide.bio_short || guide.headline;
+---
+
+<Base title={title} description={description} canonical={`https://suuna.ro/guides/${guide.id}`}>
+  <div class="min-h-screen bg-bone">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+          <!-- Guide Photo -->
+          <div class="w-full md:w-1/3">
+            <div class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-sage to-forest-dark shadow-xl">
+              <img
+                src={guide.avatar}
+                alt={guide.name}
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-full text-white text-6xl\\'>' + this.alt.charAt(0) + '</div>'"
+              />
+            </div>
+          </div>
+
+          <!-- Guide Info -->
+          <div class="flex-1">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-forest-dark mb-4">
+              {guide.name}
+            </h1>
+
+            <p class="text-xl text-ash mb-6">
+              {guide.headline}
+            </p>
+
+            <div class="flex items-center gap-2 text-charcoal mb-6">
+              <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <span>{guide.location}</span>
+            </div>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2 mb-8">
+              {guide.tags.map((tag: string) => (
+                <span class="px-3 py-1 bg-stone text-charcoal rounded-full text-sm">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-4">
+              {guide.booking_url && (
+                <a
+                  href={guide.booking_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-sage text-white font-semibold rounded-full hover:bg-forest-dark transition-all hover:scale-105 shadow-lg"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  Book a Session
+                </a>
+              )}
+
+              {guide.substack_url && (
+                <a
+                  href={guide.substack_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 border-2 border-sage text-sage hover:bg-sage hover:text-white rounded-full font-medium transition-all"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  Subscribe
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Biography -->
+    <section class="py-12 px-4 bg-white">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-display font-bold text-forest-dark mb-6">
+          About {guide.name}
+        </h2>
+        <div class="prose prose-lg max-w-none">
+          <p class="text-lg leading-relaxed text-charcoal whitespace-pre-line">
+            {guide.bio_long || guide.bio_short}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Offering -->
+    {guideOfferings.length > 0 && (
+      <section class="py-12 px-4 bg-stone">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-display font-bold text-forest-dark mb-8">
+            Latest Offering
+          </h2>
+
+          <article class="bg-white rounded-2xl overflow-hidden shadow-lg">
+            <div class="md:flex">
+              <div class="md:w-2/5 aspect-video md:aspect-square bg-gradient-to-br from-terracotta to-clay flex items-center justify-center text-white text-6xl">
+                ✨
+              </div>
+
+              <div class="md:w-3/5 p-8">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="px-3 py-1 bg-terracotta/10 text-terracotta rounded-full text-sm font-medium capitalize">
+                    {guideOfferings[0].type}
+                  </span>
+                  <span class="text-ash text-sm">
+                    {new Date(guideOfferings[0].date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </span>
+                </div>
+
+                <h3 class="text-2xl font-display font-bold text-forest-dark mb-4">
+                  {guideOfferings[0].title}
+                </h3>
+
+                <p class="text-ash mb-6">
+                  {guideOfferings[0].description}
+                </p>
+
+                <a
+                  href={guideOfferings[0].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-6 py-3 bg-terracotta text-white font-semibold rounded-full hover:bg-clay transition-all hover:scale-105"
+                >
+                  Learn More
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    )}
+
+    <!-- Latest from Substack -->
+    {guide.substack_url && (
+      <section class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-display font-bold text-forest-dark">
+              Latest from Substack
+            </h2>
+            <a
+              href={guide.substack_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sage hover:text-forest-dark transition-colors font-medium"
+            >
+              View all →
+            </a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <p class="text-ash mb-6">
+              Subscribe to {guide.name}'s newsletter for regular insights and updates.
+            </p>
+
+            <a
+              href={guide.substack_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 border-2 border-sage text-sage hover:bg-sage hover:text-white rounded-full font-medium transition-all"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              Subscribe on Substack
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Back to Guides -->
+    <section class="py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <a
+          href="/guides"
+          class="inline-flex items-center gap-2 text-sage hover:text-forest-dark transition-colors font-medium"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Back to All Guides
+        </a>
+      </div>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,155 @@
+---
+import Base from '../components/layout/Base.astro';
+
+// Page metadata
+const title = 'SUUNA Vault - Workshops & Courses';
+const description = 'Workshops, courses, and masterclasses from our guides. Access exclusive content and transformational offerings.';
+
+// For now, we'll use placeholder data for Gumroad products
+// In production, this would fetch from Gumroad API or be managed in a JSON file
+const products = [
+  {
+    id: 'magma-mater',
+    title: 'Magma Mater: Sacred Feminine Journey',
+    creator: 'Laura-Maria Yara',
+    price: '€297',
+    description: '8-week journey into sacred feminine power through womb work and embodied practices.',
+    image: '/images/vault/magma-mater.jpg',
+    link: 'https://bliss.suuna.ro/magma-mater',
+    featured: true
+  },
+  {
+    id: 'blueprint-course',
+    title: 'Erotic Blueprint Mastery',
+    creator: 'Melissa Louise',
+    price: '€197',
+    description: 'Complete course to discover and master your unique erotic blueprint.',
+    image: '/images/vault/erotic-blueprint.jpg',
+    link: 'https://bliss.suuna.ro/erotic-blueprint',
+    featured: true
+  },
+  {
+    id: 'ci-training',
+    title: 'Compassionate Inquiry Training',
+    creator: 'Stephanie Canavesio',
+    price: '€247',
+    description: 'Deep dive into Dr. Gabor Maté\'s approach to trauma healing and self-discovery.',
+    image: '/images/vault/compassionate-inquiry.jpg',
+    link: 'https://bliss.suuna.ro/compassionate-inquiry',
+    featured: true
+  },
+  {
+    id: 'espere-workshop',
+    title: 'Ecologia Emoțiilor - Workshop Series',
+    creator: 'Dana Dragomirescu',
+    price: '€147',
+    description: 'Workshop series pentru reconectarea cu corpul și emoțiile prin metoda ESPERE®.',
+    image: '/images/vault/ecologia-emotiilor.jpg',
+    link: 'https://bliss.suuna.ro/ecologia-emotiilor',
+    featured: false
+  }
+];
+---
+
+<Base title={title} description={description} canonical="https://suuna.ro/vault">
+  <div class="min-h-screen bg-bone">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-forest-dark mb-6">
+          SUUNA Vault
+        </h1>
+        <p class="text-xl md:text-2xl text-ash max-w-2xl mx-auto">
+          Workshops, courses, and masterclasses from our guides.
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-12 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product) => (
+            <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+              <!-- Product Image -->
+              <div class="aspect-video bg-gradient-to-br from-sage to-forest-dark relative overflow-hidden">
+                {product.featured && (
+                  <div class="absolute top-4 right-4 bg-terracotta text-white px-3 py-1 rounded-full text-sm font-medium">
+                    Featured
+                  </div>
+                )}
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="text-white text-center p-6">
+                    <div class="text-4xl mb-2">📚</div>
+                    <p class="text-sm opacity-75">Course Image Placeholder</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product Info -->
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <h3 class="text-xl font-display font-bold text-forest-dark leading-tight flex-1">
+                    {product.title}
+                  </h3>
+                  <span class="text-2xl font-bold text-sage ml-4">
+                    {product.price}
+                  </span>
+                </div>
+
+                <p class="text-sm text-terracotta font-medium mb-3">
+                  by {product.creator}
+                </p>
+
+                <p class="text-ash mb-6 line-clamp-3">
+                  {product.description}
+                </p>
+
+                <a
+                  href={product.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block w-full text-center px-6 py-3 bg-sage text-white font-semibold rounded-full hover:bg-forest-dark transition-all hover:scale-105"
+                >
+                  View on Gumroad
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-br from-terracotta to-clay rounded-2xl p-12 text-center text-white">
+          <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+            Are You a Guide?
+          </h2>
+          <p class="text-lg md:text-xl mb-8 opacity-90">
+            Share your workshops and courses with the SUUNA community.
+          </p>
+          <a
+            href="/join"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-terracotta font-semibold rounded-full hover:bg-bone transition-all hover:scale-105 shadow-lg"
+          >
+            Partner with SUUNA
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

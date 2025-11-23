@@ -1,0 +1,64 @@
+---
+import Base from '../components/layout/Base.astro';
+
+// Page metadata
+const title = 'Events - SUUNA';
+const description = 'Gatherings, workshops, and sacred spaces. Join our community events.';
+---
+
+<Base title={title} description={description} canonical="https://suuna.ro/events">
+  <div class="min-h-screen bg-bone">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-forest-dark mb-6">
+          Community Events
+        </h1>
+        <p class="text-xl md:text-2xl text-ash max-w-2xl mx-auto">
+          Gatherings, workshops, and sacred spaces.
+        </p>
+      </div>
+    </section>
+
+    <!-- Luma Calendar Embed -->
+    <section class="py-12 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <iframe
+            src="https://lu.ma/embed/calendar/cal-abc123/events"
+            width="100%"
+            height="800"
+            frameborder="0"
+            style="border: none; border-radius: 1rem;"
+            title="SUUNA Community Events Calendar"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-br from-sage to-forest-dark rounded-2xl p-12 text-center text-white">
+          <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">
+            Host an Event?
+          </h2>
+          <p class="text-lg md:text-xl mb-8 opacity-90">
+            Add your event to Luma and submit it to the community calendar.
+          </p>
+          <a
+            href="https://lu.ma/suuna"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-sage font-semibold rounded-full hover:bg-bone transition-all hover:scale-105 shadow-lg"
+          >
+            Add Your Event
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>

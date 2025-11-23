@@ -1,0 +1,206 @@
+---
+import Base from '../components/layout/Base.astro';
+
+// Page metadata
+const title = 'Join SUUNA - Find Your Place';
+const description = 'Join the community as a learner or share your work as a guide. A free, intentional space to connect, learn, and contribute.';
+---
+
+<Base title={title} description={description} canonical="https://suuna.ro/join">
+  <!-- SUUNA.org Widget Script -->
+  <script is:inline>
+    (function (w,d,s,o,f,js,fjs) {
+        w['circleWidget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'mw', 'https://www.suuna.org/external/widget.js'));
+    mw('init', {
+      community_public_uid: '615e3202',
+      brand_color_dark: '#0D1B22',
+      brand_color_light: '#1E2B38',
+      default_appearance: 'dark'
+    });
+  </script>
+
+  <div class="min-h-screen bg-bone">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-forest-dark mb-6">
+          Find Your Place in SUUNA
+        </h1>
+        <p class="text-xl md:text-2xl text-ash max-w-2xl mx-auto">
+          Whether you're seeking belonging or sharing your gifts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Two Paths Section -->
+    <section class="py-12 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+          <!-- For Learners -->
+          <article class="bg-white rounded-2xl p-12 shadow-lg hover:shadow-xl transition-all">
+            <div class="text-6xl mb-6 text-center">🌱</div>
+
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-forest-dark mb-6 text-center">
+              Join the Community
+            </h2>
+
+            <p class="text-lg text-ash mb-8 text-center">
+              A free, intentional space to connect, learn, and contribute.
+            </p>
+
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-sage flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <p class="text-charcoal">
+                  Connect with like-minded seekers and wisdom keepers
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-sage flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <p class="text-charcoal">
+                  Access workshops, events, and transformational content
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-sage flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <p class="text-charcoal">
+                  Participate in discussions and share your journey
+                </p>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-sage flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <p class="text-charcoal">
+                  No algorithms, no ads — just authentic connection
+                </p>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button
+                onclick="mw('show')"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-sage text-white font-semibold rounded-full hover:bg-forest-dark transition-all hover:scale-105 shadow-lg"
+              >
+                Explore Community
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- For Guides -->
+          <article class="bg-gradient-to-br from-sage to-forest-dark rounded-2xl p-12 shadow-lg text-white">
+            <div class="text-6xl mb-6 text-center">✨</div>
+
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-center">
+              Share Your Work with SUUNA
+            </h2>
+
+            <p class="text-lg mb-8 text-center opacity-90">
+              We provide the platform, tools, and community.
+            </p>
+
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8">
+              <h3 class="text-xl font-display font-bold mb-4">What you get:</h3>
+
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p>Your own space within SUUNA</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p>Event management (Luma integration)</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p>Workshop hosting (Gumroad/Vault)</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p>Newsletter support (Substack)</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p>Community platform (suuna.org)</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p>Optional: Full production partnership with Respira</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <a
+                href="https://cal.com/mihai-love/suuna"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white text-sage font-semibold rounded-full hover:bg-bone transition-all hover:scale-105 shadow-lg"
+              >
+                Schedule a Conversation
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifesto CTA -->
+    <section class="py-16 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-forest-dark mb-6">
+          Want to learn more about SUUNA?
+        </h2>
+        <p class="text-lg text-ash mb-8">
+          Read our manifesto to understand our vision and values.
+        </p>
+        <a
+          href="/manifesto"
+          class="inline-flex items-center gap-2 px-8 py-4 border-2 border-sage text-sage hover:bg-sage hover:text-white rounded-full font-medium transition-all"
+        >
+          Read Our Manifesto
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </div>
+</Base>
