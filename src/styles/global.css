@@ -69,9 +69,17 @@
   }
 
   body {
-    @apply bg-primary text-primary antialiased;
+    @apply antialiased;
+    background-color: #FAF8F5; /* bone - light background */
+    color: #2C2C2C; /* charcoal - dark text */
     transition: background-color 0.3s ease, color 0.3s ease;
     font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Ensure dark mode has proper contrast */
+  :root[data-theme='dark'] body {
+    background-color: #0D1B22;
+    color: #FAF8F5;
   }
 
   /* Typography */

@@ -1,44 +1,41 @@
 ---
-// Hero Section - Per SUUNA Spec
+// Hero Section - Clean & Minimal
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-bone via-stone to-bone">
-  <!-- Optional: Subtle nature video background overlay -->
-  <!-- <div class="absolute inset-0 opacity-10">
-    <video autoplay loop muted playsinline class="w-full h-full object-cover">
-      <source src="/videos/nature-background.mp4" type="video/mp4">
-    </video>
-  </div> -->
-
-  <!-- Gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-bone/50 to-bone"></div>
-
-  <!-- Animated Background Elements -->
-  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sage/10 rounded-full blur-3xl animate-pulse" style="animation-duration: 4s;"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-terracotta/10 rounded-full blur-3xl animate-pulse" style="animation-duration: 6s; animation-delay: 2s;"></div>
+<section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-white">
+  <!-- Subtle gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-sage/3 via-transparent to-transparent"></div>
 
   <!-- Content -->
-  <div class="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-    <h1 class="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-forest-dark mb-6 leading-tight">
-      <span class="font-suuna text-sage" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span>
+  <div class="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+    <!-- SUUNA Wordmark -->
+    <h1 class="mb-6">
+      <span
+        class="font-suuna text-sage text-7xl md:text-8xl inline-block"
+        style="font-family: 'Architype Bayer-type W90', sans-serif !important; letter-spacing: 0.05em;"
+      >
+        SUUNA
+      </span>
     </h1>
 
-    <p class="text-2xl md:text-3xl text-ash max-w-3xl mx-auto mb-16 font-display leading-relaxed">
-      A Platform for Intentional Communities
+    <!-- Tagline -->
+    <p class="text-lg md:text-xl text-charcoal/70 max-w-xl mx-auto mb-10">
+      A platform for intentional communities
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-6 justify-center">
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
       <a
         href="/join"
-        class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-sage text-white text-lg font-semibold rounded-full transition-all hover:bg-forest-dark hover:scale-105 shadow-lg"
+        class="inline-flex items-center justify-center px-6 py-2.5 bg-sage text-white font-medium rounded-md transition-all hover:bg-forest-dark"
       >
         Join the Community
       </a>
       <a
-        href="/join#guides"
-        class="inline-flex items-center justify-center gap-2 px-10 py-5 border-2 border-terracotta text-terracotta text-lg font-semibold rounded-full transition-all hover:bg-terracotta hover:text-white hover:scale-105"
+        href="/manifesto"
+        class="inline-flex items-center justify-center px-6 py-2.5 border border-charcoal/15 text-charcoal font-medium rounded-md transition-all hover:border-sage hover:text-sage"
       >
-        Become a Guide
+        Read Our Manifesto
       </a>
     </div>
   </div>

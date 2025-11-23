@@ -59,9 +59,14 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: '1rem',
-        md: '0.75rem',
-        sm: '0.5rem',
+        none: '0',
+        sm: '0.25rem',   // 4px - subtle
+        DEFAULT: '0.375rem', // 6px - default
+        md: '0.5rem',    // 8px - medium
+        lg: '0.75rem',   // 12px - large
+        xl: '1rem',      // 16px - cards
+        '2xl': '1.5rem', // 24px - special
+        full: '9999px',  // pills
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
