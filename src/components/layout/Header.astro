@@ -1,40 +1,124 @@
 ---
 import { ThemeToggle } from '../ui/ThemeToggle';
+
+// Get current path for active navigation
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 glass border-b border-border">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-stone shadow-sm">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
+    <div class="flex h-20 items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group">
-        <span class="text-2xl font-suuna text-accent transition-transform group-hover:scale-105">
+        <span class="text-3xl font-suuna text-sage transition-transform group-hover:scale-105" style="font-family: 'Architype Bayer-type W90', sans-serif !important;">
           SUUNA
         </span>
       </a>
 
-      <!-- Navigation -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#discover" class="text-secondary hover:text-primary font-medium transition-colors">
-          Discover
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a
+          href="/"
+          class={`text-base font-medium transition-colors ${currentPath === '/' ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
+        >
+          Home
         </a>
-        <a href="#events" class="text-secondary hover:text-primary font-medium transition-colors">
+        <a
+          href="/manifesto"
+          class={`text-base font-medium transition-colors ${currentPath === '/manifesto' ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
+        >
+          Manifesto
+        </a>
+        <a
+          href="/facilitators"
+          class={`text-base font-medium transition-colors ${currentPath.startsWith('/facilitators') || currentPath.startsWith('/guides') ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
+        >
+          Guides
+        </a>
+        <a
+          href="/events"
+          class={`text-base font-medium transition-colors ${currentPath === '/events' ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
+        >
           Events
         </a>
-        <a href="#facilitators" class="text-secondary hover:text-primary font-medium transition-colors">
-          Facilitators
+        <a
+          href="/articles"
+          class={`text-base font-medium transition-colors ${currentPath === '/articles' ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
+        >
+          Articles
         </a>
-        <a href="https://lu.ma/suuna" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-primary font-medium transition-colors">
-          Calendar
+        <a
+          href="/vault"
+          class={`text-base font-medium transition-colors ${currentPath === '/vault' ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
+        >
+          Vault
+        </a>
+        <a
+          href="/join"
+          class={`px-6 py-2 bg-sage text-white font-semibold rounded-full hover:bg-forest-dark transition-all hover:scale-105`}
+        >
+          Join
         </a>
       </nav>
 
-      <!-- Theme Toggle -->
-      <div class="flex items-center gap-4">
+      <!-- Right Side: Language + Theme -->
+      <div class="hidden lg:flex items-center gap-4">
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-2 text-sm">
+          <a href="?lang=ro" class="text-ash hover:text-sage transition-colors font-medium">RO</a>
+          <span class="text-stone">|</span>
+          <a href="?lang=en" class="text-ash hover:text-sage transition-colors font-medium">EN</a>
+        </div>
+
+        <!-- Theme Toggle -->
         <ThemeToggle client:load />
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="lg:hidden p-2 text-charcoal hover:text-sage transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
   </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-stone bg-white">
+    <nav class="px-4 py-4 space-y-2">
+      <a href="/" class="block py-2 text-base font-medium text-ash hover:text-sage transition-colors">Home</a>
+      <a href="/manifesto" class="block py-2 text-base font-medium text-ash hover:text-sage transition-colors">Manifesto</a>
+      <a href="/facilitators" class="block py-2 text-base font-medium text-ash hover:text-sage transition-colors">Guides</a>
+      <a href="/events" class="block py-2 text-base font-medium text-ash hover:text-sage transition-colors">Events</a>
+      <a href="/articles" class="block py-2 text-base font-medium text-ash hover:text-sage transition-colors">Articles</a>
+      <a href="/vault" class="block py-2 text-base font-medium text-ash hover:text-sage transition-colors">Vault</a>
+      <a href="/join" class="block py-2 text-base font-medium bg-sage text-white rounded-lg text-center">Join</a>
+
+      <div class="pt-4 mt-4 border-t border-stone flex items-center justify-between">
+        <div class="flex items-center gap-2 text-sm">
+          <a href="?lang=ro" class="text-ash hover:text-sage transition-colors">RO</a>
+          <span class="text-stone">|</span>
+          <a href="?lang=en" class="text-ash hover:text-sage transition-colors">EN</a>
+        </div>
+        <ThemeToggle client:load />
+      </div>
+    </nav>
+  </div>
 </header>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>
 
 <style>
   header {

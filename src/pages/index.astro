@@ -18,6 +18,77 @@ const description = 'Community platform for wisdom creators, facilitators, and i
 <Base title={title} description={description} canonical="https://suuna.ro">
   <Hero />
 
+  <!-- What is SUUNA? Section -->
+  <section class="py-24 px-4 bg-white">
+    <div class="mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-forest-dark mb-6">
+          Where communities breathe together
+        </h2>
+        <p class="text-xl text-ash max-w-3xl mx-auto leading-relaxed">
+          A distraction-free space where teachers, facilitators, and wisdom keepers come together to share their work and grow alongside their learners.
+        </p>
+      </div>
+
+      <!-- Three Principles -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <article class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 bg-sage/10 rounded-full flex items-center justify-center">
+            <svg class="w-10 h-10 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-forest-dark mb-4">
+            Presence Over Performance
+          </h3>
+          <p class="text-ash leading-relaxed">
+            Your being here is the contribution.
+          </p>
+        </article>
+
+        <article class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 bg-terracotta/10 rounded-full flex items-center justify-center">
+            <svg class="w-10 h-10 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-forest-dark mb-4">
+            Horizontal Relationships
+          </h3>
+          <p class="text-ash leading-relaxed">
+            Peers alongside peers, not above or below.
+          </p>
+        </article>
+
+        <article class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 bg-honey/20 rounded-full flex items-center justify-center">
+            <svg class="w-10 h-10 text-clay" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-forest-dark mb-4">
+            Do You Feel Beneficial?
+          </h3>
+          <p class="text-ash leading-relaxed">
+            The only metric that matters.
+          </p>
+        </article>
+      </div>
+
+      <div class="text-center">
+        <a
+          href="/manifesto"
+          class="inline-flex items-center gap-2 px-8 py-4 border-2 border-sage text-sage hover:bg-sage hover:text-white rounded-full font-medium transition-all hover:scale-105"
+        >
+          Read Our Manifesto
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Events Carousel -->
   <EventsCarousel client:load events={eventsData} />
 
