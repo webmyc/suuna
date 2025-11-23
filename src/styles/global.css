@@ -65,17 +65,19 @@
 
   html {
     @apply scroll-smooth;
-    font-family: 'League Spartan', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   body {
     @apply bg-primary text-primary antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-spartan font-semibold tracking-tight;
+    font-family: 'Cormorant Garamond', serif;
+    @apply font-semibold tracking-tight;
   }
 
   /* Focus styles */
