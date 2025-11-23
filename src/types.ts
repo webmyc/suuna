@@ -15,13 +15,13 @@ export interface LumaEvent {
 export interface Facilitator {
   id: string
   name: string
-  avatar: string
+  image: string
   headline: string
   bio?: string
   location?: string
   tags?: string[]
   links?: {
-    type: 'site' | 'luma' | 'instagram' | 'youtube' | 'calendar'
+    type: 'site' | 'luma' | 'instagram' | 'youtube' | 'calendar' | 'substack'
     url: string
   }[]
   featured?: boolean
