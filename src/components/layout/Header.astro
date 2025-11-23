@@ -5,18 +5,18 @@ import { ThemeToggle } from '../ui/ThemeToggle';
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-sage/10 shadow-lg shadow-sage/5">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-xl border-b border-sage/15 shadow-xl shadow-sage/10">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-20 items-center justify-between">
-      <!-- Logo -->
+    <div class="flex h-24 items-center justify-between">
+      <!-- Logo - Bold and Present -->
       <a href="/" class="flex items-center gap-2 group">
-        <span class="text-3xl font-suuna text-sage transition-all duration-300 group-hover:scale-105 group-hover:text-forest" style="font-family: 'Architype Bayer-type W90', sans-serif !important; text-shadow: 0 2px 10px rgba(74, 124, 89, 0.1);">
+        <span class="text-4xl font-suuna text-sage transition-all duration-300 group-hover:scale-105 group-hover:text-forest" style="font-family: 'Architype Bayer-type W90', sans-serif !important; text-shadow: 0 2px 15px rgba(74, 124, 89, 0.15);">
           SUUNA
         </span>
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-8">
+      <nav class="hidden lg:flex items-center gap-10">
         <a
           href="/"
           class={`text-base font-medium transition-colors ${currentPath === '/' ? 'text-sage' : 'text-ash hover:text-charcoal'}`}
@@ -55,19 +55,19 @@ const currentPath = Astro.url.pathname;
         </a>
         <a
           href="/join"
-          class={`px-6 py-2.5 bg-gradient-to-br from-sage to-forest text-white font-medium rounded-xl hover:shadow-md hover:shadow-sage/25 transition-all duration-300 hover:scale-105`}
+          class={`px-8 py-3 bg-gradient-to-br from-sage to-forest text-white font-semibold text-base rounded-[16px] hover:shadow-lg hover:shadow-sage/30 transition-all duration-300 hover:scale-105`}
         >
           Join
         </a>
       </nav>
 
       <!-- Right Side: Language + Theme -->
-      <div class="hidden lg:flex items-center gap-4">
-        <!-- Language Switcher -->
-        <div class="flex items-center gap-3 text-sm bg-stone/30 rounded-xl px-3 py-1.5">
-          <a href="?lang=ro" class="text-ash hover:text-sage transition-colors font-medium px-2 py-1 rounded-lg hover:bg-white/80">RO</a>
+      <div class="hidden lg:flex items-center gap-5">
+        <!-- Language Switcher - More Prominent -->
+        <div class="flex items-center gap-3 text-base bg-stone/40 rounded-[14px] px-4 py-2">
+          <a href="?lang=ro" class="text-ash hover:text-sage transition-colors font-semibold px-2.5 py-1 rounded-lg hover:bg-white/90">RO</a>
           <span class="text-stone/50">|</span>
-          <a href="?lang=en" class="text-ash hover:text-sage transition-colors font-medium px-2 py-1 rounded-lg hover:bg-white/80">EN</a>
+          <a href="?lang=en" class="text-ash hover:text-sage transition-colors font-semibold px-2.5 py-1 rounded-lg hover:bg-white/90">EN</a>
         </div>
 
         <!-- Theme Toggle -->
@@ -87,22 +87,22 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-sage/10 bg-white/95 backdrop-blur-xl">
-    <nav class="px-4 py-4 space-y-2">
-      <a href="/" class="block py-2.5 text-base font-medium text-ash hover:text-sage hover:bg-stone/20 rounded-lg px-3 transition-all">Home</a>
-      <a href="/manifesto" class="block py-2.5 text-base font-medium text-ash hover:text-sage hover:bg-stone/20 rounded-lg px-3 transition-all">Manifesto</a>
-      <a href="/facilitators" class="block py-2.5 text-base font-medium text-ash hover:text-sage hover:bg-stone/20 rounded-lg px-3 transition-all">Guides</a>
-      <a href="/events" class="block py-2.5 text-base font-medium text-ash hover:text-sage hover:bg-stone/20 rounded-lg px-3 transition-all">Events</a>
-      <a href="/articles" class="block py-2.5 text-base font-medium text-ash hover:text-sage hover:bg-stone/20 rounded-lg px-3 transition-all">Articles</a>
-      <a href="/vault" class="block py-2.5 text-base font-medium text-ash hover:text-sage hover:bg-stone/20 rounded-lg px-3 transition-all">Vault</a>
-      <a href="/join" class="block py-3 text-base font-medium bg-gradient-to-br from-sage to-forest text-white rounded-xl text-center shadow-md hover:shadow-lg transition-all">Join</a>
+  <!-- Mobile Menu - Updated -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-sage/15 bg-white/98 backdrop-blur-xl">
+    <nav class="px-4 py-5 space-y-2">
+      <a href="/" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Home</a>
+      <a href="/manifesto" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Manifesto</a>
+      <a href="/facilitators" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Guides</a>
+      <a href="/events" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Events</a>
+      <a href="/articles" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Articles</a>
+      <a href="/vault" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[12px] px-4 transition-all">Vault</a>
+      <a href="/join" class="block py-4 text-base font-semibold bg-gradient-to-br from-sage to-forest text-white rounded-[16px] text-center shadow-lg hover:shadow-xl transition-all hover:scale-105">Join</a>
 
-      <div class="pt-4 mt-4 border-t border-sage/10 flex items-center justify-between">
-        <div class="flex items-center gap-3 text-sm bg-stone/30 rounded-xl px-3 py-1.5">
-          <a href="?lang=ro" class="text-ash hover:text-sage transition-colors px-2 py-1 rounded-lg hover:bg-white/80">RO</a>
+      <div class="pt-5 mt-4 border-t border-sage/15 flex items-center justify-between">
+        <div class="flex items-center gap-3 text-base bg-stone/40 rounded-[14px] px-4 py-2">
+          <a href="?lang=ro" class="text-ash hover:text-sage transition-colors font-semibold px-2.5 py-1 rounded-lg hover:bg-white/90">RO</a>
           <span class="text-stone/50">|</span>
-          <a href="?lang=en" class="text-ash hover:text-sage transition-colors px-2 py-1 rounded-lg hover:bg-white/80">EN</a>
+          <a href="?lang=en" class="text-ash hover:text-sage transition-colors font-semibold px-2.5 py-1 rounded-lg hover:bg-white/90">EN</a>
         </div>
         <ThemeToggle client:load />
       </div>
