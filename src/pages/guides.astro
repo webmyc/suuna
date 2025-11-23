@@ -16,69 +16,62 @@ const sortedGuides = guidesData.sort((a, b) => {
 
 <Base title={title} description={description} canonical="https://suuna.ro/guides">
   <div class="min-h-screen bg-bone">
-    <!-- Hero Section - Bold and Warm -->
-    <section class="relative pt-36 pb-24 px-4 bg-gradient-to-br from-bone via-white to-sage/10 overflow-hidden">
-      <!-- Organic background -->
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-20 left-1/3 w-[500px] h-[500px] bg-gradient-to-br from-sage/15 to-moss/8 rounded-full blur-[120px] animate-float-slow"></div>
-        <div class="absolute bottom-10 right-1/3 w-[450px] h-[450px] bg-gradient-to-br from-honey/12 to-terracotta/6 rounded-full blur-[120px] animate-float-slower"></div>
-      </div>
-
-      <div class="relative z-10 max-w-6xl mx-auto text-center">
-        <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-semibold text-charcoal mb-10 leading-none tracking-tight">
+    <!-- Hero Section - Clean and Elegant -->
+    <section class="relative pt-32 pb-16 px-4 bg-monk-bg">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl sm:text-6xl font-display font-bold text-monk-text-primary mb-4 leading-tight">
           Our Guides
         </h1>
-        <p class="text-2xl sm:text-3xl md:text-4xl text-ash max-w-4xl mx-auto leading-relaxed font-light mb-6">
+        <p class="text-lg text-monk-text-secondary max-w-2xl mx-auto leading-relaxed">
           Wisdom keepers, teachers, and healers co-creating intentional spaces for transformation.
         </p>
-        <div class="w-32 h-1.5 bg-gradient-to-r from-sage via-moss to-sage mx-auto rounded-full"></div>
       </div>
     </section>
 
-    <!-- Guides Grid - Bold Cards with Real Presence -->
-    <section class="py-24 px-4 bg-gradient-to-b from-white to-bone">
+    <!-- Guides Grid - Elegant and Compact -->
+    <section class="py-16 px-4 bg-monk-bg">
       <div class="mx-auto max-w-7xl">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedGuides.map((guide) => {
             const siteLink = guide.links?.find(l => l.type === 'site');
             const substackLink = guide.links?.find(l => l.type === 'substack');
 
             return (
-              <article class="group bg-white/95 backdrop-blur-sm rounded-[32px] overflow-hidden shadow-2xl shadow-sage/10 hover:shadow-2xl hover:shadow-sage/20 transition-all duration-500 hover:-translate-y-2">
+              <article class="group bg-monk-surface rounded-lg overflow-hidden border border-monk-border hover:shadow-lg transition-all">
                 {/* Guide Photo */}
                 <div class="aspect-square overflow-hidden relative">
                   <img
                     src={guide.image}
                     alt={guide.name}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                   {guide.featured && (
-                    <div class="absolute top-6 right-6 bg-terracotta text-white px-5 py-2.5 rounded-[16px] text-sm font-bold shadow-xl shadow-terracotta/40">
+                    <div class="absolute top-3 right-3 bg-monk-accent text-white px-3 py-1 rounded-md text-xs font-semibold">
                       Featured
                     </div>
                   )}
                 </div>
 
                 {/* Guide Info */}
-                <div class="p-8">
-                  <h3 class="text-3xl font-display font-semibold text-charcoal mb-3 group-hover:text-sage transition-colors leading-tight">
+                <div class="p-4">
+                  <h3 class="text-lg font-display font-bold text-monk-text-primary mb-1 leading-tight">
                     {guide.name}
                   </h3>
 
-                  <p class="text-lg text-terracotta font-semibold mb-4">
+                  <p class="text-sm text-monk-accent font-semibold mb-3">
                     {guide.headline}
                   </p>
 
-                  <p class="text-base text-ash/90 leading-relaxed mb-6 line-clamp-3">
+                  <p class="text-sm text-monk-text-secondary leading-relaxed mb-3 line-clamp-2">
                     {guide.bio}
                   </p>
 
                   {/* Tags */}
                   {guide.tags && guide.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-2 mb-6">
+                    <div class="flex flex-wrap gap-1.5 mb-3">
                       {guide.tags.slice(0, 3).map((tag) => (
-                        <span class="px-4 py-2 rounded-[14px] bg-stone/40 text-charcoal text-sm font-medium border border-sage/20">
+                        <span class="px-2 py-1 rounded-md bg-monk-bg text-monk-text-secondary text-xs font-medium border border-monk-border">
                           {tag}
                         </span>
                       ))}
@@ -87,24 +80,24 @@ const sortedGuides = guidesData.sort((a, b) => {
 
                   {/* Location */}
                   {guide.location && (
-                    <div class="flex items-center gap-2 text-ash mb-8">
-                      <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center gap-1.5 text-monk-text-secondary mb-3 text-xs">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                       </svg>
-                      <span class="font-medium">{guide.location}</span>
+                      <span>{guide.location}</span>
                     </div>
                   )}
 
                   {/* Action Buttons */}
-                  <div class="flex gap-3">
+                  <div class="flex gap-2">
                     <a
                       href={`/guides/${guide.id}`}
-                      class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-br from-sage to-forest text-white font-bold text-base rounded-[20px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
+                      class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-monk-accent text-white font-semibold text-sm rounded-lg hover:bg-opacity-90 transition-all"
                     >
                       View Profile
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                       </svg>
                     </a>
                     {siteLink && (
@@ -112,10 +105,10 @@ const sortedGuides = guidesData.sort((a, b) => {
                         href={siteLink.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center w-14 h-14 bg-white border-2 border-sage/30 text-sage rounded-[18px] hover:bg-sage/5 hover:border-sage/50 transition-all duration-300 hover:scale-105"
+                        class="inline-flex items-center justify-center w-10 h-10 bg-monk-surface border border-monk-border text-monk-text-primary rounded-lg hover:bg-monk-bg transition-all"
                         title="Visit website"
                       >
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
                         </svg>
                       </a>
@@ -129,28 +122,23 @@ const sortedGuides = guidesData.sort((a, b) => {
       </div>
     </section>
 
-    <!-- Community CTA -->
-    <section class="relative py-28 px-4 bg-gradient-to-br from-sage via-forest to-sage overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-1/3 left-1/4 w-[550px] h-[550px] bg-white/8 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-moss/25 rounded-full blur-[120px]"></div>
-      </div>
 
-      <div class="relative z-10 max-w-5xl mx-auto text-center">
-        <h2 class="text-5xl sm:text-6xl md:text-7xl font-display font-semibold text-white mb-8 leading-tight tracking-tight"
-            style="text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);">
+    <!-- Community CTA -->
+    <section class="py-16 px-4 bg-monk-accent">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-white mb-3">
           Want to become a Guide?
         </h2>
-        <p class="text-2xl sm:text-3xl text-white/95 max-w-3xl mx-auto mb-16 leading-relaxed font-light">
+        <p class="text-lg text-white/90 mb-6">
           Share your wisdom and offerings with the SUUNA community.
         </p>
         <a
           href="/join#guides"
-          class="group inline-flex items-center gap-3 px-14 py-6 bg-white text-sage font-bold text-xl rounded-[28px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-monk-accent font-semibold text-base rounded-lg hover:bg-opacity-90 transition-all"
         >
-          <span class="group-hover:scale-105 transition-transform duration-300">Join as Guide</span>
-          <svg class="w-7 h-7 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          <span>Join as Guide</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
