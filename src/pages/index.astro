@@ -9,6 +9,18 @@ import { DiscoverGrid } from '../components/sections/DiscoverGrid';
 import eventsData from '../data/events.json';
 import guidesData from '../data/facilitators.json';
 import articlesData from '../data/articles.json';
+import { fetchLumaEvents } from '../lib/luma';
+
+// Fetch live events from Luma (or use fallback)
+let lumaEvents = eventsData;
+try {
+  const fetchedEvents = await fetchLumaEvents();
+  if (fetchedEvents && fetchedEvents.length > 0) {
+    lumaEvents = fetchedEvents;
+  }
+} catch (error) {
+  console.log('Using fallback events data');
+}
 
 // Page metadata
 const title = 'SUUNA - A Platform for Intentional Communities';
@@ -100,7 +112,7 @@ const description = 'Community platform for wisdom creators, guides, and intenti
   </section>
 
   <!-- Events Carousel -->
-  <EventsCarousel client:load events={eventsData} />
+  <EventsCarousel client:load events={lumaEvents} />
 
   <!-- Facilitators Carousel -->
   <FacilitatorsCarousel client:load guides={guidesData} />

@@ -99,9 +99,45 @@
     @apply bg-accent/20 text-primary;
   }
 
-  /* Smooth transitions */
-  * {
+  /* Smooth transitions - but not on everything */
+  a, button, .transition {
     @apply transition-colors duration-200;
+  }
+
+  /* Dark mode support for common elements */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --color-bg-primary: 13 27 34; /* charcoal-dark */
+      --color-bg-secondary: 18 35 42; /* charcoal-medium */
+      --color-bg-elevated: 24 44 52; /* charcoal-light */
+
+      --color-text-primary: 250 248 245; /* bone */
+      --color-text-secondary: 200 198 195; /* light gray */
+      --color-text-tertiary: 150 148 145; /* medium gray */
+    }
+
+    :root:not([data-theme='light']) body {
+      background-color: #0D1B22; /* charcoal-dark */
+      color: #FAF8F5; /* bone */
+    }
+
+    /* Adjust card backgrounds for dark mode */
+    :root:not([data-theme='light']) .bg-white {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    :root:not([data-theme='light']) .bg-bone {
+      background-color: rgba(250, 248, 245, 0.03);
+    }
+
+    /* Improve text contrast in dark mode */
+    :root:not([data-theme='light']) .text-charcoal {
+      color: #FAF8F5;
+    }
+
+    :root:not([data-theme='light']) .text-ash {
+      color: #C8C6C3;
+    }
   }
 }
 
