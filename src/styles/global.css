@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SUUNA Custom Font */
+/* SUUNA Custom Font - Bayer Type Architype */
 @font-face {
   font-family: 'Architype Bayer-type W90';
-  src: url('/Web Fonts/a959448c957069dae7d52078616ebdc8.woff2') format('woff2'),
-       url('/Web Fonts/a959448c957069dae7d52078616ebdc8.woff') format('woff');
+  src: url('/fonts/architype-bayer-type-w90.woff2') format('woff2'),
+       url('/fonts/architype-bayer-type-w90.woff') format('woff'),
+       url('/fonts/bayer-architype.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
