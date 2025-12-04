@@ -61,32 +61,29 @@
   }
 
   /* Dark theme text overrides */
-  :root[data-theme='dark'] .text-charcoal {
+  :root[data-theme='dark'] .text-charcoal,
+  :root[data-theme='dark'] .text-charcoal\/90,
+  :root[data-theme='dark'] .text-charcoal\/80,
+  :root[data-theme='dark'] .text-charcoal\/70 {
     color: #FAF8F5 !important;
+    opacity: 1 !important;
   }
 
-  :root[data-theme='dark'] .text-ash {
-    color: #D4D2CF !important;
+  :root[data-theme='dark'] .text-ash,
+  :root[data-theme='dark'] .text-ash\/90,
+  :root[data-theme='dark'] .text-ash\/80,
+  :root[data-theme='dark'] .text-ash\/70 {
+    color: #E5E3E0 !important;
+    opacity: 1 !important;
   }
 
-  :root[data-theme='dark'] .text-charcoal\/90 {
-    color: #FAF8F5 !important;
-    opacity: 0.95 !important;
+  :root[data-theme='dark'] .text-stone {
+    color: #D1CFC9 !important;
   }
 
-  :root[data-theme='dark'] .text-charcoal\/80 {
-    color: #FAF8F5 !important;
-    opacity: 0.90 !important;
-  }
-
-  :root[data-theme='dark'] .text-ash\/90 {
-    color: #D4D2CF !important;
-    opacity: 0.95 !important;
-  }
-
-  :root[data-theme='dark'] .text-ash\/80 {
-    color: #D4D2CF !important;
-    opacity: 0.90 !important;
+  :root[data-theme='dark'] .bg-stone\/20,
+  :root[data-theme='dark'] .bg-stone\/30 {
+    background-color: rgba(255, 255, 255, 0.12) !important;
   }
 
   /* Dark theme background overrides */
@@ -184,33 +181,29 @@
     }
 
     /* Improve text contrast in dark mode - base colors */
-    :root:not([data-theme='light']) .text-charcoal {
+    :root:not([data-theme='light']) .text-charcoal,
+    :root:not([data-theme='light']) .text-charcoal\/90,
+    :root:not([data-theme='light']) .text-charcoal\/80,
+    :root:not([data-theme='light']) .text-charcoal\/70 {
       color: #FAF8F5 !important;
+      opacity: 1 !important;
     }
 
-    :root:not([data-theme='light']) .text-ash {
-      color: #D4D2CF !important;
+    :root:not([data-theme='light']) .text-ash,
+    :root:not([data-theme='light']) .text-ash\/90,
+    :root:not([data-theme='light']) .text-ash\/80,
+    :root:not([data-theme='light']) .text-ash\/70 {
+      color: #E5E3E0 !important;
+      opacity: 1 !important;
     }
 
-    /* Fix opacity-based text colors for dark mode readability */
-    :root:not([data-theme='light']) .text-charcoal\/90 {
-      color: #FAF8F5 !important;
-      opacity: 0.95 !important;
+    :root:not([data-theme='light']) .text-stone {
+      color: #D1CFC9 !important;
     }
 
-    :root:not([data-theme='light']) .text-charcoal\/80 {
-      color: #FAF8F5 !important;
-      opacity: 0.90 !important;
-    }
-
-    :root:not([data-theme='light']) .text-ash\/90 {
-      color: #D4D2CF !important;
-      opacity: 0.95 !important;
-    }
-
-    :root:not([data-theme='light']) .text-ash\/80 {
-      color: #D4D2CF !important;
-      opacity: 0.90 !important;
+    :root:not([data-theme='light']) .bg-stone\/20,
+    :root:not([data-theme='light']) .bg-stone\/30 {
+      background-color: rgba(255, 255, 255, 0.12) !important;
     }
 
     /* Ensure borders are visible in dark mode */
