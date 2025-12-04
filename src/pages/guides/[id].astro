@@ -40,7 +40,7 @@ const description = guide.bio || guide.headline;
         <div class="flex flex-col md:flex-row gap-12 items-start">
           <!-- Guide Photo - Large and Bold -->
           <div class="w-full md:w-2/5">
-            <div class="aspect-square rounded-[11px] overflow-hidden shadow-2xl shadow-sage/20 ring-4 ring-white/50">
+            <div class="aspect-square rounded-[8px] overflow-hidden shadow-2xl shadow-sage/20 ring-4 ring-white/50">
               <img
                 src={guide.image}
                 alt={guide.name}
@@ -74,7 +74,7 @@ const description = guide.bio || guide.headline;
             {guide.tags && guide.tags.length > 0 && (
               <div class="flex flex-wrap gap-3 mb-10">
                 {guide.tags.map((tag: string) => (
-                  <span class="px-5 py-3 bg-stone/50 text-charcoal rounded-[11px] text-base font-semibold border-2 border-sage/20">
+                  <span class="px-5 py-3 bg-stone/50 text-charcoal rounded-[8px] text-base font-semibold border-2 border-sage/20">
                     {tag}
                   </span>
                 ))}
@@ -88,7 +88,7 @@ const description = guide.bio || guide.headline;
                   href={siteLink.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-sage to-forest text-white font-bold text-lg rounded-[11px] hover:shadow-2xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105 shadow-xl shadow-sage/30"
+                  class="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-sage to-forest text-white font-bold text-lg rounded-[8px] hover:shadow-2xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105 shadow-xl shadow-sage/30"
                 >
                   <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
@@ -102,7 +102,7 @@ const description = guide.bio || guide.headline;
                   href={substackLink.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group inline-flex items-center gap-3 px-10 py-5 bg-white/95 backdrop-blur-sm border-3 border-sage/40 text-sage hover:bg-white hover:border-sage/60 font-bold text-lg rounded-[11px] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  class="group inline-flex items-center gap-3 px-10 py-5 bg-white/95 backdrop-blur-sm border-3 border-sage/40 text-sage hover:bg-white hover:border-sage/60 font-bold text-lg rounded-[8px] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -117,7 +117,7 @@ const description = guide.bio || guide.headline;
     </section>
 
     <!-- Biography - Generous and Readable -->
-    <section class="py-20 px-4 bg-white">
+    <section class="py-16 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-10 leading-tight tracking-tight">
           About {guide.name}
@@ -132,7 +132,7 @@ const description = guide.bio || guide.headline;
 
     <!-- Offerings - If Available -->
     {guideOfferings.length > 0 && (
-      <section class="py-20 px-4 bg-gradient-to-br from-stone/30 to-bone">
+      <section class="py-16 px-4 bg-gradient-to-br from-stone/30 to-bone">
         <div class="max-w-6xl mx-auto">
           <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-12 leading-tight tracking-tight text-center">
             Offerings
@@ -140,7 +140,7 @@ const description = guide.bio || guide.headline;
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {guideOfferings.map((offering) => (
-              <article class="group bg-white/95 backdrop-blur-sm rounded-[11px] overflow-hidden shadow-xl shadow-terracotta/10 hover:shadow-2xl hover:shadow-terracotta/20 transition-all duration-500 hover:-translate-y-2">
+              <article class="group bg-white/95 backdrop-blur-sm rounded-[8px] overflow-hidden shadow-xl shadow-terracotta/10 hover:shadow-2xl hover:shadow-terracotta/20 transition-all duration-500 hover:-translate-y-2">
                 {/* Offering Image */}
                 <div class="aspect-video bg-gradient-to-br from-terracotta to-clay relative overflow-hidden">
                   <div class="absolute inset-0 flex items-center justify-center">
@@ -154,7 +154,7 @@ const description = guide.bio || guide.headline;
                 {/* Offering Info */}
                 <div class="p-8">
                   <div class="flex items-center gap-2 mb-4">
-                    <span class="px-4 py-2 bg-terracotta/10 text-terracotta rounded-[11px] text-sm font-bold capitalize">
+                    <span class="px-4 py-2 bg-terracotta/10 text-terracotta rounded-[8px] text-sm font-bold capitalize">
                       {offering.type}
                     </span>
                     <span class="text-ash text-sm font-medium">
@@ -174,7 +174,7 @@ const description = guide.bio || guide.headline;
                     href={offering.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="group/button inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-terracotta to-clay text-white font-bold text-base rounded-[11px] hover:shadow-xl hover:shadow-terracotta/40 transition-all duration-300 hover:scale-105 shadow-lg"
+                    class="group/button inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-br from-terracotta to-clay text-white font-bold text-base rounded-[8px] hover:shadow-xl hover:shadow-terracotta/40 transition-all duration-300 hover:scale-105 shadow-lg"
                   >
                     <span class="group-hover/button:scale-105 transition-transform duration-300">Learn More</span>
                     <svg class="w-5 h-5 group-hover/button:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,9 +191,9 @@ const description = guide.bio || guide.headline;
 
     <!-- Newsletter CTA - If Substack -->
     {substackLink && (
-      <section class="py-20 px-4 bg-white">
+      <section class="py-16 px-4 bg-white">
         <div class="max-w-4xl mx-auto">
-          <div class="bg-gradient-to-br from-sage/10 to-moss/5 rounded-[11px] p-10 md:p-14 shadow-xl shadow-sage/10 border-2 border-sage/20">
+          <div class="bg-gradient-to-br from-sage/10 to-moss/5 rounded-[8px] p-10 md:p-14 shadow-xl shadow-sage/10 border-2 border-sage/20">
             <h2 class="text-4xl sm:text-5xl font-display font-semibold text-charcoal mb-6 leading-tight">
               Subscribe to {guide.name}'s Newsletter
             </h2>
@@ -205,7 +205,7 @@ const description = guide.bio || guide.headline;
               href={substackLink.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-sage to-forest text-white font-bold text-lg rounded-[11px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105 shadow-lg"
+              class="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-sage to-forest text-white font-bold text-lg rounded-[8px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105 shadow-lg"
             >
               <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>

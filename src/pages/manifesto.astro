@@ -13,16 +13,16 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
   <div class="min-h-screen bg-white">
     <!-- Language Toggle - Bold and Present -->
     <div class="fixed top-28 right-8 z-50">
-      <div class="flex gap-2 bg-white/95 backdrop-blur-md border-2 border-sage/30 rounded-[11px] px-4 py-3 shadow-xl shadow-sage/20">
+      <div class="flex gap-2 bg-white/95 backdrop-blur-md border-2 border-sage/30 rounded-[8px] px-4 py-3 shadow-xl shadow-sage/20">
         <a
           href="/manifesto?lang=ro"
-          class={`px-6 py-3 text-base font-semibold rounded-[11px] transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
+          class={`px-6 py-3 text-base font-semibold rounded-[8px] transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
         >
           RO
         </a>
         <a
           href="/manifesto?lang=en"
-          class={`px-6 py-3 text-base font-semibold rounded-[11px] transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
+          class={`px-6 py-3 text-base font-semibold rounded-[8px] transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
         >
           EN
         </a>
@@ -49,7 +49,7 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
 
     <!-- Romanian Content - Bold Typography with Breathing Room -->
     {lang === 'ro' && (
-      <article class="max-w-3xl mx-auto px-4 py-20">
+      <article class="max-w-3xl mx-auto px-4 py-16">
         <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-charcoal mb-8 font-semibold leading-tight tracking-tight">
           Pentru creatorii care scriu, vorbesc, filmează — cu inimă.
         </h2>
