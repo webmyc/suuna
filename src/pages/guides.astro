@@ -44,7 +44,7 @@ const sortedGuides = guidesData.sort((a, b) => {
             const substackLink = guide.links?.find(l => l.type === 'substack');
 
             return (
-              <article class="group bg-white/95 backdrop-blur-sm rounded-[32px] overflow-hidden shadow-2xl shadow-sage/10 hover:shadow-2xl hover:shadow-sage/20 transition-all duration-500 hover:-translate-y-2">
+              <article class="group bg-white/95 backdrop-blur-sm rounded-[11px] overflow-hidden shadow-2xl shadow-sage/10 hover:shadow-2xl hover:shadow-sage/20 transition-all duration-500 hover:-translate-y-2">
                 {/* Guide Photo */}
                 <div class="aspect-square overflow-hidden relative">
                   <img
@@ -54,7 +54,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                     loading="lazy"
                   />
                   {guide.featured && (
-                    <div class="absolute top-6 right-6 bg-terracotta text-white px-5 py-2.5 rounded-[16px] text-sm font-bold shadow-xl shadow-terracotta/40">
+                    <div class="absolute top-6 right-6 bg-terracotta text-white px-5 py-2.5 rounded-[11px] text-sm font-bold shadow-xl shadow-terracotta/40">
                       Featured
                     </div>
                   )}
@@ -70,7 +70,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                     {guide.headline}
                   </p>
 
-                  <p class="text-base text-ash/90 leading-relaxed mb-6 line-clamp-3">
+                  <p class="text-base text-ash leading-relaxed mb-6 line-clamp-3">
                     {guide.bio}
                   </p>
 
@@ -78,7 +78,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                   {guide.tags && guide.tags.length > 0 && (
                     <div class="flex flex-wrap gap-2 mb-6">
                       {guide.tags.slice(0, 3).map((tag) => (
-                        <span class="px-4 py-2 rounded-[14px] bg-stone/40 text-charcoal text-sm font-medium border border-sage/20">
+                        <span class="px-4 py-2 rounded-[11px] bg-stone/40 text-charcoal text-sm font-medium border border-sage/20">
                           {tag}
                         </span>
                       ))}
@@ -100,7 +100,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                   <div class="flex gap-3">
                     <a
                       href={`/guides/${guide.id}`}
-                      class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-br from-sage to-forest text-white font-bold text-base rounded-[20px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
+                      class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-br from-sage to-forest text-white font-bold text-base rounded-[11px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
                     >
                       View Profile
                       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                         href={siteLink.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center w-14 h-14 bg-white border-2 border-sage/30 text-sage rounded-[18px] hover:bg-sage/5 hover:border-sage/50 transition-all duration-300 hover:scale-105"
+                        class="inline-flex items-center justify-center w-14 h-14 bg-white border-2 border-sage/30 text-sage rounded-[11px] hover:bg-sage/5 hover:border-sage/50 transition-all duration-300 hover:scale-105"
                         title="Visit website"
                       >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,7 +146,7 @@ const sortedGuides = guidesData.sort((a, b) => {
         </p>
         <a
           href="/join#guides"
-          class="group inline-flex items-center gap-3 px-14 py-6 bg-white text-sage font-bold text-xl rounded-[28px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40"
+          class="group inline-flex items-center gap-3 px-14 py-6 bg-white text-sage font-bold text-xl rounded-[11px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40"
         >
           <span class="group-hover:scale-105 transition-transform duration-300">Join as Guide</span>
           <svg class="w-7 h-7 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

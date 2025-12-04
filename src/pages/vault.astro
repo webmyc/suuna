@@ -128,11 +128,11 @@ const products = [
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {products.map((product) => (
-            <article class="group bg-white/95 backdrop-blur-md rounded-[32px] overflow-hidden shadow-2xl shadow-sage/20 hover:shadow-2xl hover:shadow-sage/30 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] border-2 border-sage/15">
+            <article class="group bg-white/95 backdrop-blur-md rounded-[11px] overflow-hidden shadow-2xl shadow-sage/20 hover:shadow-2xl hover:shadow-sage/30 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] border-2 border-sage/15">
               <!-- Product Image -->
               <div class="aspect-video bg-gradient-to-br from-sage to-forest relative overflow-hidden">
                 {product.featured && (
-                  <div class="absolute top-5 right-5 bg-terracotta text-white px-5 py-2.5 rounded-[16px] text-base font-semibold shadow-xl shadow-terracotta/40">
+                  <div class="absolute top-5 right-5 bg-terracotta text-white px-5 py-2.5 rounded-[11px] text-base font-semibold shadow-xl shadow-terracotta/40">
                     Featured
                   </div>
                 )}
@@ -160,7 +160,7 @@ const products = [
                   by {product.creator}
                 </p>
 
-                <p class="text-base text-ash/80 mb-8 line-clamp-3 leading-relaxed">
+                <p class="text-base text-ash mb-8 line-clamp-3 leading-relaxed">
                   {product.description}
                 </p>
 
@@ -168,7 +168,7 @@ const products = [
                   href={product.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group/button block w-full text-center px-8 py-4 bg-gradient-to-br from-sage to-forest text-white font-semibold text-base rounded-[20px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
+                  class="group/button block w-full text-center px-8 py-4 bg-gradient-to-br from-sage to-forest text-white font-semibold text-base rounded-[11px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
                 >
                   <span class="group-hover/button:scale-105 transition-transform duration-300 inline-block">View on Gumroad</span>
                 </a>
@@ -198,7 +198,7 @@ const products = [
         </p>
         <a
           href="/join"
-          class="group inline-flex items-center gap-3 px-12 py-6 bg-white text-sage font-bold text-lg rounded-[28px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40 hover:shadow-2xl hover:shadow-forest/50"
+          class="group inline-flex items-center gap-3 px-12 py-6 bg-white text-sage font-bold text-lg rounded-[11px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40 hover:shadow-2xl hover:shadow-forest/50"
         >
           <span class="group-hover:scale-105 transition-transform duration-300">Partner with SUUNA</span>
           <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

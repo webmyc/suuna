@@ -13,16 +13,16 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
   <div class="min-h-screen bg-white">
     <!-- Language Toggle - Bold and Present -->
     <div class="fixed top-28 right-8 z-50">
-      <div class="flex gap-2 bg-white/95 backdrop-blur-md border-2 border-sage/30 rounded-[20px] px-4 py-3 shadow-xl shadow-sage/20">
+      <div class="flex gap-2 bg-white/95 backdrop-blur-md border-2 border-sage/30 rounded-[11px] px-4 py-3 shadow-xl shadow-sage/20">
         <a
           href="/manifesto?lang=ro"
-          class={`px-6 py-3 text-base font-semibold rounded-[16px] transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
+          class={`px-6 py-3 text-base font-semibold rounded-[11px] transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
         >
           RO
         </a>
         <a
           href="/manifesto?lang=en"
-          class={`px-6 py-3 text-base font-semibold rounded-[16px] transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
+          class={`px-6 py-3 text-base font-semibold rounded-[11px] transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
         >
           EN
         </a>
