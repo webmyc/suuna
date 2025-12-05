@@ -1,9 +1,25 @@
 ---
 // Hero Section - Video Background with Featured Content
-import guidesData from '../../../data/facilitators.json';
+import guidesData from '../../data/facilitators.json';
+import { fetchLatestSubstackArticle } from '../../lib/substack';
 
 // Get Dana's data
 const dana = guidesData.find(g => g.id === 'dana-dragomirescu');
+
+// Fetch latest Substack article
+let latestArticle;
+try {
+  latestArticle = await fetchLatestSubstackArticle();
+} catch (error) {
+  console.error('Failed to fetch Substack article:', error);
+  latestArticle = {
+    title: 'Latest from SUUNA',
+    link: 'https://suuna.substack.com',
+    description: 'Discover the latest stories, insights, and wisdom from our community of guides and practitioners.',
+    image: '/images/default-article.jpg',
+    pubDate: new Date().toISOString(),
+  };
+}
 ---
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -120,32 +136,50 @@ const dana = guidesData.find(g => g.id === 'dana-dragomirescu');
 
         <!-- Latest from SUUNA Substack -->
         <article class="group bg-white/95 backdrop-blur-xl rounded-[8px] overflow-hidden shadow-2xl shadow-black/30 hover:shadow-black/50 transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+          <!-- Article Image -->
+          {latestArticle.image && (
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src={latestArticle.image}
+                alt={latestArticle.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute top-3 right-3 px-3 py-1.5 bg-terracotta/90 backdrop-blur-sm text-white rounded-[8px] text-xs font-bold uppercase tracking-wide">
+                Latest
+              </div>
+            </div>
+          )}
+
           <div class="p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="p-3 bg-gradient-to-br from-honey to-terracotta rounded-[8px] shadow-lg">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="p-2 bg-gradient-to-br from-honey to-terracotta rounded-[8px] shadow-lg">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
               </div>
               <div>
-                <h3 class="text-lg font-bold text-charcoal group-hover:text-terracotta transition-colors">
+                <h3 class="text-base font-bold text-charcoal group-hover:text-terracotta transition-colors">
                   Latest from SUUNA
                 </h3>
                 <p class="text-xs text-ash/80 font-medium">Community Insights</p>
               </div>
             </div>
 
+            <h4 class="text-lg font-bold text-charcoal mb-2 leading-tight line-clamp-2 group-hover:text-terracotta transition-colors">
+              {latestArticle.title}
+            </h4>
+
             <p class="text-sm text-ash/90 mb-4 leading-relaxed line-clamp-3">
-              Discover the latest stories, insights, and wisdom from our community of guides and practitioners.
+              {latestArticle.description}
             </p>
 
             <a
-              href="https://suuna.substack.com"
+              href={latestArticle.link}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-terracotta hover:text-clay font-bold text-sm transition-colors group/link"
             >
-              <span class="group-hover/link:underline">Read on Substack</span>
+              <span class="group-hover/link:underline">Read Article</span>
               <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
               </svg>

@@ -92,7 +92,7 @@ export function FacilitatorsCarousel({ guides }: Props) {
                     <div className="flex items-start gap-5 mb-6">
                       <div className="relative w-24 h-24 rounded-[8px] overflow-hidden ring-4 ring-honey/20 flex-shrink-0 group-hover:ring-honey/40 transition-all duration-300 group-hover:scale-105">
                         <img
-                          src={guide.image}
+                          src={guide.avatar || guide.image}
                           alt={guide.name}
                           className="w-full h-full object-cover"
                           loading="lazy"
