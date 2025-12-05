@@ -51,11 +51,11 @@ const authors = [...new Set(allPosts.map(post => post.author))];
     <!-- Filter Section -->
     <section class="py-10 px-4">
       <div class="max-w-7xl mx-auto flex justify-center">
-        <div class="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-lg shadow-honey/10 border border-honey/10">
+        <div class="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-[8px] px-8 py-4 shadow-lg shadow-honey/10 border border-honey/10">
           <label for="author-filter" class="text-base font-medium text-ash">Filter by author:</label>
           <select
             id="author-filter"
-            class="bg-stone/20 border-none text-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-honey rounded-xl px-4 py-2 transition-all cursor-pointer hover:bg-stone/30"
+            class="bg-stone/20 border-none text-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-honey rounded-[8px] px-4 py-2 transition-all cursor-pointer hover:bg-stone/30"
             onchange="window.location.href = this.value === 'all' ? '/articles' : `/articles?author=${encodeURIComponent(this.value)}`"
           >
             <option value="all" selected={!authorFilter}>All Authors</option>
@@ -96,7 +96,7 @@ const authors = [...new Set(allPosts.map(post => post.author))];
 
           <div class="space-y-16">
             {feeds.filter(feed => feed.posts.length > 0).map((feed) => (
-              <div class="bg-white rounded-xl p-8 shadow-lg">
+              <div class="bg-white rounded-[8px] p-8 shadow-lg">
                 <div class="flex items-center gap-4 mb-6">
                   <h3 class="text-2xl font-display font-bold text-charcoal">
                     {feed.title}
