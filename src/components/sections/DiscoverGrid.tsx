@@ -48,10 +48,10 @@ export function DiscoverGrid({ events, facilitators, articles }: Props) {
     <section id="discover" className="py-16 md:py-20 bg-primary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <h2 className="text-4xl font-display font-bold text-charcoal dark:text-bone mb-3">
             Discover SUUNA
           </h2>
-          <p className="text-lg text-secondary max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-ash dark:text-[#B8C5D0] max-w-2xl mx-auto mb-8">
             Explore our community through events, wisdom keepers, and shared insights
           </p>
 
@@ -62,15 +62,15 @@ export function DiscoverGrid({ events, facilitators, articles }: Props) {
                 key={filter.value}
                 onClick={() => setActiveFilter(filter.value)}
                 className={`
-                  px-6 py-3 rounded-full font-medium transition-all duration-300
+                  px-6 py-2.5 rounded-lg font-semibold transition-all text-sm
                   ${activeFilter === filter.value
-                    ? 'bg-accent text-white shadow-lg scale-105'
-                    : 'glass text-primary hover:border-accent hover:scale-105'
+                    ? 'bg-sage dark:bg-moss text-white'
+                    : 'bg-white dark:bg-[#1E2B38] border border-stone/30 dark:border-white/10 text-charcoal dark:text-bone hover:border-sage dark:hover:border-moss'
                   }
                 `}
               >
                 {filter.label}
-                <span className={`ml-2 ${activeFilter === filter.value ? 'text-white/80' : 'text-secondary'}`}>
+                <span className={`ml-2 ${activeFilter === filter.value ? 'text-white/80' : 'text-ash dark:text-[#B8C5D0]'}`}>
                   ({filter.count})
                 </span>
               </button>
@@ -96,7 +96,7 @@ export function DiscoverGrid({ events, facilitators, articles }: Props) {
 
         {filteredContent.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-lg text-secondary">
+            <p className="text-lg text-ash dark:text-[#B8C5D0]">
               No {activeFilter === 'all' ? 'content' : activeFilter} found
             </p>
           </div>

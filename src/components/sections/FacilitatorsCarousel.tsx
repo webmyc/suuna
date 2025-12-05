@@ -52,22 +52,22 @@ export function FacilitatorsCarousel({ guides }: Props) {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-16">
           <div className="max-w-2xl">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-4 leading-tight tracking-tight">
+            <h2 className="text-4xl font-display font-bold text-charcoal dark:text-bone mb-3 leading-tight">
               Meet Our Guides
             </h2>
-            <p className="text-xl md:text-2xl text-ash font-light leading-relaxed">
+            <p className="text-lg text-ash dark:text-[#B8C5D0]">
               Connect with wisdom keepers from our community
             </p>
           </div>
 
-          <div className="hidden md:flex gap-3">
+          <div className="hidden md:flex gap-2">
             <button
               onClick={scrollPrev}
               disabled={!canScrollPrev}
               className="w-14 h-14 rounded-[8px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 disabled:hover:scale-100 shadow-lg shadow-terracotta/10"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-6 h-6 text-terracotta" />
+              <ChevronLeft className="w-5 h-5 text-charcoal dark:text-bone" />
             </button>
             <button
               onClick={scrollNext}
@@ -75,7 +75,7 @@ export function FacilitatorsCarousel({ guides }: Props) {
               className="w-14 h-14 rounded-[8px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 disabled:hover:scale-100 shadow-lg shadow-terracotta/10"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-6 h-6 text-terracotta" />
+              <ChevronRight className="w-5 h-5 text-charcoal dark:text-bone" />
             </button>
           </div>
         </div>
@@ -100,15 +100,15 @@ export function FacilitatorsCarousel({ guides }: Props) {
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-2xl font-display font-semibold text-charcoal mb-2 group-hover:text-terracotta transition-colors leading-tight">
+                        <h3 className="text-xl font-display font-bold text-charcoal dark:text-bone mb-1 leading-tight">
                           {guide.name}
                         </h3>
-                        <p className="text-base text-terracotta font-semibold">
+                        <p className="text-sm text-sage dark:text-moss font-semibold">
                           {guide.headline}
                         </p>
                         {guide.location && (
-                          <div className="flex items-center gap-2 text-sm text-ash mt-2">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="flex items-center gap-1 text-xs text-ash dark:text-[#B8C5D0] mt-1">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
@@ -119,13 +119,13 @@ export function FacilitatorsCarousel({ guides }: Props) {
                     </div>
 
                     {guide.bio && (
-                      <p className="text-base text-ash/80 leading-relaxed mb-5 flex-1">
+                      <p className="text-sm text-ash dark:text-[#B8C5D0] mb-4 flex-1 line-clamp-3">
                         {guide.bio}
                       </p>
                     )}
 
                     {guide.tags && guide.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-6">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {guide.tags.slice(0, 3).map((tag) => (
                           <span key={tag} className="px-3 py-1.5 rounded-[8px] bg-bone text-charcoal text-sm font-medium border border-stone/30">
                             {tag}
@@ -134,7 +134,7 @@ export function FacilitatorsCarousel({ guides }: Props) {
                       </div>
                     )}
 
-                    <div className="flex gap-3 mt-auto">
+                    <div className="flex gap-2 mt-auto">
                       {siteLink && (
                         <a
                           href={siteLink.url}
@@ -142,7 +142,7 @@ export function FacilitatorsCarousel({ guides }: Props) {
                           rel="noopener noreferrer"
                           className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-terracotta/30 text-terracotta rounded-[8px] text-base font-semibold transition-all hover:bg-terracotta/10 hover:border-terracotta/50 hover:scale-105"
                         >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                           </svg>
                           Profile
@@ -155,7 +155,7 @@ export function FacilitatorsCarousel({ guides }: Props) {
                           rel="noopener noreferrer"
                           className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-br from-terracotta to-clay text-white rounded-[8px] text-base font-semibold transition-all hover:scale-105 hover:shadow-xl hover:shadow-terracotta/40 group/button"
                         >
-                          <svg className="w-5 h-5 group-hover/button:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
                           Book
@@ -170,14 +170,14 @@ export function FacilitatorsCarousel({ guides }: Props) {
         </div>
 
         {/* Mobile navigation */}
-        <div className="flex md:hidden justify-center gap-3 mt-10">
+        <div className="flex md:hidden justify-center gap-2 mt-8">
           <button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
             className="w-14 h-14 rounded-[8px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 shadow-lg shadow-terracotta/10"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6 text-terracotta" />
+            <ChevronLeft className="w-5 h-5 text-charcoal dark:text-bone" />
           </button>
           <button
             onClick={scrollNext}
@@ -185,7 +185,7 @@ export function FacilitatorsCarousel({ guides }: Props) {
             className="w-14 h-14 rounded-[8px] bg-white border-2 border-terracotta/20 flex items-center justify-center transition-all hover:scale-105 hover:border-terracotta/40 hover:bg-terracotta/5 disabled:opacity-30 shadow-lg shadow-terracotta/10"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6 text-terracotta" />
+            <ChevronRight className="w-5 h-5 text-charcoal dark:text-bone" />
           </button>
         </div>
       </div>

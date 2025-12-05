@@ -1,5 +1,6 @@
 ---
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { LanguageToggle } from '../ui/LanguageToggle';
 
 // Get current path for active navigation
 const currentPath = Astro.url.pathname;
@@ -92,8 +93,10 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-button"
-        class="lg:hidden p-2 text-charcoal hover:text-sage transition-colors"
+        class="lg:hidden p-2 text-charcoal dark:text-bone hover:text-sage dark:hover:text-moss transition-colors"
         aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -126,12 +129,23 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  // Mobile menu toggle
+  // Mobile menu toggle with accessibility
   const menuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
   menuButton?.addEventListener('click', () => {
+    const isHidden = mobileMenu?.classList.contains('hidden');
     mobileMenu?.classList.toggle('hidden');
+    menuButton?.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  });
+
+  // Close mobile menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      menuButton?.setAttribute('aria-expanded', 'false');
+      menuButton?.focus();
+    }
   });
 </script>
 

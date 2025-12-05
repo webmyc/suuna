@@ -7,35 +7,46 @@ interface Props {
   title: string;
   description: string;
   canonical?: string;
+  ogImage?: string;
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical, ogImage = 'https://suuna.ro/og-image.jpg' } = Astro.props;
+
+// Get language from URL params or default to 'ro'
+const urlLang = Astro.url.searchParams.get('lang') || 'ro';
+const lang = urlLang === 'en' ? 'en' : 'ro';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="intentional communities, wisdom keepers, facilitators, transformation, SUUNA, Romania" />
+    <meta name="author" content="SUUNA" />
+    <meta name="robots" content="index, follow" />
     {canonical && <link rel="canonical" href={canonical} />}
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={lang === 'ro' ? 'ro_RO' : 'en_US'} />
     <meta property="og:site_name" content="SUUNA" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical || `https://suuna.ro${Astro.url.pathname}`} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Fonts -->
     <!-- Preload SUUNA brand font for immediate display -->
@@ -48,24 +59,35 @@ const { title, description, canonical } = Astro.props;
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&family=PT+Serif:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Theme Script (runs before page load to prevent flash) -->
+    <!-- Theme & Language Scripts (runs before page load to prevent flash) -->
     <script is:inline>
       (function() {
-        const stored = localStorage.getItem('theme');
+        // Theme
+        const storedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = stored || (prefersDark ? 'dark' : 'light');
+        const theme = storedTheme || (prefersDark ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
+        
+        // Language
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        const storedLang = localStorage.getItem('language');
+        const lang = urlLang || storedLang || 'ro';
+        document.documentElement.setAttribute('lang', lang);
+        
+        // Save language if from URL
+        if (urlLang && urlLang !== storedLang) {
+          localStorage.setItem('language', urlLang);
+        }
       })();
     </script>
   </head>
-  <body>
+  <body class="bg-bone dark:bg-[#0D1B22] text-charcoal dark:text-bone font-sans antialiased selection:bg-sage/20 dark:selection:bg-moss/30 selection:text-charcoal dark:selection:text-bone">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-sage focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2">Skip to main content</a>
     <Header />
-    <main class="pt-16">
+    <main id="main-content" class="pt-20 min-h-screen" role="main">
       <slot />
     </main>
     <Footer />

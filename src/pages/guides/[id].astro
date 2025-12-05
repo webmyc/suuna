@@ -27,9 +27,9 @@ const description = guide.bio || guide.headline;
 ---
 
 <Base title={title} description={description} canonical={`https://suuna.ro/guides/${guide.id}`}>
-  <div class="min-h-screen bg-bone">
+  <div class="min-h-screen bg-bone dark:bg-[#0D1B22]">
     <!-- Hero Section - Bold and Present -->
-    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-sage/10 overflow-hidden">
+    <section class="relative pt-36 pb-20 px-4 bg-gradient-to-br from-bone via-white to-sage/10 dark:from-[#0D1B22] dark:via-[#1E2B38] dark:to-sage/5 overflow-hidden">
       <!-- Bold organic background -->
       <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-sage/15 to-moss/8 rounded-full blur-[120px] animate-float-slow"></div>
@@ -43,25 +43,27 @@ const description = guide.bio || guide.headline;
             <div class="aspect-square rounded-[8px] overflow-hidden shadow-2xl shadow-sage/20 ring-4 ring-white/50">
               <img
                 src={guide.image}
-                alt={guide.name}
+                alt={guide.name || 'Guide photo'}
                 class="w-full h-full object-cover"
                 loading="eager"
+                width="600"
+                height="600"
               />
             </div>
           </div>
 
           <!-- Guide Info -->
           <div class="flex-1">
-            <h1 class="text-5xl sm:text-6xl md:text-7xl font-display font-semibold text-charcoal mb-6 leading-none tracking-tight">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-display font-semibold text-charcoal dark:text-bone mb-6 leading-none tracking-tight">
               {guide.name}
             </h1>
 
-            <p class="text-2xl sm:text-3xl text-terracotta font-semibold mb-8">
+            <p class="text-2xl sm:text-3xl text-terracotta dark:text-honey font-semibold mb-8">
               {guide.headline}
             </p>
 
             {guide.location && (
-              <div class="flex items-center gap-3 text-xl text-ash mb-10">
+              <div class="flex items-center gap-3 text-xl text-ash dark:text-[#B8C5D0] mb-10">
                 <svg class="w-7 h-7 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -119,11 +121,11 @@ const description = guide.bio || guide.headline;
     <!-- Biography - Generous and Readable -->
     <section class="py-16 px-4 bg-white">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-10 leading-tight tracking-tight">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal dark:text-bone mb-10 leading-tight tracking-tight">
           About {guide.name}
         </h2>
-        <div class="prose prose-xl max-w-none">
-          <p class="text-xl leading-relaxed text-ash whitespace-pre-line">
+        <div class="prose prose-xl max-w-none dark:prose-invert">
+          <p class="text-xl leading-relaxed text-ash dark:text-[#B8C5D0] whitespace-pre-line">
             {guide.bio}
           </p>
         </div>
@@ -134,7 +136,7 @@ const description = guide.bio || guide.headline;
     {guideOfferings.length > 0 && (
       <section class="py-16 px-4 bg-gradient-to-br from-stone/30 to-bone">
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal mb-12 leading-tight tracking-tight text-center">
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-charcoal dark:text-bone mb-12 leading-tight tracking-tight text-center">
             Offerings
           </h2>
 
@@ -157,12 +159,12 @@ const description = guide.bio || guide.headline;
                     <span class="px-4 py-2 bg-terracotta/10 text-terracotta rounded-[8px] text-sm font-bold capitalize">
                       {offering.type}
                     </span>
-                    <span class="text-ash text-sm font-medium">
+                    <span class="text-ash dark:text-[#B8C5D0] text-sm font-medium">
                       {new Date(offering.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </span>
                   </div>
 
-                  <h3 class="text-2xl sm:text-3xl font-display font-bold text-charcoal mb-4 group-hover:text-terracotta transition-colors leading-tight">
+                  <h3 class="text-2xl sm:text-3xl font-display font-bold text-charcoal dark:text-bone mb-4 group-hover:text-terracotta dark:group-hover:text-honey transition-colors leading-tight">
                     {offering.title}
                   </h3>
 
