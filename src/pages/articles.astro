@@ -9,9 +9,17 @@ const description = 'Wisdom from our community of guides. Articles, essays, and 
 // Fetch all Substack articles
 const feeds = await fetchAllSubstackFeeds();
 
+// Get author filter from URL params
+const url = new URL(Astro.request.url);
+const authorFilter = url.searchParams.get('author');
+
+// Get unique authors from feeds
+const authors = [...new Set(feeds.map(feed => feed.title))].sort();
+
 // Combine all posts and sort by date
 const allPosts = feeds
   .flatMap(feed => feed.posts)
+  .filter(post => !authorFilter || post.author === authorFilter)
   .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 
 // Get featured article (most recent with image)
@@ -184,12 +192,6 @@ function formatShortDate(dateString: string): string {
                   >
                     View all →
                   </a>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {feed.posts.slice(0, 3).map((post) => (
-                    <ArticleCard client:load article={post} compact={true} />
-                  ))}
                 </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
