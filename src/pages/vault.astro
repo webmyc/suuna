@@ -41,52 +41,52 @@ const getGridClasses = (index: number, product: GumroadProduct) => {
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {products.map((product) => (
-            <article class="group bg-white/95 backdrop-blur-md rounded-[8px] overflow-hidden shadow-2xl shadow-sage/20 hover:shadow-2xl hover:shadow-sage/30 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] border-2 border-sage/15">
+            <article class="group bg-white/95 dark:bg-[#142830]/95 backdrop-blur-md rounded-[8px] overflow-hidden shadow-2xl shadow-sage/20 hover:shadow-2xl hover:shadow-sage/30 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] border-2 border-sage/15 dark:border-sage/25">
               <!-- Product Image -->
-              <div class="aspect-video bg-gradient-to-br from-sage to-forest relative overflow-hidden">
-                {product.featured && (
-                  <div class="absolute top-5 right-5 bg-terracotta text-white px-5 py-2.5 rounded-[8px] text-base font-semibold shadow-xl shadow-terracotta/40">
-                    Featured
+              <div class="aspect-video relative overflow-hidden bg-gradient-to-br from-sage to-forest">
+                {product.thumbnail_url ? (
+                  <img
+                    src={product.thumbnail_url}
+                    alt={product.name}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-white text-center p-6">
+                      <div class="text-7xl mb-4 animate-breathe-slow">📚</div>
+                      <p class="text-base opacity-90 font-medium">Course Image</p>
+                    </div>
                   </div>
                 )}
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="text-white text-center p-6">
-                    <div class="text-7xl mb-4 animate-breathe-slow">📚</div>
-                    <p class="text-base opacity-90 font-medium">Course Image Placeholder</p>
-                  </div>
-                </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               <!-- Product Info -->
               <div class="p-10">
                 <div class="flex items-start justify-between mb-4">
-                  <h3 class="text-2xl font-display font-bold text-charcoal leading-tight flex-1">
-                    {product.title}
+                  <h3 class="text-2xl font-display font-bold text-charcoal dark:text-bone leading-tight flex-1">
+                    {product.name}
                   </h3>
                   <span class="text-3xl font-bold text-sage ml-4">
-                    {product.price}
+                    {product.formatted_price}
                   </span>
                 </div>
 
-                <p class="text-base text-terracotta font-semibold mb-4">
-                  by {product.creator}
-                </p>
-
-                <p class="text-base text-ash mb-8 line-clamp-3 leading-relaxed">
+                <p class="text-base text-ash dark:text-[#B8C5D0] mb-8 line-clamp-3 leading-relaxed">
                   {product.description}
                 </p>
 
                 <a
-                  href={product.link}
+                  href={product.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   class="group/button block w-full text-center px-8 py-4 bg-gradient-to-br from-sage to-forest text-white font-semibold text-base rounded-[8px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
                 >
-                  <span class="group-hover/button:scale-105 transition-transform duration-300 inline-block">View on Gumroad</span>
+                  <span class="group-hover/button:scale-105 transition-transform duration-300 inline-block">View Course</span>
                 </a>
               </div>
-            </a>
+            </article>
           ))}
         </div>
       </div>
