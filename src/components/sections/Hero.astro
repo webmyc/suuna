@@ -1,97 +1,238 @@
 ---
-// Hero Section - Bold, Warm, Intentional
+// Hero Section - Video Background with Featured Content
+import guidesData from '../../data/facilitators.json';
+import { fetchLatestSubstackArticle } from '../../lib/substack';
+
+// Get Dana's data
+const dana = guidesData.find(g => g.id === 'dana-dragomirescu');
+
+// Fetch latest Substack article
+let latestArticle;
+try {
+  latestArticle = await fetchLatestSubstackArticle();
+} catch (error) {
+  console.error('Failed to fetch Substack article:', error);
+  latestArticle = {
+    title: 'Latest from SUUNA',
+    link: 'https://suuna.substack.com',
+    description: 'Discover the latest stories, insights, and wisdom from our community of guides and practitioners.',
+    image: '/images/default-article.jpg',
+    pubDate: new Date().toISOString(),
+  };
+}
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-bone via-white to-sage/5">
-  <!-- Large organic background shapes with real depth -->
-  <div class="absolute inset-0 overflow-hidden">
-    <!-- Main glow -->
-    <div class="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] gradient-radial from-sage/30 via-sage/10 to-transparent rounded-full blur-[100px] animate-breathe-slow"></div>
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Video Background -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+    <!-- Pexels video - ID: 3064220 - Hot air balloon festival -->
+    <source src="https://videos.pexels.com/video-files/3064220/3064220-hd_1920_1080_24fps.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-    <!-- Floating organic shapes -->
-    <div class="absolute top-20 right-1/4 w-[400px] h-[400px] bg-gradient-to-br from-terracotta/20 via-honey/15 to-transparent rounded-full blur-3xl animate-float-slow"></div>
-    <div class="absolute bottom-20 left-1/4 w-[350px] h-[350px] bg-gradient-to-br from-moss/25 via-sage/15 to-transparent rounded-full blur-3xl animate-float-slower"></div>
-    <div class="absolute top-1/2 right-1/3 w-[300px] h-[300px] bg-gradient-to-br from-honey/20 to-transparent rounded-full blur-2xl animate-float"></div>
+  <!-- Gradient overlay for readability on both light/dark modes -->
+  <div class="absolute inset-0 bg-gradient-to-br from-charcoal/70 via-charcoal/50 to-sage/40"></div>
+
+  <!-- Subtle noise texture for depth -->
+  <div class="absolute inset-0 opacity-10" style="background-image: url('/img/noise.png'); background-size: 200px;"></div>
+
+  <!-- Content Grid -->
+  <div class="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-16 w-full">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- LEFT: Main Message -->
+      <div class="text-center lg:text-left space-y-8">
+        <!-- SUUNA Wordmark - Smaller -->
+        <div class="mb-6">
+          <h1 class="font-suuna text-white text-6xl sm:text-7xl lg:text-8xl leading-none tracking-wide animate-breathe-slow drop-shadow-2xl" style="font-family: 'Architype Bayer-type W90', sans-serif !important; text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6), 0 2px 20px rgba(74, 124, 89, 0.4);">
+            SUUNA
+          </h1>
+        </div>
+
+        <!-- Tagline -->
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-white/98 leading-tight drop-shadow-xl">
+          Platform for intentional communities, where communities come together and you belong
+        </h2>
+
+        <!-- Subtitle with Rotating Words -->
+        <div class="text-xl sm:text-2xl text-white/95 leading-relaxed drop-shadow-lg">
+          Creating safe <span id="rotating-word" class="font-bold text-honey inline-block min-w-[180px] text-left">learning</span> environments
+        </div>
+
+        <!-- CTAs with Icons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
+          <a
+            href="/join"
+            class="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-br from-sage via-forest to-sage text-white text-lg font-bold rounded-[8px] shadow-2xl shadow-black/40 hover:shadow-black/60 transition-all duration-500 hover:scale-105 hover:-translate-y-1 overflow-hidden"
+          >
+            <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <svg class="w-6 h-6 relative z-10 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+            </svg>
+            <span class="relative z-10 group-hover:scale-105 transition-transform duration-300">Join Community</span>
+          </a>
+
+          <a
+            href="/manifesto"
+            class="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-white/95 backdrop-blur-md border-3 border-white/40 text-charcoal text-lg font-bold rounded-[8px] shadow-xl shadow-black/20 hover:shadow-2xl hover:bg-white hover:border-white transition-all duration-500 hover:scale-105 hover:-translate-y-1"
+          >
+            <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+            <span class="group-hover:scale-105 transition-transform duration-300">Read Manifesto</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Featured Cards -->
+      <div class="space-y-6">
+        <!-- Featured Guide: Dana -->
+        {dana && (
+          <article class="group bg-white/95 backdrop-blur-xl rounded-[8px] overflow-hidden shadow-2xl shadow-black/30 hover:shadow-black/50 transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+            <div class="flex gap-6 p-6">
+              <!-- Photo -->
+              <div class="flex-shrink-0">
+                <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-[8px] overflow-hidden ring-4 ring-sage/20 group-hover:ring-sage/40 transition-all duration-500">
+                  <img
+                    src={dana.avatar}
+                    alt={dana.name}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+
+              <!-- Info -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-3 mb-2">
+                  <h3 class="text-xl sm:text-2xl font-display font-bold text-charcoal group-hover:text-sage transition-colors leading-tight">
+                    {dana.name}
+                  </h3>
+                  <span class="flex-shrink-0 px-3 py-1.5 bg-terracotta/15 text-terracotta rounded-[10px] text-xs font-bold uppercase tracking-wide">
+                    Featured Guide
+                  </span>
+                </div>
+                <p class="text-sm sm:text-base text-ash/90 mb-4 leading-relaxed line-clamp-2">
+                  {dana.headline}
+                </p>
+                <a
+                  href={`/guides/${dana.id}`}
+                  class="inline-flex items-center gap-2 text-sage hover:text-forest font-bold text-sm transition-colors group/link"
+                >
+                  <span class="group-hover/link:underline">View Profile</span>
+                  <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        )}
+
+        <!-- Latest from SUUNA Substack -->
+        <article class="group bg-white/95 backdrop-blur-xl rounded-[8px] overflow-hidden shadow-2xl shadow-black/30 hover:shadow-black/50 transition-all duration-500 hover:-translate-y-2 hover:scale-105">
+          <!-- Article Image -->
+          {latestArticle.image && (
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src={latestArticle.image}
+                alt={latestArticle.title}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute top-3 right-3 px-3 py-1.5 bg-terracotta/90 backdrop-blur-sm text-white rounded-[8px] text-xs font-bold uppercase tracking-wide">
+                Latest
+              </div>
+            </div>
+          )}
+
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="p-2 bg-gradient-to-br from-honey to-terracotta rounded-[8px] shadow-lg">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-charcoal group-hover:text-terracotta transition-colors">
+                  Latest from SUUNA
+                </h3>
+                <p class="text-xs text-ash/80 font-medium">Community Insights</p>
+              </div>
+            </div>
+
+            <h4 class="text-lg font-bold text-charcoal mb-2 leading-tight line-clamp-2 group-hover:text-terracotta transition-colors">
+              {latestArticle.title}
+            </h4>
+
+            <p class="text-sm text-ash/90 mb-4 leading-relaxed line-clamp-3">
+              {latestArticle.description}
+            </p>
+
+            <a
+              href={latestArticle.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-terracotta hover:text-clay font-bold text-sm transition-colors group/link"
+            >
+              <span class="group-hover/link:underline">Read Article</span>
+              <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 
-  <!-- Content with generous spacing -->
-  <div class="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center py-20">
-    <!-- SUUNA Wordmark - Bold and Confident -->
-    <div class="mb-8 sm:mb-12">
-      <h1 class="inline-block animate-breathe-slow">
-        <span
-          class="block font-suuna text-sage text-[80px] xs:text-[100px] sm:text-[140px] md:text-[160px] lg:text-[200px] leading-none tracking-wide"
-          style="font-family: 'Architype Bayer-type W90', sans-serif !important;
-                 text-shadow: 0 4px 40px rgba(74, 124, 89, 0.3),
-                             0 2px 20px rgba(74, 124, 89, 0.2);"
-        >
-          SUUNA
-        </span>
-      </h1>
-    </div>
-
-    <!-- Tagline with breathing space -->
-    <p class="text-xl sm:text-2xl md:text-3xl text-ash dark:text-[#B8C5D0] max-w-3xl mx-auto mb-12 sm:mb-16 leading-relaxed font-light px-4">
-      A home for <span class="text-sage dark:text-moss font-medium">intentional communities</span>
-    </p>
-
-    <!-- CTAs with real presence -->
-    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20 px-4">
-      <a
-        href="/join"
-        class="group relative inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-5 bg-gradient-to-br from-sage via-forest-dark to-sage dark:from-moss dark:via-sage dark:to-moss text-white text-base sm:text-lg font-semibold rounded-xl sm:rounded-2xl shadow-2xl shadow-sage/40 hover:shadow-sage/50 transition-all duration-500 hover:scale-105 hover:-translate-y-1 overflow-hidden focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 w-full sm:w-auto"
-      >
-        <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        <span class="relative z-10">Join the Community</span>
-      </a>
-      <a
-        href="/manifesto"
-        class="group inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-5 bg-white/90 dark:bg-[#1E2B38]/90 backdrop-blur-md border-2 sm:border-3 border-sage/30 dark:border-moss/30 text-charcoal dark:text-bone text-base sm:text-lg font-semibold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl hover:bg-white dark:hover:bg-[#1E2B38] hover:border-sage/50 dark:hover:border-moss/50 transition-all duration-500 hover:scale-105 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 w-full sm:w-auto"
-      >
-        <span class="relative z-10">Read Our Manifesto</span>
-      </a>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="animate-bounce-slow">
-      <svg class="w-8 h-8 mx-auto text-sage/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
-    </div>
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow z-20">
+    <svg class="w-8 h-8 text-white/70 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
   </div>
 </section>
 
+<script>
+  // Rotating word animation with text morph effect
+  const words = ['learning', 'growing', 'sharing', 'thriving', 'belonging', 'beneficial'];
+  let currentIndex = 0;
+  const wordElement = document.getElementById('rotating-word');
+
+  if (wordElement) {
+    function morphToNextWord() {
+      // Get current and next word
+      const currentWord = words[currentIndex];
+      const nextIndex = (currentIndex + 1) % words.length;
+      const nextWord = words[nextIndex];
+
+      // Morph effect using CSS transitions
+      wordElement.style.opacity = '0';
+      wordElement.style.transform = 'translateY(-10px) scale(0.95)';
+
+      setTimeout(() => {
+        wordElement.textContent = nextWord;
+        wordElement.style.opacity = '1';
+        wordElement.style.transform = 'translateY(0) scale(1)';
+        currentIndex = nextIndex;
+      }, 300);
+    }
+
+    // Set up transition
+    wordElement.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    wordElement.style.display = 'inline-block';
+
+    // Rotate every 2 seconds
+    setInterval(morphToNextWord, 2000);
+  }
+</script>
+
 <style>
-  @keyframes float-slow {
-    0%, 100% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
-    }
-    33% {
-      transform: translate(30px, -30px) scale(1.1) rotate(5deg);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9) rotate(-5deg);
-    }
-  }
-
-  @keyframes float-slower {
-    0%, 100% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
-    }
-    50% {
-      transform: translate(-40px, -20px) scale(1.05) rotate(-3deg);
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-    }
-    50% {
-      transform: translate(20px, -20px) scale(1.1);
-    }
-  }
-
   @keyframes breathe-slow {
     0%, 100% {
       transform: scale(1);
@@ -110,23 +251,38 @@
     }
   }
 
-  .animate-float-slow {
-    animation: float-slow 20s ease-in-out infinite;
-  }
-
-  .animate-float-slower {
-    animation: float-slower 25s ease-in-out infinite;
-  }
-
-  .animate-float {
-    animation: float 15s ease-in-out infinite;
-  }
-
   .animate-breathe-slow {
     animation: breathe-slow 8s ease-in-out infinite;
   }
 
   .animate-bounce-slow {
     animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  /* Text clamp for card descriptions */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Ensure video covers properly */
+  video {
+    filter: brightness(0.85);
+  }
+
+  /* Dark mode adjustments - ensure readability */
+  @media (prefers-color-scheme: dark) {
+    video {
+      filter: brightness(0.7);
+    }
   }
 </style>

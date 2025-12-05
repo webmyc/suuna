@@ -50,6 +50,28 @@ function formatShortDate(dateString: string): string {
         <p class="text-lg sm:text-xl md:text-2xl text-ash dark:text-[#B8C5D0] max-w-3xl leading-relaxed">
           Wisdom from our community of guides.
         </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-honey to-terracotta mx-auto rounded-full mt-8"></div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-10 px-4">
+      <div class="max-w-7xl mx-auto flex justify-center">
+        <div class="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm rounded-[8px] px-8 py-4 shadow-lg shadow-honey/10 border border-honey/10">
+          <label for="author-filter" class="text-base font-medium text-ash">Filter by author:</label>
+          <select
+            id="author-filter"
+            class="bg-stone/20 border-none text-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-honey rounded-[8px] px-4 py-2 transition-all cursor-pointer hover:bg-stone/30"
+            onchange="window.location.href = this.value === 'all' ? '/articles' : `/articles?author=${encodeURIComponent(this.value)}`"
+          >
+            <option value="all" selected={!authorFilter}>All Authors</option>
+            {authors.map(author => (
+              <option value={author} selected={authorFilter === author}>
+                {author}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     </section>
 
@@ -149,22 +171,26 @@ function formatShortDate(dateString: string): string {
           By Author
         </h2>
 
-        <div class="space-y-16 sm:space-y-20 md:space-y-24">
-          {feeds.filter(feed => feed.posts.length > 0).map((feed) => (
-            <div>
-              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-8 sm:mb-12">
-                <h3 class="text-xl sm:text-2xl md:text-3xl font-display font-bold text-charcoal dark:text-bone">
-                  {feed.title}
-                </h3>
-                <a
-                  href={feed.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-sm font-semibold text-sage dark:text-moss hover:underline transition-colors focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2 rounded"
-                >
-                  Subscribe →
-                </a>
-              </div>
+          <div class="space-y-16">
+            {feeds.filter(feed => feed.posts.length > 0).map((feed) => (
+              <div class="bg-white rounded-[8px] p-8 shadow-lg">
+                <div class="flex items-center gap-4 mb-6">
+                  <h3 class="text-2xl font-display font-bold text-charcoal">
+                    {feed.title}
+                  </h3>
+                  <a
+                    href={`/articles?author=${encodeURIComponent(feed.title)}`}
+                    class="text-sage hover:text-charcoal transition-colors text-sm font-medium"
+                  >
+                    View all →
+                  </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {feed.posts.slice(0, 3).map((post) => (
+                    <ArticleCard client:load article={post} compact={true} />
+                  ))}
+                </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
                 {feed.posts.slice(0, 3).map((post) => (

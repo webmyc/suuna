@@ -48,7 +48,15 @@ const lang = urlLang === 'en' ? 'en' : 'ro';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Fonts: Inter (body) & Cormorant Garamond (headings) -->
+    <!-- Fonts -->
+    <!-- Preload SUUNA brand font for immediate display -->
+    <link
+      rel="preload"
+      href="/fonts/architype-bayer-type-w90.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />

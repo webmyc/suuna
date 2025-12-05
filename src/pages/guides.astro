@@ -28,8 +28,8 @@ const sortedGuides = guidesData.sort((a, b) => {
       </div>
     </section>
 
-    <!-- Guides Grid - Elegant and Compact -->
-    <section class="py-16 px-4 bg-bone dark:bg-[#0D1B22]">
+    <!-- Guides Grid - Bold Cards with Real Presence -->
+    <section class="py-20 px-4 bg-gradient-to-b from-white to-bone">
       <div class="mx-auto max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedGuides.map((guide) => {
@@ -37,7 +37,7 @@ const sortedGuides = guidesData.sort((a, b) => {
             const substackLink = guide.links?.find(l => l.type === 'substack');
 
             return (
-              <article class="group bg-white dark:bg-[#1E2B38] rounded-lg overflow-hidden border border-stone/30 dark:border-white/10 hover:shadow-lg transition-all">
+              <article class="group bg-white/95 backdrop-blur-sm rounded-[8px] overflow-hidden shadow-2xl shadow-sage/10 hover:shadow-2xl hover:shadow-sage/20 transition-all duration-500 hover:-translate-y-2">
                 {/* Guide Photo */}
                 <div class="aspect-square overflow-hidden relative">
                   <img
@@ -47,7 +47,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                     loading="lazy"
                   />
                   {guide.featured && (
-                    <div class="absolute top-3 right-3 bg-sage dark:bg-moss text-white px-3 py-1 rounded-md text-xs font-semibold">
+                    <div class="absolute top-6 right-6 bg-terracotta text-white px-5 py-2.5 rounded-[8px] text-sm font-bold shadow-xl shadow-terracotta/40">
                       Featured
                     </div>
                   )}
@@ -63,7 +63,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                     {guide.headline}
                   </p>
 
-                  <p class="text-sm text-ash dark:text-[#B8C5D0] leading-relaxed mb-3 line-clamp-2">
+                  <p class="text-base text-ash leading-relaxed mb-6 line-clamp-3">
                     {guide.bio}
                   </p>
 
@@ -71,7 +71,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                   {guide.tags && guide.tags.length > 0 && (
                     <div class="flex flex-wrap gap-1.5 mb-3">
                       {guide.tags.slice(0, 3).map((tag) => (
-                        <span class="px-2 py-1 rounded-md bg-bone dark:bg-[#0D1B22] text-ash dark:text-[#B8C5D0] text-xs font-medium border border-stone/30 dark:border-white/10">
+                        <span class="px-4 py-2 rounded-[8px] bg-stone/40 text-charcoal text-sm font-medium border border-sage/20">
                           {tag}
                         </span>
                       ))}
@@ -93,7 +93,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                   <div class="flex gap-2">
                     <a
                       href={`/guides/${guide.id}`}
-                      class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-sage dark:bg-moss text-white font-semibold text-sm rounded-lg hover:bg-forest-dark dark:hover:bg-sage transition-all"
+                      class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-br from-sage to-forest text-white font-bold text-base rounded-[8px] hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 hover:scale-105"
                     >
                       View Profile
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ const sortedGuides = guidesData.sort((a, b) => {
                         href={siteLink.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center w-10 h-10 bg-bone dark:bg-[#0D1B22] border border-stone/30 dark:border-white/10 text-charcoal dark:text-bone rounded-lg hover:bg-stone/50 dark:hover:bg-white/10 transition-all"
+                        class="inline-flex items-center justify-center w-14 h-14 bg-white border-2 border-sage/30 text-sage rounded-[8px] hover:bg-sage/5 hover:border-sage/50 transition-all duration-300 hover:scale-105"
                         title="Visit website"
                       >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,6 +122,12 @@ const sortedGuides = guidesData.sort((a, b) => {
       </div>
     </section>
 
+    <!-- Community CTA -->
+    <section class="relative py-24 px-4 bg-gradient-to-br from-sage via-forest to-sage overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/3 left-1/4 w-[550px] h-[550px] bg-white/8 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-moss/25 rounded-full blur-[120px]"></div>
+      </div>
 
     <!-- Community CTA -->
     <section class="py-16 px-4 bg-sage dark:bg-moss">
@@ -134,7 +140,7 @@ const sortedGuides = guidesData.sort((a, b) => {
         </p>
         <a
           href="/join#guides"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-sage dark:text-moss font-semibold text-base rounded-lg hover:bg-bone dark:hover:bg-white/90 transition-all"
+          class="group inline-flex items-center gap-3 px-10 py-6 bg-white text-sage font-bold text-xl rounded-[8px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40"
         >
           <span>Join as Guide</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

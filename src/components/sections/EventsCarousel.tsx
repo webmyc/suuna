@@ -58,9 +58,15 @@ export function EventsCarousel({ events }: Props) {
   if (events.length === 0) return null
 
   return (
-    <section id="events" className="relative py-20 bg-bone dark:bg-[#0D1B22]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-12">
+    <section id="events" className="relative py-16 md:py-28 bg-gradient-to-br from-bone via-white to-stone/10 overflow-hidden">
+      {/* Warm background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-gradient-to-br from-terracotta/8 to-honey/5 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-sage/6 to-moss/4 rounded-full blur-[100px]"></div>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between mb-16">
           <div className="max-w-2xl">
             <h2 className="text-4xl font-display font-bold text-charcoal dark:text-bone mb-3 leading-tight">
               Upcoming Events
@@ -74,7 +80,7 @@ export function EventsCarousel({ events }: Props) {
             <button
               onClick={scrollPrev}
               disabled={!canScrollPrev}
-              className="w-12 h-12 rounded-lg bg-white dark:bg-[#1E2B38] border border-stone/30 dark:border-white/10 flex items-center justify-center transition-all hover:shadow-md disabled:opacity-30"
+              className="w-14 h-14 rounded-[8px] bg-white border-2 border-sage/20 flex items-center justify-center transition-all hover:scale-105 hover:border-sage/40 hover:bg-sage/5 disabled:opacity-30 disabled:hover:scale-100 shadow-lg shadow-sage/10"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5 text-charcoal dark:text-bone" />
@@ -82,7 +88,7 @@ export function EventsCarousel({ events }: Props) {
             <button
               onClick={scrollNext}
               disabled={!canScrollNext}
-              className="w-12 h-12 rounded-lg bg-white dark:bg-[#1E2B38] border border-stone/30 dark:border-white/10 flex items-center justify-center transition-all hover:shadow-md disabled:opacity-30"
+              className="w-14 h-14 rounded-[8px] bg-white border-2 border-sage/20 flex items-center justify-center transition-all hover:scale-105 hover:border-sage/40 hover:bg-sage/5 disabled:opacity-30 disabled:hover:scale-100 shadow-lg shadow-sage/10"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5 text-charcoal dark:text-bone" />
@@ -96,7 +102,7 @@ export function EventsCarousel({ events }: Props) {
               const { date, time } = formatDateTime(event.start)
               return (
                 <div key={event.id} className="embla__slide">
-                  <article className="bg-white dark:bg-[#1E2B38] rounded-xl overflow-hidden border border-stone/30 dark:border-white/10 hover:shadow-lg transition-all duration-300 group h-full flex flex-col">
+                  <article className="bg-white/95 backdrop-blur-sm rounded-[8px] overflow-hidden shadow-2xl shadow-sage/15 hover:shadow-2xl hover:shadow-sage/25 transition-all duration-500 hover:-translate-y-2 group h-full flex flex-col">
                     {event.image && (
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <img
@@ -106,8 +112,8 @@ export function EventsCarousel({ events }: Props) {
                           loading="lazy"
                         />
                         {event.price && (
-                          <div className="absolute top-4 right-4">
-                            <span className="px-3 py-1.5 rounded-lg bg-sage dark:bg-moss text-white text-sm font-semibold">
+                          <div className="absolute top-5 right-5">
+                            <span className="px-4 py-2 rounded-[8px] bg-terracotta text-white text-base font-semibold shadow-xl shadow-terracotta/30">
                               {event.price}
                             </span>
                           </div>
@@ -147,10 +153,10 @@ export function EventsCarousel({ events }: Props) {
                         href={event.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-sage dark:bg-moss text-white font-semibold text-sm rounded-lg transition-all hover:bg-forest-dark dark:hover:bg-sage mt-auto"
+                        className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-br from-sage to-forest text-white font-semibold text-base rounded-[8px] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-sage/40 mt-auto group/button"
                       >
-                        <span>Save a Spot</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="group-hover/button:scale-105 transition-transform duration-300">Get Ticket</span>
+                        <svg className="w-5 h-5 group-hover/button:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
@@ -167,7 +173,7 @@ export function EventsCarousel({ events }: Props) {
           <button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
-            className="w-12 h-12 rounded-lg bg-white dark:bg-[#1E2B38] border border-stone/30 dark:border-white/10 flex items-center justify-center transition-all hover:shadow-md disabled:opacity-30"
+            className="w-14 h-14 rounded-[8px] bg-white border-2 border-sage/20 flex items-center justify-center transition-all hover:scale-105 hover:border-sage/40 hover:bg-sage/5 disabled:opacity-30 shadow-lg shadow-sage/10"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-5 h-5 text-charcoal dark:text-bone" />
@@ -175,7 +181,7 @@ export function EventsCarousel({ events }: Props) {
           <button
             onClick={scrollNext}
             disabled={!canScrollNext}
-            className="w-12 h-12 rounded-lg bg-white dark:bg-[#1E2B38] border border-stone/30 dark:border-white/10 flex items-center justify-center transition-all hover:shadow-md disabled:opacity-30"
+            className="w-14 h-14 rounded-[8px] bg-white border-2 border-sage/20 flex items-center justify-center transition-all hover:scale-105 hover:border-sage/40 hover:bg-sage/5 disabled:opacity-30 shadow-lg shadow-sage/10"
             aria-label="Next slide"
           >
             <ChevronRight className="w-5 h-5 text-charcoal dark:text-bone" />

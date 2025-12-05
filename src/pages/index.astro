@@ -9,6 +9,18 @@ import { DiscoverGrid } from '../components/sections/DiscoverGrid';
 import eventsData from '../data/events.json';
 import guidesData from '../data/facilitators.json';
 import articlesData from '../data/articles.json';
+import { fetchLumaEvents } from '../lib/luma';
+
+// Fetch live events from Luma (or use fallback)
+let lumaEvents = eventsData;
+try {
+  const fetchedEvents = await fetchLumaEvents();
+  if (fetchedEvents && fetchedEvents.length > 0) {
+    lumaEvents = fetchedEvents;
+  }
+} catch (error) {
+  console.log('Using fallback events data');
+}
 
 // Page metadata
 const title = 'SUUNA - A Platform for Intentional Communities';
@@ -19,58 +31,66 @@ const description = 'Community platform for wisdom creators, guides, and intenti
   <Hero />
 
   <!-- What is SUUNA? Section -->
-  <section class="relative py-20 px-4 bg-bone dark:bg-[#0D1B22]">
-    <div class="mx-auto max-w-6xl">
-      <!-- Heading -->
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-display font-bold text-charcoal dark:text-bone mb-6 leading-tight">
+  <section class="relative py-28 px-4 bg-gradient-to-br from-white via-bone to-stone/20 overflow-hidden">
+    <!-- Bold organic background with real depth -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-20 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-sage/15 to-moss/8 rounded-full blur-[120px] animate-float-slow"></div>
+      <div class="absolute bottom-20 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-honey/12 to-terracotta/8 rounded-full blur-[120px] animate-float-slower"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] gradient-radial from-sage/8 to-transparent rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-6xl">
+      <!-- Heading with more presence -->
+      <div class="text-center mb-24">
+        <h2 class="text-5xl sm:text-6xl lg:text-7xl font-display font-semibold text-charcoal mb-8 leading-tight tracking-tight"
+            style="text-shadow: 0 2px 20px rgba(74, 124, 89, 0.08);">
           Where communities<br/>breathe together
         </h2>
-        <p class="text-xl text-ash dark:text-[#B8C5D0] max-w-3xl mx-auto leading-relaxed">
+        <p class="text-xl sm:text-2xl lg:text-3xl text-charcoal max-w-3xl mx-auto leading-relaxed font-light">
           A distraction-free space where teachers, facilitators, and wisdom keepers share their work and grow alongside their learners.
         </p>
       </div>
 
-      <!-- Three Principles -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <article class="text-center px-6 py-10 bg-white dark:bg-[#1E2B38] rounded-xl border border-stone/30 dark:border-white/10 hover:shadow-lg transition-shadow">
-          <div class="w-16 h-16 mx-auto mb-6 bg-sage/10 dark:bg-moss/20 rounded-lg flex items-center justify-center">
-            <svg class="w-8 h-8 text-sage dark:text-moss" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Three Principles - BIGGER with more breathing room -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 mb-20">
+        <article class="group text-center px-6 py-8 bg-white/90 backdrop-blur-sm rounded-[8px] shadow-2xl shadow-sage/15 hover:shadow-2xl hover:shadow-sage/25 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]">
+          <div class="w-28 h-28 mx-auto mb-8 bg-gradient-to-br from-sage/25 to-moss/15 rounded-[8px] flex items-center justify-center animate-breathe-slow shadow-xl shadow-sage/30 group-hover:shadow-2xl group-hover:shadow-sage/40 transition-all duration-500 group-hover:scale-110">
+            <svg class="w-14 h-14 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
             </svg>
           </div>
           <h3 class="text-xl font-display font-bold text-charcoal dark:text-bone mb-3">
             Presence Over<br/>Performance
           </h3>
-          <p class="text-base text-ash dark:text-[#B8C5D0] leading-relaxed">
+          <p class="text-lg lg:text-xl text-ash leading-relaxed font-light">
             Your being here is<br/>the contribution.
           </p>
         </article>
 
-        <article class="text-center px-6 py-10 bg-white dark:bg-[#1E2B38] rounded-xl border border-stone/30 dark:border-white/10 hover:shadow-lg transition-shadow">
-          <div class="w-16 h-16 mx-auto mb-6 bg-sage/10 dark:bg-moss/20 rounded-lg flex items-center justify-center">
-            <svg class="w-8 h-8 text-sage dark:text-moss" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <article class="group text-center px-6 py-8 bg-white/90 backdrop-blur-sm rounded-[8px] shadow-2xl shadow-terracotta/15 hover:shadow-2xl hover:shadow-terracotta/25 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]">
+          <div class="w-28 h-28 mx-auto mb-8 bg-gradient-to-br from-terracotta/25 to-clay/15 rounded-[8px] flex items-center justify-center animate-breathe-slow shadow-xl shadow-terracotta/30 group-hover:shadow-2xl group-hover:shadow-terracotta/40 transition-all duration-500 group-hover:scale-110" style="animation-delay: 1s;">
+            <svg class="w-14 h-14 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
           </div>
           <h3 class="text-xl font-display font-bold text-charcoal dark:text-bone mb-3">
             Horizontal<br/>Relationships
           </h3>
-          <p class="text-base text-ash dark:text-[#B8C5D0] leading-relaxed">
+          <p class="text-lg lg:text-xl text-ash leading-relaxed font-light">
             Peers alongside peers,<br/>not above or below.
           </p>
         </article>
 
-        <article class="text-center px-6 py-10 bg-white dark:bg-[#1E2B38] rounded-xl border border-stone/30 dark:border-white/10 hover:shadow-lg transition-shadow">
-          <div class="w-16 h-16 mx-auto mb-6 bg-sage/10 dark:bg-moss/20 rounded-lg flex items-center justify-center">
-            <svg class="w-8 h-8 text-sage dark:text-moss" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <article class="group text-center px-6 py-8 bg-white/90 backdrop-blur-sm rounded-[8px] shadow-2xl shadow-honey/15 hover:shadow-2xl hover:shadow-honey/25 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]">
+          <div class="w-28 h-28 mx-auto mb-8 bg-gradient-to-br from-honey/30 to-terracotta/15 rounded-[8px] flex items-center justify-center animate-breathe-slow shadow-xl shadow-honey/30 group-hover:shadow-2xl group-hover:shadow-honey/40 transition-all duration-500 group-hover:scale-110" style="animation-delay: 2s;">
+            <svg class="w-14 h-14 text-clay" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
             </svg>
           </div>
           <h3 class="text-xl font-display font-bold text-charcoal dark:text-bone mb-3">
             Do You Feel<br/>Beneficial?
           </h3>
-          <p class="text-base text-ash dark:text-[#B8C5D0] leading-relaxed">
+          <p class="text-lg lg:text-xl text-ash leading-relaxed font-light">
             The only metric<br/>that matters.
           </p>
         </article>
@@ -80,7 +100,7 @@ const description = 'Community platform for wisdom creators, guides, and intenti
       <div class="text-center">
         <a
           href="/manifesto"
-          class="inline-flex items-center gap-2 px-8 py-3 bg-sage dark:bg-moss text-white font-semibold rounded-lg hover:bg-forest-dark dark:hover:bg-sage transition-all"
+          class="group inline-flex items-center gap-3 px-12 py-5 bg-white/95 backdrop-blur-sm border-2 border-sage/40 text-charcoal font-semibold text-lg rounded-[8px] hover:bg-white hover:border-sage/60 transition-all duration-300 hover:-translate-y-1 hover:scale-105 shadow-xl hover:shadow-2xl shadow-sage/20 hover:shadow-sage/30"
         >
           <span>Read Our Manifesto</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +112,7 @@ const description = 'Community platform for wisdom creators, guides, and intenti
   </section>
 
   <!-- Events Carousel -->
-  <EventsCarousel client:load events={eventsData} />
+  <EventsCarousel client:load events={lumaEvents} />
 
   <!-- Facilitators Carousel -->
   <FacilitatorsCarousel client:load guides={guidesData} />
@@ -105,20 +125,28 @@ const description = 'Community platform for wisdom creators, guides, and intenti
     articles={articlesData}
   />
 
-  <!-- Community CTA -->
-  <section class="relative py-20 px-4 bg-charcoal dark:bg-[#1E2B38]">
-    <div class="mx-auto max-w-5xl text-center">
-      <h2 class="text-4xl sm:text-5xl font-display font-bold text-bone dark:text-bone mb-6 leading-tight">
-        Join the SUUNA Community
+  <!-- Community CTA - Bold and Inviting -->
+  <section class="relative py-28 px-4 bg-gradient-to-br from-forest via-charcoal to-forest overflow-hidden">
+    <!-- Large organic background elements with real depth -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-sage/20 rounded-full blur-[120px] animate-float" style="animation-duration: 10s;"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-moss/30 rounded-full blur-[120px] animate-float" style="animation-duration: 12s; animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-sage/15 rounded-full blur-3xl animate-breathe-slow"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-5xl text-center">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-semibold text-white mb-8 leading-tight tracking-tight"
+          style="text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);">
+        Join the <span style="font-family: 'Architype Bayer-type W90', sans-serif !important;">SUUNA</span> Community
       </h2>
-      <p class="text-xl text-bone/90 dark:text-[#B8C5D0] max-w-3xl mx-auto mb-10 leading-relaxed">
+      <p class="text-xl sm:text-2xl lg:text-3xl text-bone max-w-3xl mx-auto mb-16 leading-relaxed font-light">
         Whether you're a facilitator, wisdom keeper, or seeking connection with intentional communities.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a
           href="/join"
-          class="inline-flex items-center gap-2 px-8 py-4 bg-bone dark:bg-bone text-charcoal dark:text-charcoal font-bold rounded-lg hover:bg-stone dark:hover:bg-stone/20 transition-all"
+          class="group inline-flex items-center gap-3 px-8 py-4 bg-white text-sage font-bold text-lg rounded-[8px] transition-all duration-300 hover:bg-bone hover:scale-105 shadow-2xl shadow-forest/40 hover:shadow-2xl hover:shadow-forest/50"
         >
           <span>Join as Member</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +155,7 @@ const description = 'Community platform for wisdom creators, guides, and intenti
         </a>
         <a
           href="/join#guides"
-          class="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-bone dark:border-bone text-bone dark:text-bone font-semibold rounded-lg hover:bg-bone/10 dark:hover:bg-bone/10 transition-all"
+          class="group inline-flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-white/90 text-white font-semibold text-lg rounded-[8px] transition-all duration-300 hover:bg-white/15 hover:border-white hover:scale-105 backdrop-blur-sm shadow-xl shadow-forest/30 hover:shadow-2xl hover:shadow-forest/40"
         >
           <span>Become a Guide</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

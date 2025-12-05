@@ -6,72 +6,85 @@ import { LanguageToggle } from '../ui/LanguageToggle';
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-bone/98 dark:bg-[#0D1B22]/98 backdrop-blur-xl border-b border-stone/30 dark:border-white/10 shadow-xl shadow-sage/10 dark:shadow-black/20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-24 items-center justify-between">
-      <!-- Logo - Bold and Present -->
-      <a href="/" class="flex items-center gap-2 group">
-        <span class="text-4xl font-suuna text-sage transition-all duration-300 group-hover:scale-105 group-hover:text-forest" style="font-family: 'Architype Bayer-type W90', sans-serif !important; text-shadow: 0 2px 15px rgba(74, 124, 89, 0.15);">
-          SUUNA
-        </span>
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-2xl border-b border-sage/20 shadow-2xl shadow-sage/8">
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+    <div class="flex h-28 items-center justify-between">
+      <!-- Logo - BOLD and Memorable -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative">
+          <div class="absolute inset-0 bg-sage/10 blur-xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <span class="relative text-5xl font-suuna text-sage transition-all duration-500 group-hover:scale-110 group-hover:text-forest" style="font-family: 'Architype Bayer-type W90', sans-serif !important; text-shadow: 0 4px 20px rgba(74, 124, 89, 0.2);">
+            SUUNA
+          </span>
+        </div>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-10" role="navigation" aria-label="Main navigation">
+      <!-- Desktop Navigation - Modern and Clean -->
+      <nav class="hidden lg:flex items-center gap-8">
         <a
           href="/"
-          class={`text-base font-medium transition-colors ${currentPath === '/' ? 'text-sage dark:text-moss' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone'}`}
-          aria-current={currentPath === '/' ? 'page' : undefined}
+          class={`relative text-base font-bold transition-all duration-300 group ${currentPath === '/' ? 'text-sage' : 'text-charcoal hover:text-sage'}`}
         >
-          Home
+          <span class="relative z-10">Home</span>
+          <span class={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sage to-moss rounded-full transition-transform duration-300 ${currentPath === '/' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
         </a>
         <a
           href="/manifesto"
-          class={`text-base font-medium transition-colors ${currentPath === '/manifesto' ? 'text-sage dark:text-moss' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone'}`}
-          aria-current={currentPath === '/manifesto' ? 'page' : undefined}
+          class={`relative text-base font-bold transition-all duration-300 group ${currentPath === '/manifesto' ? 'text-sage' : 'text-charcoal hover:text-sage'}`}
         >
-          Manifesto
+          <span class="relative z-10">Manifesto</span>
+          <span class={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sage to-moss rounded-full transition-transform duration-300 ${currentPath === '/manifesto' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
         </a>
         <a
           href="/guides"
-          class={`text-base font-medium transition-colors ${currentPath.startsWith('/guides') ? 'text-sage dark:text-moss' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone'}`}
-          aria-current={currentPath.startsWith('/guides') ? 'page' : undefined}
+          class={`relative text-base font-bold transition-all duration-300 group ${currentPath.startsWith('/facilitators') || currentPath.startsWith('/guides') ? 'text-sage' : 'text-charcoal hover:text-sage'}`}
         >
-          Guides
+          <span class="relative z-10">Guides</span>
+          <span class={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sage to-moss rounded-full transition-transform duration-300 ${currentPath.startsWith('/facilitators') || currentPath.startsWith('/guides') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
         </a>
         <a
           href="/events"
-          class={`text-base font-medium transition-colors ${currentPath === '/events' ? 'text-sage dark:text-moss' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone'}`}
-          aria-current={currentPath === '/events' ? 'page' : undefined}
+          class={`relative text-base font-bold transition-all duration-300 group ${currentPath === '/events' ? 'text-sage' : 'text-charcoal hover:text-sage'}`}
         >
-          Events
+          <span class="relative z-10">Events</span>
+          <span class={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sage to-moss rounded-full transition-transform duration-300 ${currentPath === '/events' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
         </a>
         <a
           href="/articles"
-          class={`text-base font-medium transition-colors ${currentPath === '/articles' ? 'text-sage dark:text-moss' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone'}`}
-          aria-current={currentPath === '/articles' ? 'page' : undefined}
+          class={`relative text-base font-bold transition-all duration-300 group ${currentPath === '/articles' ? 'text-sage' : 'text-charcoal hover:text-sage'}`}
         >
-          Articles
+          <span class="relative z-10">Articles</span>
+          <span class={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sage to-moss rounded-full transition-transform duration-300 ${currentPath === '/articles' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
         </a>
         <a
           href="/vault"
-          class={`text-base font-medium transition-colors ${currentPath === '/vault' ? 'text-sage dark:text-moss' : 'text-ash dark:text-[#B8C5D0] hover:text-charcoal dark:hover:text-bone'}`}
-          aria-current={currentPath === '/vault' ? 'page' : undefined}
+          class={`relative text-base font-bold transition-all duration-300 group ${currentPath === '/vault' ? 'text-sage' : 'text-charcoal hover:text-sage'}`}
         >
-          Vault
+          <span class="relative z-10">Vault</span>
+          <span class={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sage to-moss rounded-full transition-transform duration-300 ${currentPath === '/vault' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
         </a>
         <a
           href="/join"
-          class={`px-8 py-3 bg-gradient-to-br from-sage to-forest-dark dark:from-moss dark:to-sage text-white font-semibold text-base rounded-xl hover:shadow-lg hover:shadow-sage/30 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2`}
+          class="group relative px-10 py-4 bg-gradient-to-br from-sage via-forest to-sage text-white font-bold text-base rounded-[8px] shadow-lg shadow-sage/25 hover:shadow-2xl hover:shadow-sage/40 transition-all duration-500 hover:scale-110 overflow-hidden"
         >
-          Join
+          <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <span class="relative z-10 flex items-center gap-2">
+            Join
+            <svg class="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </span>
         </a>
       </nav>
 
       <!-- Right Side: Language + Theme -->
-      <div class="hidden lg:flex items-center gap-5">
-        <!-- Language Switcher -->
-        <LanguageToggle client:load />
+      <div class="hidden lg:flex items-center gap-6">
+        <!-- Language Switcher - Sleek Modern Design -->
+        <div class="flex items-center gap-2 text-sm bg-gradient-to-br from-stone/50 to-stone/30 rounded-[8px] px-5 py-2.5 shadow-md">
+          <a href="?lang=ro" class="text-charcoal hover:text-sage transition-all duration-300 font-bold px-3 py-1.5 rounded-[10px] hover:bg-white/80 hover:shadow-sm">RO</a>
+          <span class="text-stone/40 font-light">·</span>
+          <a href="?lang=en" class="text-charcoal hover:text-sage transition-all duration-300 font-bold px-3 py-1.5 rounded-[10px] hover:bg-white/80 hover:shadow-sm">EN</a>
+        </div>
 
         <!-- Theme Toggle -->
         <ThemeToggle client:load />
@@ -93,18 +106,22 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Mobile Menu - Updated -->
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-stone/30 dark:border-white/10 bg-bone/98 dark:bg-[#0D1B22]/98 backdrop-blur-xl" role="menu">
-    <nav class="px-4 py-5 space-y-2" role="navigation" aria-label="Mobile navigation">
-      <a href="/" class="block py-3 text-base font-medium text-ash dark:text-[#B8C5D0] hover:text-sage dark:hover:text-moss hover:bg-stone/30 dark:hover:bg-white/10 rounded-xl px-4 transition-all focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2" role="menuitem" aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
-      <a href="/manifesto" class="block py-3 text-base font-medium text-ash dark:text-[#B8C5D0] hover:text-sage dark:hover:text-moss hover:bg-stone/30 dark:hover:bg-white/10 rounded-xl px-4 transition-all focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2" role="menuitem" aria-current={currentPath === '/manifesto' ? 'page' : undefined}>Manifesto</a>
-      <a href="/guides" class="block py-3 text-base font-medium text-ash dark:text-[#B8C5D0] hover:text-sage dark:hover:text-moss hover:bg-stone/30 dark:hover:bg-white/10 rounded-xl px-4 transition-all focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2" role="menuitem" aria-current={currentPath.startsWith('/guides') ? 'page' : undefined}>Guides</a>
-      <a href="/events" class="block py-3 text-base font-medium text-ash dark:text-[#B8C5D0] hover:text-sage dark:hover:text-moss hover:bg-stone/30 dark:hover:bg-white/10 rounded-xl px-4 transition-all focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2" role="menuitem" aria-current={currentPath === '/events' ? 'page' : undefined}>Events</a>
-      <a href="/articles" class="block py-3 text-base font-medium text-ash dark:text-[#B8C5D0] hover:text-sage dark:hover:text-moss hover:bg-stone/30 dark:hover:bg-white/10 rounded-xl px-4 transition-all focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2" role="menuitem" aria-current={currentPath === '/articles' ? 'page' : undefined}>Articles</a>
-      <a href="/vault" class="block py-3 text-base font-medium text-ash dark:text-[#B8C5D0] hover:text-sage dark:hover:text-moss hover:bg-stone/30 dark:hover:bg-white/10 rounded-xl px-4 transition-all focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2" role="menuitem" aria-current={currentPath === '/vault' ? 'page' : undefined}>Vault</a>
-      <a href="/join" class="block py-4 text-base font-semibold bg-gradient-to-br from-sage to-forest-dark dark:from-moss dark:to-sage text-white rounded-xl text-center shadow-lg hover:shadow-xl transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sage focus:ring-offset-2" role="menuitem">Join</a>
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-sage/15 bg-white/98 backdrop-blur-xl">
+    <nav class="px-4 py-5 space-y-2">
+      <a href="/" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[8px] px-4 transition-all">Home</a>
+      <a href="/manifesto" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[8px] px-4 transition-all">Manifesto</a>
+      <a href="/facilitators" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[8px] px-4 transition-all">Guides</a>
+      <a href="/events" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[8px] px-4 transition-all">Events</a>
+      <a href="/articles" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[8px] px-4 transition-all">Articles</a>
+      <a href="/vault" class="block py-3 text-base font-medium text-ash hover:text-sage hover:bg-stone/30 rounded-[8px] px-4 transition-all">Vault</a>
+      <a href="/join" class="block py-4 text-base font-semibold bg-gradient-to-br from-sage to-forest text-white rounded-[8px] text-center shadow-lg hover:shadow-xl transition-all hover:scale-105">Join</a>
 
-      <div class="pt-5 mt-4 border-t border-stone/30 dark:border-white/10 flex items-center justify-between">
-        <LanguageToggle client:load />
+      <div class="pt-5 mt-4 border-t border-sage/15 flex items-center justify-between">
+        <div class="flex items-center gap-3 text-base bg-stone/40 rounded-[8px] px-4 py-2">
+          <a href="?lang=ro" class="text-ash hover:text-sage transition-colors font-semibold px-2.5 py-1 rounded-lg hover:bg-white/90">RO</a>
+          <span class="text-stone/50">|</span>
+          <a href="?lang=en" class="text-ash hover:text-sage transition-colors font-semibold px-2.5 py-1 rounded-lg hover:bg-white/90">EN</a>
+        </div>
         <ThemeToggle client:load />
       </div>
     </nav>

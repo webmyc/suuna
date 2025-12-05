@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SUUNA Custom Font */
+/* SUUNA Custom Font - Bayer Type Architype */
 @font-face {
   font-family: 'Architype Bayer-type W90';
-  src: url('/Web Fonts/a959448c957069dae7d52078616ebdc8.woff2') format('woff2'),
-       url('/Web Fonts/a959448c957069dae7d52078616ebdc8.woff') format('woff');
+  src: url('/fonts/architype-bayer-type-w90.woff2') format('woff2'),
+       url('/fonts/architype-bayer-type-w90.woff') format('woff'),
+       url('/fonts/bayer-architype.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -66,19 +67,16 @@
 
   /* Dark theme - SUUNA Spec Colors */
   :root[data-theme='dark'] {
-    /* Background & Surface */
-    --color-bg-primary: 13 27 34; /* #0D1B22 */
-    --color-bg-secondary: 30 43 56; /* #1E2B38 */
-    --color-bg-elevated: 30 43 56; /* #1E2B38 */
-    
-    /* Text Colors */
-    --color-text-primary: 250 248 245; /* bone */
-    --color-text-secondary: 184 197 208; /* #B8C5D0 */
-    --color-text-tertiary: 184 197 208; /* #B8C5D0 */
-    
-    /* Accent Colors - same in dark mode */
-    --color-accent: 123 165 135; /* moss - lighter for dark mode */
-    --color-accent-hover: 158 230 214; /* lighter accent */
+    --color-bg-primary: 13 27 34; /* charcoal-dark - consistent with prefers-color-scheme */
+    --color-bg-secondary: 18 35 42; /* charcoal-medium */
+    --color-bg-elevated: 24 44 52; /* charcoal-light */
+
+    --color-text-primary: 250 248 245; /* bone - high contrast */
+    --color-text-secondary: 212 210 207; /* light gray - readable */
+    --color-text-tertiary: 150 148 145; /* medium gray */
+
+    --color-accent: 158 230 214; /* SUUNA accent */
+    --color-accent-hover: 124 196 181; /* SUUNA accent hover */
     --color-accent-light: 158 230 214;
 
     /* Border Colors */
@@ -97,6 +95,97 @@
     --monk-text-primary: 250 248 245; /* bone */
     --monk-text-secondary: 184 197 208; /* #B8C5D0 */
     --monk-border: 40 60 55; /* subtle dark border */
+  }
+
+  /* Dark theme text overrides */
+  :root[data-theme='dark'] .text-charcoal,
+  :root[data-theme='dark'] .text-charcoal\/90,
+  :root[data-theme='dark'] .text-charcoal\/80,
+  :root[data-theme='dark'] .text-charcoal\/70 {
+    color: #FAF8F5 !important;
+    opacity: 1 !important;
+  }
+
+  :root[data-theme='dark'] .text-ash,
+  :root[data-theme='dark'] .text-ash\/90,
+  :root[data-theme='dark'] .text-ash\/80,
+  :root[data-theme='dark'] .text-ash\/70 {
+    color: #E5E3E0 !important;
+    opacity: 1 !important;
+  }
+
+  :root[data-theme='dark'] .text-stone {
+    color: #D1CFC9 !important;
+  }
+
+  :root[data-theme='dark'] .bg-stone\/20,
+  :root[data-theme='dark'] .bg-stone\/30 {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  /* Dark theme background overrides */
+  :root[data-theme='dark'] .bg-white {
+    background-color: #0D1B22 !important; /* charcoal-dark for page backgrounds */
+  }
+
+  :root[data-theme='dark'] .bg-white\/90 {
+    background-color: rgba(18, 35, 42, 0.90) !important; /* charcoal-medium for cards */
+  }
+
+  :root[data-theme='dark'] .bg-white\/95 {
+    background-color: rgba(18, 35, 42, 0.95) !important; /* charcoal-medium */
+  }
+
+  :root[data-theme='dark'] .bg-bone {
+    background-color: rgba(250, 248, 245, 0.03);
+  }
+
+  :root[data-theme='dark'] .bg-stone\/40,
+  :root[data-theme='dark'] .bg-stone\/50 {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Dark theme border adjustments */
+  :root[data-theme='dark'] .border-sage\/20 {
+    border-color: rgba(158, 230, 214, 0.15) !important;
+  }
+
+  :root[data-theme='dark'] .border-sage\/15 {
+    border-color: rgba(158, 230, 214, 0.12) !important;
+  }
+
+  :root[data-theme='dark'] .border-sage\/30 {
+    border-color: rgba(158, 230, 214, 0.20) !important;
+  }
+
+  :root[data-theme='dark'] .border-sage\/40 {
+    border-color: rgba(158, 230, 214, 0.25) !important;
+  }
+
+  :root[data-theme='dark'] .border-terracotta\/15 {
+    border-color: rgba(183, 101, 84, 0.25) !important;
+  }
+
+  :root[data-theme='dark'] .border-honey\/10 {
+    border-color: rgba(242, 195, 111, 0.20) !important;
+  }
+
+  /* Fix buttons with bg-white in dark mode */
+  :root[data-theme='dark'] a.bg-white,
+  :root[data-theme='dark'] button.bg-white {
+    background-color: rgba(250, 248, 245, 0.12) !important; /* subtle light background */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+
+  :root[data-theme='dark'] a.bg-white:hover,
+  :root[data-theme='dark'] button.bg-white:hover {
+    background-color: rgba(250, 248, 245, 0.20) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  :root[data-theme='dark'] body {
+    background-color: #0D1B22;
+    color: #FAF8F5;
   }
 
   * {
@@ -171,11 +260,123 @@
     color: rgb(var(--color-text-primary));
   }
 
-  /* Smooth transitions */
-  * {
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
+  /* Smooth transitions - but not on everything */
+  a, button, .transition {
+    @apply transition-colors duration-200;
+  }
+
+  /* Dark mode support for common elements */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --color-bg-primary: 13 27 34; /* charcoal-dark */
+      --color-bg-secondary: 18 35 42; /* charcoal-medium */
+      --color-bg-elevated: 24 44 52; /* charcoal-light */
+
+      --color-text-primary: 250 248 245; /* bone */
+      --color-text-secondary: 200 198 195; /* light gray */
+      --color-text-tertiary: 150 148 145; /* medium gray */
+    }
+
+    :root:not([data-theme='light']) body {
+      background-color: #0D1B22; /* charcoal-dark */
+      color: #FAF8F5; /* bone */
+    }
+
+    /* Adjust card backgrounds for dark mode */
+    :root:not([data-theme='light']) .bg-white {
+      background-color: #0D1B22 !important; /* charcoal-dark for page backgrounds */
+    }
+
+    :root:not([data-theme='light']) .bg-white\/90 {
+      background-color: rgba(18, 35, 42, 0.90) !important; /* charcoal-medium for cards */
+    }
+
+    :root:not([data-theme='light']) .bg-white\/95 {
+      background-color: rgba(18, 35, 42, 0.95) !important; /* charcoal-medium */
+    }
+
+    :root:not([data-theme='light']) .bg-bone {
+      background-color: rgba(250, 248, 245, 0.03);
+    }
+
+    :root:not([data-theme='light']) .bg-stone\/40,
+    :root:not([data-theme='light']) .bg-stone\/50 {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Dark theme border adjustments */
+    :root:not([data-theme='light']) .border-sage\/20 {
+      border-color: rgba(158, 230, 214, 0.15) !important;
+    }
+
+    :root:not([data-theme='light']) .border-sage\/15 {
+      border-color: rgba(158, 230, 214, 0.12) !important;
+    }
+
+    :root:not([data-theme='light']) .border-sage\/30 {
+      border-color: rgba(158, 230, 214, 0.20) !important;
+    }
+
+    :root:not([data-theme='light']) .border-sage\/40 {
+      border-color: rgba(158, 230, 214, 0.25) !important;
+    }
+
+    :root:not([data-theme='light']) .border-terracotta\/15 {
+      border-color: rgba(183, 101, 84, 0.25) !important;
+    }
+
+    :root:not([data-theme='light']) .border-honey\/10 {
+      border-color: rgba(242, 195, 111, 0.20) !important;
+    }
+
+    /* Fix buttons with bg-white in dark mode */
+    :root:not([data-theme='light']) a.bg-white,
+    :root:not([data-theme='light']) button.bg-white {
+      background-color: rgba(250, 248, 245, 0.12) !important; /* subtle light background */
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    :root:not([data-theme='light']) a.bg-white:hover,
+    :root:not([data-theme='light']) button.bg-white:hover {
+      background-color: rgba(250, 248, 245, 0.20) !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    /* Improve text contrast in dark mode - base colors */
+    :root:not([data-theme='light']) .text-charcoal,
+    :root:not([data-theme='light']) .text-charcoal\/90,
+    :root:not([data-theme='light']) .text-charcoal\/80,
+    :root:not([data-theme='light']) .text-charcoal\/70 {
+      color: #FAF8F5 !important;
+      opacity: 1 !important;
+    }
+
+    :root:not([data-theme='light']) .text-ash,
+    :root:not([data-theme='light']) .text-ash\/90,
+    :root:not([data-theme='light']) .text-ash\/80,
+    :root:not([data-theme='light']) .text-ash\/70 {
+      color: #E5E3E0 !important;
+      opacity: 1 !important;
+    }
+
+    :root:not([data-theme='light']) .text-stone {
+      color: #D1CFC9 !important;
+    }
+
+    :root:not([data-theme='light']) .bg-stone\/20,
+    :root:not([data-theme='light']) .bg-stone\/30 {
+      background-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    /* Ensure borders are visible in dark mode */
+    :root:not([data-theme='light']) .border-sage\/20,
+    :root:not([data-theme='light']) .border-sage\/40 {
+      border-color: rgba(158, 230, 214, 0.25) !important;
+    }
+
+    :root:not([data-theme='light']) .border-stone\/30 {
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
   }
 }
 

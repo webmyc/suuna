@@ -45,7 +45,7 @@ export function DiscoverGrid({ events, facilitators, articles }: Props) {
   ]
 
   return (
-    <section id="discover" className="py-20 bg-bone dark:bg-[#0D1B22]">
+    <section id="discover" className="py-16 md:py-20 bg-primary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-display font-bold text-charcoal dark:text-bone mb-3">

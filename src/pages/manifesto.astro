@@ -10,7 +10,25 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
 ---
 
 <Base title={title} description={description} canonical="https://suuna.ro/manifesto">
-  <div class="min-h-screen bg-bone dark:bg-[#0D1B22]">
+  <div class="min-h-screen bg-white">
+    <!-- Language Toggle - Bold and Present -->
+    <div class="fixed top-28 right-8 z-50">
+      <div class="flex gap-2 bg-white/95 backdrop-blur-md border-2 border-sage/30 rounded-[8px] px-4 py-3 shadow-xl shadow-sage/20">
+        <a
+          href="/manifesto?lang=ro"
+          class={`px-6 py-3 text-base font-semibold rounded-[8px] transition-all duration-300 ${lang === 'ro' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
+        >
+          RO
+        </a>
+        <a
+          href="/manifesto?lang=en"
+          class={`px-6 py-3 text-base font-semibold rounded-[8px] transition-all duration-300 ${lang === 'en' ? 'bg-gradient-to-br from-sage to-forest text-white shadow-lg shadow-sage/30' : 'text-ash hover:text-charcoal hover:bg-stone/50 hover:scale-105'}`}
+        >
+          EN
+        </a>
+      </div>
+    </div>
+
     <!-- Hero Section - Bold and Breathing -->
     <section class="relative pt-40 pb-28 px-4 bg-gradient-to-br from-bone via-white to-stone/20 dark:from-[#0D1B22] dark:via-[#1E2B38] dark:to-[#0D1B22]/50 overflow-hidden">
       <!-- Bold organic background with depth -->
@@ -31,8 +49,8 @@ const lang = Astro.url.searchParams.get('lang') || 'ro';
 
     <!-- Romanian Content - Bold Typography with Breathing Room -->
     {lang === 'ro' && (
-      <article class="max-w-3xl mx-auto px-4 py-20">
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-charcoal dark:text-bone mb-8 font-semibold leading-tight tracking-tight">
+      <article class="max-w-3xl mx-auto px-4 py-16">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-charcoal mb-8 font-semibold leading-tight tracking-tight">
           Pentru creatorii care scriu, vorbesc, filmează — cu inimă.
         </h2>
 
