@@ -88,7 +88,11 @@
 
   /* Dark theme background overrides */
   :root[data-theme='dark'] .bg-white {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: #0D1B22 !important; /* charcoal-dark for page backgrounds */
+  }
+
+  :root[data-theme='dark'] .bg-white\/90 {
+    background-color: rgba(18, 35, 42, 0.90) !important; /* charcoal-medium for cards */
   }
 
   :root[data-theme='dark'] .bg-white\/95 {
@@ -104,9 +108,42 @@
     background-color: rgba(255, 255, 255, 0.08);
   }
 
-  /* Dark theme border adjustments for header */
+  /* Dark theme border adjustments */
   :root[data-theme='dark'] .border-sage\/20 {
     border-color: rgba(158, 230, 214, 0.15) !important;
+  }
+
+  :root[data-theme='dark'] .border-sage\/15 {
+    border-color: rgba(158, 230, 214, 0.12) !important;
+  }
+
+  :root[data-theme='dark'] .border-sage\/30 {
+    border-color: rgba(158, 230, 214, 0.20) !important;
+  }
+
+  :root[data-theme='dark'] .border-sage\/40 {
+    border-color: rgba(158, 230, 214, 0.25) !important;
+  }
+
+  :root[data-theme='dark'] .border-terracotta\/15 {
+    border-color: rgba(183, 101, 84, 0.25) !important;
+  }
+
+  :root[data-theme='dark'] .border-honey\/10 {
+    border-color: rgba(242, 195, 111, 0.20) !important;
+  }
+
+  /* Fix buttons with bg-white in dark mode */
+  :root[data-theme='dark'] a.bg-white,
+  :root[data-theme='dark'] button.bg-white {
+    background-color: rgba(250, 248, 245, 0.12) !important; /* subtle light background */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+
+  :root[data-theme='dark'] a.bg-white:hover,
+  :root[data-theme='dark'] button.bg-white:hover {
+    background-color: rgba(250, 248, 245, 0.20) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
   }
 
   :root[data-theme='dark'] body {
@@ -177,7 +214,11 @@
 
     /* Adjust card backgrounds for dark mode */
     :root:not([data-theme='light']) .bg-white {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: #0D1B22 !important; /* charcoal-dark for page backgrounds */
+    }
+
+    :root:not([data-theme='light']) .bg-white\/90 {
+      background-color: rgba(18, 35, 42, 0.90) !important; /* charcoal-medium for cards */
     }
 
     :root:not([data-theme='light']) .bg-white\/95 {
@@ -193,9 +234,42 @@
       background-color: rgba(255, 255, 255, 0.08);
     }
 
-    /* Dark theme border adjustments for header */
+    /* Dark theme border adjustments */
     :root:not([data-theme='light']) .border-sage\/20 {
       border-color: rgba(158, 230, 214, 0.15) !important;
+    }
+
+    :root:not([data-theme='light']) .border-sage\/15 {
+      border-color: rgba(158, 230, 214, 0.12) !important;
+    }
+
+    :root:not([data-theme='light']) .border-sage\/30 {
+      border-color: rgba(158, 230, 214, 0.20) !important;
+    }
+
+    :root:not([data-theme='light']) .border-sage\/40 {
+      border-color: rgba(158, 230, 214, 0.25) !important;
+    }
+
+    :root:not([data-theme='light']) .border-terracotta\/15 {
+      border-color: rgba(183, 101, 84, 0.25) !important;
+    }
+
+    :root:not([data-theme='light']) .border-honey\/10 {
+      border-color: rgba(242, 195, 111, 0.20) !important;
+    }
+
+    /* Fix buttons with bg-white in dark mode */
+    :root:not([data-theme='light']) a.bg-white,
+    :root:not([data-theme='light']) button.bg-white {
+      background-color: rgba(250, 248, 245, 0.12) !important; /* subtle light background */
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    :root:not([data-theme='light']) a.bg-white:hover,
+    :root:not([data-theme='light']) button.bg-white:hover {
+      background-color: rgba(250, 248, 245, 0.20) !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
     }
 
     /* Improve text contrast in dark mode - base colors */
